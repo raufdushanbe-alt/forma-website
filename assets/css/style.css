@@ -1148,18 +1148,23 @@
   .hero-orbit-shell{
     min-height:430px;
   }
+
   .hero-orbit-stage{
     inset:0 -4% -3% -4%;
   }
+
   .hero-product{
     width:31%;
     height:46%;
   }
+
   .hero-product.is-main{
     width:43%;
     height:64%;
   }
-      
+}
+
+/* Оранжевый анимированный градиент */
 .gradient-ai{
   background:linear-gradient(
     90deg,

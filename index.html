@@ -17,15 +17,15 @@
 
 <header>
   <div class="wrap nav">
-    <a href="#top" class="logo"><span class="logo-dot"></span>FORMA</a>
+    <a href="#top" class="logo"><span class="logo-dot"></span><span id="studio-name">FORMA</span></a>
     <nav class="nav-links">
       <a href="#services-overview">Услуги</a>
       <a href="#ai-express">AI-to-Print</a>
       <a href="#works">Портфолио</a>
       <a href="#services">Цены</a>
       <a href="#contact">Контакты</a>
-      <a href="https://wa.me/000000000000" class="messenger-link whatsapp-link" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://t.me/yourstudio" class="messenger-link telegram-link" target="_blank" rel="noopener">Telegram</a>
+      <a data-whatsapp href="#" class="messenger-link whatsapp-link" target="_blank" rel="noopener">WhatsApp</a>
+      <a data-telegram href="#" class="messenger-link telegram-link" target="_blank" rel="noopener">Telegram</a>
     </nav>
   </div>
 </header>
@@ -34,21 +34,18 @@
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="reveal">
-        <div class="eyebrow">Packaging design studio Форма</div>
-        <h1>Создаем упаковку <span class="gradient-text">с нуля</span> и доводим AI-идеи до печати.</h1>
-        <p class="hero-copy">
-          У нас два основных направления: полноценная разработка упаковки для нового продукта
-          и профессиональная подготовка AI-концепций к реальному производству.
-        </p>
+        <div class="eyebrow" id="hero-eyebrow">Packaging design studio</div>
+        <h1 id="hero-title">Создаем упаковку <span class="gradient-text">с нуля</span> и доводим AI-идеи до печати.</h1>
+        <p class="hero-copy" id="hero-description">У нас два основных направления: полноценная разработка упаковки для нового продукта и профессиональная подготовка AI-концепций к реальному производству.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#services-overview">Заказать дизайн с нуля</a>
-          <a class="btn btn-secondary" href="#ai-express">У меня есть AI-концепция</a>
+          <a class="btn btn-primary" id="hero-primary" href="#services-overview">Заказать дизайн с нуля</a>
+          <a class="btn btn-secondary" id="hero-secondary" href="#ai-express">У меня есть AI-концепция</a>
         </div>
         <div class="hero-note">10+ лет опыта · Food & FMCG · 3D · Print-ready</div>
       </div>
 
-      <div class="hero-visual reveal image-placeholder hero-placeholder">
-        <div class="placeholder-inner">
+      <div class="hero-visual reveal image-placeholder hero-placeholder"><img id="hero-image" class="hero-real-image" alt="Главный проект FORMA" hidden>
+        <div class="placeholder-inner" id="hero-placeholder">
           <span class="placeholder-label">Главное изображение проекта</span>
           <strong>Добавьте сюда ваш лучший визуал упаковки</strong>
           <small>Рекомендуемый размер: 1600 × 1800 px</small>
@@ -167,67 +164,13 @@
     <div class="wrap">
       <div class="section-head reveal">
         <div>
-          <div class="eyebrow">Портфолио</div>
-          <h2>Упаковка, созданная для реального рынка.</h2>
+          <div class="eyebrow" id="portfolio-eyebrow">Портфолио</div>
+          <h2 id="portfolio-title">Упаковка, созданная для реального рынка.</h2>
         </div>
-        <p class="section-intro">
-          Каждый проект показывает не только визуальную идею, но и то, как она работает на продукте, линейке и в производстве.
-        </p>
+        <p class="section-intro" id="portfolio-description">Каждый проект показывает не только визуальную идею, но и то, как она работает на продукте, линейке и в производстве.</p>
       </div>
-
-      <div class="works">
-        <article class="work large reveal">
-          <div class="work-image image-placeholder">
-            <div class="placeholder-inner">
-              <span class="placeholder-label">Изображение проекта</span>
-              <strong>Добавьте обложку кейса</strong>
-            </div>
-          </div>
-          <div class="work-info">
-            <div><h3>Delio Popcorn</h3><p>Премиальный шоколадный снек</p></div>
-            <span class="work-tag">Packaging · 3D</span>
-          </div>
-        </article>
-
-        <article class="work small reveal">
-          <div class="work-image image-placeholder">
-            <div class="placeholder-inner">
-              <span class="placeholder-label">Изображение проекта</span>
-              <strong>Добавьте обложку кейса</strong>
-            </div>
-          </div>
-          <div class="work-info">
-            <div><h3>Makolli</h3><p>Линейка ингредиентов</p></div>
-            <span class="work-tag">SKU · Print</span>
-          </div>
-        </article>
-
-        <article class="work small reveal">
-          <div class="work-image image-placeholder">
-            <div class="placeholder-inner">
-              <span class="placeholder-label">Изображение проекта</span>
-              <strong>Добавьте обложку кейса</strong>
-            </div>
-          </div>
-          <div class="work-info">
-            <div><h3>Nord Foods</h3><p>Редизайн продуктовой линейки</p></div>
-            <span class="work-tag">Redesign</span>
-          </div>
-        </article>
-
-        <article class="work large reveal">
-          <div class="work-image image-placeholder">
-            <div class="placeholder-inner">
-              <span class="placeholder-label">Изображение проекта</span>
-              <strong>Добавьте обложку кейса</strong>
-            </div>
-          </div>
-          <div class="work-info">
-            <div><h3>Mallow Friends</h3><p>Упаковка детской линейки</p></div>
-            <span class="work-tag">Branding · 3D</span>
-          </div>
-        </article>
-      </div>
+      <div class="portfolio-grid" id="portfolio-grid"></div>
+      <div class="portfolio-actions"><button class="btn btn-secondary" id="load-more" type="button">Показать еще</button></div>
     </div>
   </section>
 
@@ -279,7 +222,7 @@
       <div class="service-grid">
         <article class="main-service reveal">
           <span class="service-label">Full packaging design</span>
-          <div class="price"><strong>от $1,000</strong>за проект</div>
+          <div class="price"><strong id="full-price">от $1,000</strong>за проект</div>
           <h3>Полная разработка упаковки</h3>
           <p>
             Для брендов, которым нужен полноценный дизайн: от визуальной идеи и системы линейки до финальных файлов для производства.
@@ -296,7 +239,7 @@
 
         <article class="express-service reveal" id="ai-express">
           <span class="service-label">AI-to-Print Express</span>
-          <div class="price"><strong>от $350</strong>после оценки</div>
+          <div class="price"><strong id="ai-price">от $350</strong>после оценки</div>
           <h3>AI-концепция в печатный макет</h3>
           <p>
             Для предпринимателей и брендов, у которых уже есть понравившаяся AI-концепция, но нет профессионального файла для печати.
@@ -349,7 +292,7 @@
 
       <div class="contact-grid">
         <div class="contact-options reveal">
-          <a class="contact-card" href="https://wa.me/000000000000" target="_blank" rel="noopener">
+          <a class="contact-card" data-whatsapp href="#" target="_blank" rel="noopener">
             <span class="contact-icon">WA</span>
             <div>
               <strong>WhatsApp</strong>
@@ -358,7 +301,7 @@
             <span class="contact-arrow">→</span>
           </a>
 
-          <a class="contact-card" href="https://t.me/yourstudio" target="_blank" rel="noopener">
+          <a class="contact-card" data-telegram href="#" target="_blank" rel="noopener">
             <span class="contact-icon">TG</span>
             <div>
               <strong>Telegram</strong>
@@ -367,11 +310,11 @@
             <span class="contact-arrow">→</span>
           </a>
 
-          <a class="contact-card" href="mailto:hello@yourstudio.com">
+          <a class="contact-card" data-email href="#">
             <span class="contact-icon">@</span>
             <div>
               <strong>Email</strong>
-              <small>hello@yourstudio.com</small>
+              <small id="contact-email-text">hello@yourstudio.com</small>
             </div>
             <span class="contact-arrow">→</span>
           </a>
@@ -407,12 +350,14 @@
 
 <footer>
   <div class="wrap footer-grid">
-    <div>© 2026 FORMA Packaging Studio</div>
-    <div>Dushanbe · Работаем удаленно</div>
-    <div>hello@yourstudio.com · Telegram: @yourstudio</div>
+    <div>© 2026 <span id="footer-studio-name">FORMA</span> Packaging Studio</div>
+    <div id="footer-location">Dushanbe · Работаем удаленно</div>
+    <div><a data-email href="#">hello@yourstudio.com</a></div>
   </div>
 </footer>
 
+<script src="assets/js/content.js"></script>
+<script src="assets/js/portfolio.js"></script>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

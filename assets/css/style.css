@@ -118,6 +118,24 @@
       animation:gradientMove 7s linear infinite;
     }
 
+    .gradient-ai{
+    background:linear-gradient(
+        90deg,
+        #FFD58A,
+        #FFB347,
+        #FF8A3D,
+        #FF6A00,
+        #FFD58A
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    background-size:250% auto;
+    animation:gradientMove 7s linear infinite;
+    }
+
     .hero-copy{
       font-size:20px;
       color:var(--muted);

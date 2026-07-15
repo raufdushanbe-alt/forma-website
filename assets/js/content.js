@@ -4,7 +4,7 @@ window.FORMA_CONTENT = {
     whatsappNumber: "992000000000",
     telegramUsername: "yourstudio",
     email: "hello@yourstudio.com",
-    location: "Dushanbe · Работаем удаленно"
+    location: "Tajikistan, Dushanbe · Работаем удаленно"
   },
   hero: {
     eyebrow: "Packaging design studio",

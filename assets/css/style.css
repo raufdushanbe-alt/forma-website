@@ -1159,22 +1159,25 @@
     width:43%;
     height:64%;
   }
-  .gradient-ai{
-    background:linear-gradient(
-        90deg,
-        #FFD58A,
-        #FFB347,
-        #FF8A3D,
-        #FF6A00,
-        #FFD58A
-    );
+      
+.gradient-ai{
+  background:linear-gradient(
+    90deg,
+    #FFE7B3,
+    #FFC34D,
+    #FF9A2F,
+    #FF6B00,
+    #FFC34D,
+    #FFE7B3
+  );
 
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
 
-    background-size:250% auto;
-    animation:gradientMove 7s linear infinite;
-    }
+  background-size:300% auto;
+  animation:gradientMove 7s linear infinite;
+}
 }
 

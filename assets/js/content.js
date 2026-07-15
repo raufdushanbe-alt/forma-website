@@ -10,7 +10,7 @@ window.FORMA_CONTENT = {
     eyebrow: "Packaging design studio",
     titleBefore: "Создаем упаковку ",
     titleAccent: "с нуля",
-    titleAfter: " и доводим AI-идеи до печати.",
+    titleAfter: ' и доводим <span class="gradient-ai">AI-идеи</span> до печати.',
     description: "У нас два основных направления: полноценная разработка упаковки для нового продукта и профессиональная подготовка AI-концепций к реальному производству.",
     primaryButton: "Заказать дизайн с нуля",
     secondaryButton: "У меня есть AI-концепция",

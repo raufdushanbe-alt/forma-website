@@ -5,6 +5,7 @@
 */
 window.FORMA_PORTFOLIO = [
   { brand: "Deliero", image: "assets/images/portfolio/deliero.jpg" },
+  { brand: "вафли", image: "assets/images/portfolio/131.jpg" },
   { brand: "Makolli", image: "assets/images/portfolio/makolli.jpg" },
   { brand: "Nord Foods", image: "assets/images/portfolio/nord-foods.jpg" },
   { brand: "Mallow Friends", image: "assets/images/portfolio/mallow-friends.jpg" },

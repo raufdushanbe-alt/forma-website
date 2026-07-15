@@ -30,42 +30,120 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-  // Орбитальная карусель PNG на первом экране
+  // Hero showcase: главный продукт спереди, остальные позади.
   const packs = window.FORMA_HERO_PACKS || { center: "", orbit: [] };
-  const orbitStage = $("hero-orbit-stage");
-  const orbitRing = $("hero-orbit-ring");
-  const orbitCenter = $("hero-orbit-center");
-  const orbitEmpty = $("hero-orbit-empty");
+  const stage = $("hero-orbit-stage");
+  const ring = $("hero-orbit-ring");
+  const empty = $("hero-orbit-empty");
 
-  const createPackImage = (src, className, alt) => {
-    const img = document.createElement("img");
-    img.src = src;
-    img.className = className;
-    img.alt = alt;
-    img.loading = "eager";
-    img.addEventListener("load", () => orbitStage.classList.add("has-packs"));
-    img.addEventListener("error", () => img.remove());
-    return img;
+  const packSources = [packs.center, ...(packs.orbit || [])]
+    .filter(Boolean)
+    .slice(0, 8);
+
+  const desktopLayouts = [
+    { x:"0%",   y:"15%",  scale:1.00, rotate:"0deg",   opacity:1,    z:10, blur:"0px", shadow:.24 },
+    { x:"-44%", y:"0%",   scale:.76, rotate:"-3deg",  opacity:.96,  z:7,  blur:"0px", shadow:.17 },
+    { x:"43%",  y:"1%",   scale:.74, rotate:"3deg",   opacity:.95,  z:7,  blur:"0px", shadow:.17 },
+    { x:"-61%", y:"-29%", scale:.56, rotate:"-5deg",  opacity:.88,  z:5,  blur:".15px", shadow:.13 },
+    { x:"60%",  y:"-28%", scale:.55, rotate:"5deg",   opacity:.87,  z:5,  blur:".15px", shadow:.13 },
+    { x:"-30%", y:"-48%", scale:.46, rotate:"-2deg",  opacity:.80,  z:3,  blur:".35px", shadow:.10 },
+    { x:"30%",  y:"-48%", scale:.45, rotate:"2deg",   opacity:.79,  z:3,  blur:".35px", shadow:.10 },
+    { x:"0%",   y:"-57%", scale:.40, rotate:"0deg",   opacity:.72,  z:2,  blur:".55px", shadow:.08 }
+  ];
+
+  const mobileLayouts = [
+    { x:"0%",   y:"17%",  scale:1.00, rotate:"0deg",  opacity:1,   z:10, blur:"0px", shadow:.23 },
+    { x:"-40%", y:"1%",   scale:.70, rotate:"-3deg", opacity:.94, z:7,  blur:"0px", shadow:.15 },
+    { x:"40%",  y:"2%",   scale:.68, rotate:"3deg",  opacity:.93, z:7,  blur:"0px", shadow:.15 },
+    { x:"-54%", y:"-31%", scale:.49, rotate:"-5deg", opacity:.83, z:4,  blur:".2px", shadow:.10 },
+    { x:"54%",  y:"-30%", scale:.48, rotate:"5deg",  opacity:.82, z:4,  blur:".2px", shadow:.10 },
+    { x:"-24%", y:"-49%", scale:.40, rotate:"-2deg", opacity:.72, z:2,  blur:".4px", shadow:.07 },
+    { x:"24%",  y:"-49%", scale:.39, rotate:"2deg",  opacity:.71, z:2,  blur:".4px", shadow:.07 },
+    { x:"0%",   y:"-58%", scale:.34, rotate:"0deg",  opacity:.64, z:1,  blur:".6px", shadow:.05 }
+  ];
+
+  const productNodes = [];
+  let activeIndex = 0;
+
+  const getLayouts = () =>
+    window.matchMedia("(max-width: 640px)").matches
+      ? mobileLayouts
+      : desktopLayouts;
+
+  const setLayout = (node, layout, isMain, orderIndex) => {
+    node.style.setProperty("--x", layout.x);
+    node.style.setProperty("--y", layout.y);
+    node.style.setProperty("--scale", layout.scale);
+    node.style.setProperty("--rotate", layout.rotate);
+    node.style.setProperty("--opacity", layout.opacity);
+    node.style.setProperty("--z", layout.z);
+    node.style.setProperty("--blur", layout.blur);
+    node.style.setProperty("--shadow", layout.shadow);
+    node.style.setProperty("--delay", `${orderIndex * 80}ms`);
+    node.classList.toggle("is-main", isMain);
   };
 
-  if (packs.center) {
-    orbitCenter.appendChild(createPackImage(packs.center, "hero-pack-center", "Главная упаковка"));
-  }
+  const updateShowcase = (withEntrance = false) => {
+    const layouts = getLayouts();
 
-  (packs.orbit || []).forEach((src, index, list) => {
-    const slot = document.createElement("div");
-    slot.className = "hero-orbit-slot";
-    slot.style.setProperty("--index", index);
-    slot.style.setProperty("--count", list.length);
-    const counter = document.createElement("div");
-    counter.className = "hero-pack-counter-rotate";
-    counter.appendChild(createPackImage(src, "hero-pack-orbit", `Упаковка ${index + 1}`));
-    slot.appendChild(counter);
-    orbitRing.appendChild(slot);
+    productNodes.forEach((node, originalIndex) => {
+      const relativeIndex =
+        (originalIndex - activeIndex + productNodes.length) % productNodes.length;
+      const layout = layouts[relativeIndex] || layouts[layouts.length - 1];
+
+      setLayout(node, layout, relativeIndex === 0, relativeIndex);
+
+      if (withEntrance) {
+        node.classList.remove("is-entering");
+        void node.offsetWidth;
+        node.classList.add("is-entering");
+      } else {
+        node.classList.remove("is-entering");
+      }
+    });
+  };
+
+  packSources.forEach((src, index) => {
+    const node = document.createElement("div");
+    node.className = "hero-product";
+
+    const image = document.createElement("img");
+    image.src = src;
+    image.alt = index === 0 ? "Главная упаковка" : `Упаковка ${index + 1}`;
+    image.loading = "eager";
+    image.decoding = "async";
+
+    image.addEventListener("load", () => {
+      stage.classList.add("has-packs");
+    });
+
+    image.addEventListener("error", () => {
+      const nodeIndex = productNodes.indexOf(node);
+      if (nodeIndex >= 0) productNodes.splice(nodeIndex, 1);
+      node.remove();
+      updateShowcase();
+    });
+
+    node.appendChild(image);
+    ring.appendChild(node);
+    productNodes.push(node);
   });
 
-  if (packs.center || (packs.orbit && packs.orbit.length)) {
-    orbitEmpty.hidden = true;
+  if (productNodes.length) {
+    empty.hidden = true;
+    updateShowcase(true);
+
+    if (
+      productNodes.length > 1 &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      window.setInterval(() => {
+        activeIndex = (activeIndex + 1) % productNodes.length;
+        updateShowcase(false);
+      }, 4600);
+    }
+
+    window.addEventListener("resize", () => updateShowcase(false));
   }
 
   // Изображения AI-to-Print: прозрачный фон после загрузки

@@ -28,11 +28,62 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-telegram]").forEach(a => a.href = telegram);
   document.querySelectorAll("[data-email]").forEach(a => a.href = email);
 
-  if (c.hero.image) {
-    const img = $("hero-image");
-    img.src = c.hero.image;
-    img.hidden = false;
-    $("hero-placeholder").hidden = true;
+
+
+  // Орбитальная карусель PNG на первом экране
+  const packs = window.FORMA_HERO_PACKS || { center: "", orbit: [] };
+  const orbitStage = $("hero-orbit-stage");
+  const orbitRing = $("hero-orbit-ring");
+  const orbitCenter = $("hero-orbit-center");
+  const orbitEmpty = $("hero-orbit-empty");
+
+  const createPackImage = (src, className, alt) => {
+    const img = document.createElement("img");
+    img.src = src;
+    img.className = className;
+    img.alt = alt;
+    img.loading = "eager";
+    img.addEventListener("load", () => orbitStage.classList.add("has-packs"));
+    img.addEventListener("error", () => img.remove());
+    return img;
+  };
+
+  if (packs.center) {
+    orbitCenter.appendChild(createPackImage(packs.center, "hero-pack-center", "Главная упаковка"));
+  }
+
+  (packs.orbit || []).forEach((src, index, list) => {
+    const slot = document.createElement("div");
+    slot.className = "hero-orbit-slot";
+    slot.style.setProperty("--index", index);
+    slot.style.setProperty("--count", list.length);
+    const counter = document.createElement("div");
+    counter.className = "hero-pack-counter-rotate";
+    counter.appendChild(createPackImage(src, "hero-pack-orbit", `Упаковка ${index + 1}`));
+    slot.appendChild(counter);
+    orbitRing.appendChild(slot);
+  });
+
+  if (packs.center || (packs.orbit && packs.orbit.length)) {
+    orbitEmpty.hidden = true;
+  }
+
+  // Изображения AI-to-Print: прозрачный фон после загрузки
+  const loadOptionalImage = (imageId, boxId, src) => {
+    const image = $(imageId);
+    const box = $(boxId);
+    if (!image || !box || !src) return;
+    image.src = src;
+    image.hidden = false;
+    image.addEventListener("load", () => box.classList.add("has-image"));
+    image.addEventListener("error", () => {
+      image.hidden = true;
+      box.classList.remove("has-image");
+    });
+  };
+  if (c.aiToPrint) {
+    loadOptionalImage("ai-before-image", "ai-before-box", c.aiToPrint.beforeImage);
+    loadOptionalImage("ai-after-image", "ai-after-box", c.aiToPrint.afterImage);
   }
 
   const grid = $("portfolio-grid");
@@ -43,10 +94,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const card = document.createElement("article");
       card.className = "portfolio-card reveal";
       card.innerHTML = `
-        <img src="${item.image}" alt="Дизайн упаковки ${item.brand}" loading="lazy"
-          onerror="this.style.display='none';this.parentElement.classList.add('image-missing')">
+        <img src="${item.image}" alt="Дизайн упаковки ${item.brand}" loading="lazy">
         <div class="portfolio-fallback">Загрузите изображение</div>
         <div class="portfolio-overlay"><h3>${item.brand}</h3></div>`;
+      const image = card.querySelector("img");
+      image.addEventListener("load", () => card.classList.add("has-image"));
+      image.addEventListener("error", () => {
+        image.hidden = true;
+        card.classList.add("image-missing");
+      });
       grid.appendChild(card);
     });
     visible = Math.min(visible + amount, works.length);

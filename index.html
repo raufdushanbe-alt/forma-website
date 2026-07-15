@@ -44,11 +44,14 @@
         <div class="hero-note">10+ лет опыта · Food & FMCG · 3D · Print-ready</div>
       </div>
 
-      <div class="hero-visual reveal image-placeholder hero-placeholder"><img id="hero-image" class="hero-real-image" alt="Главный проект FORMA" hidden>
-        <div class="placeholder-inner" id="hero-placeholder">
-          <span class="placeholder-label">Главное изображение проекта</span>
-          <strong>Добавьте сюда ваш лучший визуал упаковки</strong>
-          <small>Рекомендуемый размер: 1600 × 1800 px</small>
+      <div class="hero-visual reveal hero-orbit-shell" id="hero-orbit-shell">
+        <div class="hero-orbit-stage" id="hero-orbit-stage" aria-label="Карусель упаковок">
+          <div class="hero-orbit-ring" id="hero-orbit-ring"></div>
+          <div class="hero-orbit-center" id="hero-orbit-center"></div>
+          <div class="hero-orbit-empty" id="hero-orbit-empty">
+            <span class="placeholder-label">PNG-карусель</span>
+            <strong>Добавьте упаковки в hero-packs.js</strong>
+          </div>
         </div>
       </div>
     </div>
@@ -114,7 +117,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="ai-express">
     <div class="wrap">
       <div class="section-head reveal">
         <div>
@@ -132,7 +135,8 @@
             <h3>AI-концепция</h3>
             <span class="badge">до</span>
           </div>
-          <div class="compare-visual image-placeholder">
+          <div class="compare-visual image-placeholder" id="ai-before-box">
+            <img id="ai-before-image" class="upload-image" alt="AI-концепция" hidden>
             <div class="placeholder-inner">
               <span class="placeholder-label">До</span>
               <strong>Загрузите AI-концепцию</strong>
@@ -148,7 +152,8 @@
             <h3>Готовый макет</h3>
             <span class="badge">после</span>
           </div>
-          <div class="compare-visual image-placeholder">
+          <div class="compare-visual image-placeholder" id="ai-after-box">
+            <img id="ai-after-image" class="upload-image" alt="Готовый печатный макет" hidden>
             <div class="placeholder-inner">
               <span class="placeholder-label">После</span>
               <strong>Загрузите готовый печатный макет</strong>
@@ -357,6 +362,7 @@
 </footer>
 
 <script src="assets/js/content.js"></script>
+<script src="assets/js/hero-packs.js"></script>
 <script src="assets/js/portfolio.js"></script>
 <script src="assets/js/main.js"></script>
 </body>

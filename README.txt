@@ -32,3 +32,21 @@ telegramUsername: "yourstudio"
 email: "hello@yourstudio.com"
 
 WhatsApp: номер без +, пробелов и скобок.
+
+PNG-КАРУСЕЛЬ НА ПЕРВОМ ЭКРАНЕ
+
+1. Загрузите PNG упаковок с прозрачным фоном в:
+   assets/images/hero/
+2. Откройте:
+   assets/js/hero-packs.js
+3. В center укажите центральную упаковку.
+4. В orbit перечислите остальные PNG.
+5. Карусель вращается автоматически, а упаковки остаются вертикальными.
+
+AI-TO-PRINT ИЗОБРАЖЕНИЯ
+
+В assets/js/content.js заполните:
+  aiToPrint: {
+    beforeImage: "assets/images/...",
+    afterImage: "assets/images/..."
+  }

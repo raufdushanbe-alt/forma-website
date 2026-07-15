@@ -13,14 +13,14 @@
 ========================================================= */
 
 window.FORMA_HERO_PACKS = {
-  center: "assets/images/hero/pack-01.png",
+  center: "assets/images/hero/162.png",
 
   orbit: [
-    "assets/images/hero/pack-02.png",
-    "assets/images/hero/pack-03.png",
-    "assets/images/hero/pack-04.png",
-    "assets/images/hero/pack-05.png",
-    "assets/images/hero/pack-06.png",
-    "assets/images/hero/pack-07.png"
+    "assets/images/hero/163.png",
+    "assets/images/hero/164.png",
+    "assets/images/hero/165.png",
+    "assets/images/hero/166.png",
+    "assets/images/hero/167.png",
+    "assets/images/hero/168.png"
   ]
 };

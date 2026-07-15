@@ -14,7 +14,7 @@ window.FORMA_CONTENT = {
     description: "У нас два основных направления: полноценная разработка упаковки для нового продукта и профессиональная подготовка AI-концепций к реальному производству.",
     primaryButton: "Заказать дизайн с нуля",
     secondaryButton: "У меня есть AI-концепция",
-    image: ""
+    image: "assets/images/portfolio/untitled8.png"
   },
   portfolio: {
     eyebrow: "Портфолио",

@@ -1009,7 +1009,7 @@
 
 .hero-orbit-stage{
   position:absolute;
-  inset:-18% -18% -2% -8%;
+  inset:-8% -18% -2% -8%;
   overflow:visible;
   perspective:1200px;
 }

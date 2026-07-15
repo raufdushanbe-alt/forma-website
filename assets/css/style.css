@@ -1009,7 +1009,7 @@
 
 .hero-orbit-stage{
   position:absolute;
-  inset:-6% -12% -7% -5%;
+  inset:-12% -18% -2% -8%;
   overflow:visible;
   perspective:1200px;
 }
@@ -1044,8 +1044,8 @@
   position:absolute;
   left:50%;
   top:50%;
-  width:30%;
-  height:55%;
+  width:34%;
+  height:62%;
   display:grid;
   place-items:center;
   transform:
@@ -1077,8 +1077,8 @@
 }
 
 .hero-product.is-main{
-  width:40%;
-  height:70%;
+  width:47%;
+  height:80%;
 }
 
 .hero-product.is-entering{

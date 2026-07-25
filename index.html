@@ -158,8 +158,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   display:flex;
   align-items:center;
   justify-content:center;
-  gap:12px;
-  font-size:clamp(38px,3.6vw,60px);
+  gap:10px;
+  margin-top:-30px;
+  font-size:clamp(38px,3.6vw,45px);
   font-weight:900;
   letter-spacing:-.065em;
   white-space:nowrap;
@@ -175,12 +176,12 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   -webkit-text-fill-color:transparent;
 }
 .transfer-ai{
-  background-image:linear-gradient(135deg,#b9ecff 0%,#42b5ff 45%,#0f78ff 100%);
+  background-image:linear-gradient(135deg,#16BDFA 0%,#0584EB 45%,#00D9C7 100%);
   text-shadow:0 0 28px rgba(53,165,255,.36);
   animation:aiGlow 2.8s 1.25s ease-in-out infinite;
 }
 .transfer-print{
-  background-image:linear-gradient(135deg,#ffd6a8 0%,#ff9d3f 45%,#ff6a00 100%);
+  background-image:linear-gradient(135deg,#E60E2E 0%,#F7B205 45%,#C41486 100%);
   text-shadow:0 0 28px rgba(255,132,28,.30);
   animation:printGlow 2.8s 1.65s ease-in-out infinite;
 }
@@ -190,9 +191,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   align-items:center;
   justify-content:center;
   width:78px;
-  height:52px;
+  height:50px;
   color:#fff;
-  font-size:58px;
+  font-size:60px;
   line-height:1;
   text-shadow:0 0 14px rgba(255,255,255,.95),0 0 28px rgba(68,167,255,.55);
   overflow:hidden;
@@ -203,21 +204,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   z-index:2;
   color:transparent;
   background:
-    linear-gradient(90deg,#44b8ff 0%,#ffffff 45%,#ff9a3d 100%);
+    linear-gradient(90deg,#292929 0%,#4A4A4A 45%,#121212 100%);
   -webkit-background-clip:text;
   background-clip:text;
-}
-.transfer-arrow::after{
-  content:"";
-  position:absolute;
-  top:7px;
-  bottom:7px;
-  width:22px;
-  left:-30px;
-  border-radius:999px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.95),transparent);
-  filter:blur(3px);
-  animation:arrowRun 1.7s 1.15s linear infinite;
 }
 @keyframes monitorInLeft{
   from{opacity:0;transform:translateX(-90px) scale(.94)}
@@ -237,13 +226,6 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
 @keyframes printGlow{
   50%{filter:brightness(1.14);text-shadow:0 0 38px rgba(255,132,28,.46)}
 }
-@keyframes arrowRun{
-  0%{left:-30px;opacity:0}
-  15%{opacity:1}
-  80%{opacity:1}
-  100%{left:88px;opacity:0}
-}
-
 @media(max-width:1200px){
   .hero{min-height:930px}
   .monitor-stage{

@@ -323,14 +323,418 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   62%{
     transform:rotate(90deg) translateX(4px) scaleX(1.02);
   }
+/* Header actions */
 
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.social-btn{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease;
+}
+
+.social-btn svg{
+  width:21px;
+  height:21px;
+  fill:#fff;
+}
+
+.whatsapp-btn{
+  background:#25d366;
+}
+
+.telegram-btn{
+  background:#229ed9;
+}
+
+.social-btn:hover{
+  transform:translateY(-2px) scale(1.04);
+}
+
+.whatsapp-btn:hover{
+  box-shadow:0 10px 24px rgba(37,211,102,.3);
+}
+
+.telegram-btn:hover{
+  box-shadow:0 10px 24px rgba(34,158,217,.3);
+}
+
+
+/* Кнопка бургер */
+
+.menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0;
+  border-radius:50%;
+  background:rgba(0,0,0,.05);
+  cursor:pointer;
+  position:relative;
+  z-index:120;
+}
+
+.menu-toggle span{
+  position:absolute;
+  left:12px;
+  width:20px;
+  height:2px;
+  border-radius:10px;
+  background:#111;
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    opacity .2s ease,
+    top .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.menu-toggle span:nth-child(1){
+  top:14px;
+}
+
+.menu-toggle span:nth-child(2){
+  top:21px;
+}
+
+.menu-toggle span:nth-child(3){
+  top:28px;
+}
+
+.topbar.menu-open .menu-toggle span:nth-child(1){
+  top:21px;
+  transform:rotate(45deg);
+}
+
+.topbar.menu-open .menu-toggle span:nth-child(2){
+  opacity:0;
+  transform:scaleX(0);
+}
+
+.topbar.menu-open .menu-toggle span:nth-child(3){
+  top:21px;
+  transform:rotate(-45deg);
+}
+
+.mobile-menu{
+  display:none;
+}
+
+
+/* Мобильная версия */
+
+@media(max-width:950px){
+
+  .topbar{
+    height:60px;
+  }
+
+  .topin{
+    padding:0 18px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+
+  .nav,
+  .header-actions{
+    display:none;
+  }
+
+  .menu-toggle{
+    display:block;
+  }
+
+  .mobile-menu{
+    display:flex;
+    position:fixed;
+    top:60px;
+    left:0;
+    right:0;
+    z-index:110;
+    padding:18px 18px 26px;
+    flex-direction:column;
+
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(28px) saturate(180%);
+    -webkit-backdrop-filter:blur(28px) saturate(180%);
+
+    border-bottom:1px solid rgba(0,0,0,.08);
+    box-shadow:0 24px 60px rgba(0,0,0,.12);
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-18px);
+    pointer-events:none;
+
+    transition:
+      opacity .3s ease,
+      transform .4s cubic-bezier(.2,.8,.2,1),
+      visibility .3s ease;
+  }
+
+  .topbar.menu-open .mobile-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+
+  .mobile-nav{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .mobile-nav a{
+    display:flex;
+    align-items:center;
+    min-height:58px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+    font-size:22px;
+    font-weight:650;
+    letter-spacing:-.025em;
+    color:#1d1d1f;
+
+    opacity:0;
+    transform:translateY(-8px);
+
+    transition:
+      opacity .3s ease,
+      transform .35s cubic-bezier(.2,.8,.2,1),
+      color .2s ease;
+  }
+
+  .mobile-nav a:hover{
+    color:var(--blue);
+  }
+
+  .topbar.menu-open .mobile-nav a{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .topbar.menu-open .mobile-nav a:nth-child(1){
+    transition-delay:.05s;
+  }
+
+  .topbar.menu-open .mobile-nav a:nth-child(2){
+    transition-delay:.09s;
+  }
+
+  .topbar.menu-open .mobile-nav a:nth-child(3){
+    transition-delay:.13s;
+  }
+
+  .topbar.menu-open .mobile-nav a:nth-child(4){
+    transition-delay:.17s;
+  }
+
+
+  /* WhatsApp и Telegram внутри меню */
+
+  .mobile-socials{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:20px;
+  }
+
+  .mobile-social{
+    min-height:54px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+
+    opacity:0;
+    transform:translateY(10px);
+
+    transition:
+      opacity .3s .2s ease,
+      transform .35s .2s cubic-bezier(.2,.8,.2,1),
+      box-shadow .25s ease;
+  }
+
+  .mobile-social svg{
+    width:22px;
+    height:22px;
+    fill:#fff;
+  }
+
+  .whatsapp-mobile{
+    background:#25d366;
+  }
+
+  .telegram-mobile{
+    background:#229ed9;
+  }
+
+  .topbar.menu-open .mobile-social{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .whatsapp-mobile:hover{
+    box-shadow:0 10px 24px rgba(37,211,102,.28);
+  }
+
+  .telegram-mobile:hover{
+    box-shadow:0 10px 24px rgba(34,158,217,.28);
+  }
+
+
+  /* Главная кнопка */
+
+  .mobile-cta{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:52px;
+    margin-top:12px;
+    border-radius:999px;
+    background:#111;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+
+    opacity:0;
+    transform:translateY(8px);
+
+    transition:
+      opacity .3s .26s ease,
+      transform .35s .26s cubic-bezier(.2,.8,.2,1),
+      background .2s ease;
+  }
+
+  .topbar.menu-open .mobile-cta{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .mobile-cta:hover{
+    background:#333;
+  }
+
+  body.menu-is-open{
+    overflow:hidden;
+  }
+}
+ 
 </style>
 </head>
 <body>
-<header class="topbar"><div class="topin"><a class="logo" href="#">FORMA</a><nav class="nav"><a href="#services">Услуги</a><a href="#process">Процесс</a><a href="#portfolio">Портфолио</a><a href="#prices">Цены</a></nav><a class="nav-cta" href="#contact">Обсудить проект</a></div></header>
+<header class="topbar">
+  <div class="topin">
 
+    <a class="logo" href="#">FORMA</a>
 
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#process">Процесс</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#prices">Цены</a>
+    </nav>
 
+    <div class="header-actions">
+
+      <a
+        class="social-btn whatsapp-btn"
+        href="https://wa.me/992XXXXXXXXX"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a9.7 9.7 0 0 0-8.3 14.7L2 22l5.4-1.6A9.8 9.8 0 1 0 12 2Zm0 17.7a7.7 7.7 0 0 1-3.9-1.1l-.3-.2-3.2.9 1-3.1-.2-.3A7.7 7.7 0 1 1 12 19.7Zm4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.2 6.2 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5c.1-.2 0-.4 0-.5L9.5 9c-.2-.5-.5-.5-.7-.5h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.6-.3Z"/>
+        </svg>
+      </a>
+
+      <a
+        class="social-btn telegram-btn"
+        href="https://t.me/USERNAME"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Написать в Telegram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.7 3.4 18.5 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.1 12.8l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.3 2.5c.9-.3 1.7.2 1.4.9Z"/>
+        </svg>
+      </a>
+
+      <a class="nav-cta" href="#contact">Обсудить проект</a>
+
+    </div>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Открыть меню"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu">
+
+    <nav class="mobile-nav" aria-label="Мобильная навигация">
+      <a href="#services">Услуги</a>
+      <a href="#process">Процесс</a>
+      <a href="#portfolio">Портфолио</a>
+      <a href="#prices">Цены</a>
+    </nav>
+
+    <div class="mobile-socials">
+
+      <a
+        class="mobile-social whatsapp-mobile"
+        href="https://wa.me/992901055085"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2a9.7 9.7 0 0 0-8.3 14.7L2 22l5.4-1.6A9.8 9.8 0 1 0 12 2Zm0 17.7a7.7 7.7 0 0 1-3.9-1.1l-.3-.2-3.2.9 1-3.1-.2-.3A7.7 7.7 0 1 1 12 19.7Zm4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.2 6.2 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5c.1-.2 0-.4 0-.5L9.5 9c-.2-.5-.5-.5-.7-.5h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.6-.3Z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+
+      <a
+        class="mobile-social telegram-mobile"
+        href="https://t.me/RaufGD"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.7 3.4 18.5 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.1 12.8l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.3 2.5c.9-.3 1.7.2 1.4.9Z"/>
+        </svg>
+        <span>Telegram</span>
+      </a>
+
+    </div>
+
+    <a class="mobile-cta" href="#contact">Обсудить проект</a>
+
+  </div>
+</header>
 
 
 <section class="hero reveal">
@@ -462,6 +866,43 @@ document.getElementById('briefForm').addEventListener('submit',function(e){
   v('message')
  ].join('\n');
  window.location.href='mailto:hello@forma-pack.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+});
+ const topbar = document.querySelector('.topbar');
+const menuToggle = document.querySelector('.menu-toggle');
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
+
+function closeMobileMenu(){
+  topbar.classList.remove('menu-open');
+  document.body.classList.remove('menu-is-open');
+
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.setAttribute('aria-label', 'Открыть меню');
+}
+
+menuToggle.addEventListener('click', function(){
+  const isOpen = topbar.classList.toggle('menu-open');
+
+  document.body.classList.toggle('menu-is-open', isOpen);
+
+  menuToggle.setAttribute(
+    'aria-expanded',
+    String(isOpen)
+  );
+
+  menuToggle.setAttribute(
+    'aria-label',
+    isOpen ? 'Закрыть меню' : 'Открыть меню'
+  );
+});
+
+mobileLinks.forEach(function(link){
+  link.addEventListener('click', closeMobileMenu);
+});
+
+window.addEventListener('resize', function(){
+  if(window.innerWidth > 950){
+    closeMobileMenu();
+  }
 });
 </script>
 </body>

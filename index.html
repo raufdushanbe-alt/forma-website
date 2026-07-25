@@ -103,7 +103,7 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   margin-top:30px;
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,1fr) 250px minmax(0,1fr);
+  grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);
   align-items:center;
 }
 .monitor-wrap{
@@ -122,8 +122,8 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   filter:drop-shadow(0 36px 34px rgba(38,64,105,.23));
   will-change:transform,opacity;
 }
-.monitor-left{transform:translateX(-5%)}
-.monitor-right{transform:translateX(5%)}
+.monitor-left{transform:translateX(-1%)}
+.monitor-right{transform:translateX(1%)}
 .monitor-left img{
   animation:
     monitorInLeft 1.05s .12s cubic-bezier(.2,.75,.2,1) both,
@@ -230,7 +230,7 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
 @media(max-width:1200px){
   .hero{min-height:930px}
   .monitor-stage{
-    grid-template-columns:minmax(0,1fr) 180px minmax(0,1fr);
+    grid-template-columns:minmax(0,1fr) 120px minmax(0,1fr);
     min-height:540px;
   }
   .monitor-wrap{height:520px}
@@ -348,8 +348,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
 }
 
 .social-btn svg{
-  width:21px;
-  height:21px;
+  width:20px;
+  height:20px;
+  display:block;
   fill:#fff;
 }
 
@@ -573,11 +574,12 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
       box-shadow .25s ease;
   }
 
-  .mobile-social svg{
-    width:22px;
-    height:22px;
-    fill:#fff;
-  }
+.mobile-social svg{
+  width:22px;
+  height:22px;
+  display:block;
+  fill:#fff;
+}
 
   .whatsapp-mobile{
     background:#25d366;
@@ -662,9 +664,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
         rel="noopener noreferrer"
         aria-label="Написать в WhatsApp"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2a9.7 9.7 0 0 0-8.3 14.7L2 22l5.4-1.6A9.8 9.8 0 1 0 12 2Zm0 17.7a7.7 7.7 0 0 1-3.9-1.1l-.3-.2-3.2.9 1-3.1-.2-.3A7.7 7.7 0 1 1 12 19.7Zm4.2-5.8c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.2 6.2 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.5.3-.5c.1-.2 0-.4 0-.5L9.5 9c-.2-.5-.5-.5-.7-.5h-.5c-.2 0-.5.1-.7.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.2.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.3-.2-.6-.3Z"/>
-        </svg>
+<svg viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.173.198-.297.298-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.009-.372-.011-.571-.011-.198 0-.52.074-.792.372-.273.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.045 21.433h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.152 11.5C2.154 6.02 6.614 1.56 12.092 1.56a9.88 9.88 0 0 1 7.021 2.91 9.87 9.87 0 0 1 2.904 7.028c-.003 5.48-4.463 9.935-9.972 9.935"/>
+</svg>
       </a>
 
       <a
@@ -674,9 +676,9 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
         rel="noopener noreferrer"
         aria-label="Написать в Telegram"
       >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21.7 3.4 18.5 19c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.1 12.8l-4.8-1.5c-1-.3-1.1-1 .2-1.5L20.3 2.5c.9-.3 1.7.2 1.4.9Z"/>
-        </svg>
+<svg viewBox="0 0 24 24" aria-hidden="true">
+  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.173.198-.297.298-.495.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.009-.372-.011-.571-.011-.198 0-.52.074-.792.372-.273.297-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.045 21.433h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.152 11.5C2.154 6.02 6.614 1.56 12.092 1.56a9.88 9.88 0 0 1 7.021 2.91 9.87 9.87 0 0 1 2.904 7.028c-.003 5.48-4.463 9.935-9.972 9.935"/>
+</svg>
       </a>
 
       <a class="nav-cta" href="#contact">Обсудить проект</a>

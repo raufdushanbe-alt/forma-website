@@ -924,7 +924,7 @@ body.portfolio-modal-open{overflow:hidden}
 .production-head h2 em{font-style:normal;background:linear-gradient(90deg,#8cc6ff,#a78cff 48%,#ff9d6b);-webkit-background-clip:text;background-clip:text;color:transparent}
 .production-head p{max-width:820px;margin:22px auto 0;color:rgba(255,255,255,.64);font-size:clamp(18px,1.7vw,24px);line-height:1.45}
 .production-stage{position:relative;z-index:2;max-width:1380px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 150px minmax(0,1fr);gap:16px;align-items:center}
-.production-card{position:relative;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:32px;transition:transform .35s ease, box-shadow .35s ease;)background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:0 34px 100px rgba(0,0,0,.36);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.production-card{position:relative;min-width:0;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:32px;transition:transform .35s ease, box-shadow .35s ease;background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.035));box-shadow:0 34px 100px rgba(0,0,0,.36);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 .production-card:hover{transform:translateY(-8px);box-shadow:0 30px 70px rgba(0,0,0,.35);}
  .production-card-top{height:64px;padding:0 24px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.72);font-weight:700}
 .production-step{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;font-size:12px}
@@ -948,13 +948,13 @@ body.portfolio-modal-open{overflow:hidden}
 }
 
 .production-mockup-image{
-    padding:8px;
+    padding:5px;
     filter:drop-shadow(0 30px 45px rgba(0,0,0,.35));
     animation:mockupFloat 5s ease-in-out infinite;
 }
 
 .production-dieline-image{
-    padding:6px;
+    padding:4px;
 }
 
 @keyframes mockupFloat{
@@ -975,11 +975,51 @@ body.portfolio-modal-open{overflow:hidden}
 .production-card-copy{padding:22px 24px 26px;border-top:1px solid rgba(255,255,255,.09)}
 .production-card-copy h3{font-size:24px;letter-spacing:-.035em}
 .production-card-copy p{margin-top:8px;color:rgba(255,255,255,.58);font-size:15px;line-height:1.5}
-.production-transfer{position:relative;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.production-line{position:absolute;left:4px;right:4px;top:50%;height:2px;background:linear-gradient(90deg,transparent,#4d9fff 22%,#8f73ff 74%,transparent)}
-.production-arrow{position:relative;z-index:2;width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#1677ff,#7257ff);font-size:40px;box-shadow:0 0 0 10px rgba(63,126,255,.10),0 0 48px rgba(83,126,255,.56);animation:productionArrow 2s ease-in-out infinite}
+.production-transfer{
+  position:relative;
+  height:260px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;}
+.production-line{
+  position:absolute;
+  left:4px;
+  right:4px;
+  top:50%;
+  height:2px;
+  border-radius:999px;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(77,159,255,.72) 18%,
+    #8f73ff 52%,
+    rgba(77,159,255,.72) 82%,
+    transparent
+  );
+  box-shadow:0 0 18px rgba(83,126,255,.34);}
 .production-transfer span{position:absolute;top:calc(50% + 56px);font-size:11px;font-weight:800;letter-spacing:.16em;color:#9dbdff}
-.production-pulse{position:absolute;width:10px;height:10px;border-radius:50%;background:#8dc7ff;box-shadow:0 0 20px #5d9fff;top:calc(50% - 4px);animation:productionPulse 2.4s linear infinite}
+.production-pulse{
+  position:absolute;
+  top:calc(50% - 5px);
+  left:4%;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#c9e4ff;
+  box-shadow:
+    0 0 8px #fff,
+    0 0 20px #5d9fff,
+    0 0 38px rgba(119,91,255,.9);
+  animation:productionPulse 2.6s linear infinite;
+}
+
+.production-pulse-a{
+  animation-delay:0s;
+}
+
+.production-pulse-b{
+  animation-delay:1.3s;}
 .production-pulse-a{left:4%;animation-delay:0s}.production-pulse-b{left:4%;animation-delay:1.2s}
 .production-features{position:relative;z-index:2;max-width:1380px;margin:18px auto 0;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
 .production-features>div{min-height:126px;padding:20px;border:1px solid rgba(255,255,255,.10);border-radius:22px;background:rgba(255,255,255,.055);backdrop-filter:blur(16px)}
@@ -993,8 +1033,74 @@ body.portfolio-modal-open{overflow:hidden}
 @keyframes pouchShine{0%,28%{transform:translateX(-90%)}55%,100%{transform:translateX(95%)}}
 @keyframes blueprintScan{0%,100%{top:12%;opacity:.25}50%{top:84%;opacity:1}}
 @keyframes productionArrow{50%{transform:translateX(9px);box-shadow:0 0 0 14px rgba(63,126,255,.08),0 0 60px rgba(83,126,255,.7)}}
-@keyframes productionPulse{0%{left:4%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:92%;opacity:0}}
-@media(max-width:1050px){.production-stage{grid-template-columns:1fr}.production-transfer{height:110px}.production-line{left:50%;right:auto;top:0;bottom:0;width:2px;height:auto}.production-arrow{transform:rotate(90deg);animation:productionArrowMobile 2s ease-in-out infinite}.production-transfer span{top:auto;bottom:0}.production-pulse{display:none}.production-features{grid-template-columns:repeat(2,1fr)}}
+@keyframes productionPulse{
+  0%{
+    left:4%;
+    opacity:0;
+    transform:scale(.65);
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+
+  90%{
+    opacity:1;
+  }
+
+  100%{
+    left:92%;
+    opacity:0;
+    transform:scale(.65);
+  }
+}
+@media(max-width:1050px){.production-stage{grid-template-columns:1fr}.production-transfer{width:100%;height:118px;}..production-line{
+  left:50%;
+  right:auto;
+  top:6px;
+  bottom:6px;
+  width:2px;
+  height:auto;
+  transform:translateX(-50%);
+  background:linear-gradient(
+    180deg,
+    transparent,
+    rgba(77,159,255,.72) 18%,
+    #8f73ff 52%,
+    rgba(77,159,255,.72) 82%,
+    transparent);}.production-arrow{transform:rotate(90deg);animation:productionArrowMobile 2s ease-in-out infinite}.production-transfer span{top:auto;bottom:0}.production-pulse{
+  left:calc(50% - 5px);
+  top:4%;
+  animation-name:productionPulseMobile;}.production-features{grid-template-columns:repeat(2,1fr)}}
+@keyframes productionPulseMobile{
+  0%{
+    top:4%;
+    opacity:0;
+    transform:scale(.65);
+  }
+
+  10%{
+    opacity:1;
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+
+  90%{
+    opacity:1;
+  }
+
+  100%{
+    top:92%;
+    opacity:0;
+    transform:scale(.65);
+  }
+} 
 @media(max-width:620px){.production-story{padding:78px 12px 66px}.production-head{margin-bottom:38px}.production-head h2{font-size:42px}.production-head h2 br{display:none}.production-head p{font-size:17px}.production-card{border-radius:24px}.pouch-scene,.production-blueprint-frame{height:340px}.pouch{width:215px;height:282px}.pouch-brand{top:60px}.pouch-title{top:94px;font-size:40px}.pouch-subtitle{top:143px}.pouch-chip{width:60px;height:27px}.pouch-chip-a{left:43px;bottom:60px}.pouch-chip-b{right:40px;bottom:62px}.pouch-chip-c{left:79px;bottom:42px}.production-features{grid-template-columns:1fr}.production-features>div{min-height:0}.production-card-copy h3{font-size:21px}}
 @keyframes productionArrowMobile{50%{transform:rotate(90deg) translateX(8px)}}
 @media(prefers-reduced-motion:reduce){.pouch,.pouch-shine,.blueprint-scan,.production-arrow,.production-pulse{animation:none!important}.production-animate{opacity:1!important;transform:none!important}}
@@ -1180,13 +1286,12 @@ body.portfolio-modal-open{overflow:hidden}
       </div>
     </article>
 
-    <div class="production-transfer production-animate" aria-hidden="true">
-      <div class="production-line"></div>
-      <div class="production-arrow">→</div>
-      <div class="production-pulse production-pulse-a"></div>
-      <div class="production-pulse production-pulse-b"></div>
-      <span>PRINT-READY</span>
-    </div>
+<div class="production-transfer production-animate" aria-hidden="true">
+  <div class="production-line"></div>
+
+  <div class="production-pulse production-pulse-a"></div>
+  <div class="production-pulse production-pulse-b"></div>
+</div>
 
     <article class="production-card production-blueprint production-animate" aria-label="Готовая производственная развертка">
       <div class="production-card-top">

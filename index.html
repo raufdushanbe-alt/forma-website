@@ -938,6 +938,32 @@ body.portfolio-modal-open{overflow:hidden}
 .pouch-title{top:116px;font-size:49px;font-weight:900;letter-spacing:-.05em}
 .pouch-subtitle{top:174px;font-size:14px;font-weight:700;letter-spacing:.12em}
 .pouch-weight{bottom:24px;font-size:12px;color:rgba(255,255,255,.75)}
+ .production-mockup-image,
+.production-dieline-image{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.production-mockup-image{
+    padding:24px;
+    filter:drop-shadow(0 30px 45px rgba(0,0,0,.35));
+    animation:mockupFloat 5s ease-in-out infinite;
+}
+
+.production-dieline-image{
+    padding:18px;
+}
+
+@keyframes mockupFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
 .pouch-chip{position:absolute;z-index:2;width:74px;height:34px;border-radius:50%;background:#ffd765;box-shadow:inset 0 -7px 12px rgba(225,145,32,.24)}
 .pouch-chip-a{left:54px;bottom:70px;transform:rotate(-15deg)}
 .pouch-chip-b{right:50px;bottom:74px;transform:rotate(16deg)}
@@ -1138,20 +1164,15 @@ body.portfolio-modal-open{overflow:hidden}
         <span class="production-step">01</span>
         <span>Мокап</span>
       </div>
-      <div class="pouch-scene" aria-hidden="true">
-        <div class="pouch-shadow"></div>
-        <div class="pouch">
-          <div class="pouch-seal"></div>
-          <div class="pouch-shine"></div>
-          <div class="pouch-brand">FORMA</div>
-          <div class="pouch-title">CHIPS</div>
-          <div class="pouch-subtitle">SEA SALT</div>
-          <div class="pouch-chip pouch-chip-a"></div>
-          <div class="pouch-chip pouch-chip-b"></div>
-          <div class="pouch-chip pouch-chip-c"></div>
-          <div class="pouch-weight">120 g</div>
-        </div>
-      </div>
+     <div class="pouch-scene">
+  <img
+    class="production-mockup-image"
+    src="assets/images/tea-box.jpg"
+    alt="Мокап упаковки чая FORMA"
+    loading="lazy"
+    decoding="async"
+  >
+</div>
       <div class="production-card-copy">
         <h3>Красиво выглядит</h3>
         <p>Показывает будущий продукт, но ещё не содержит производственной конструкции.</p>
@@ -1172,7 +1193,13 @@ body.portfolio-modal-open{overflow:hidden}
         <span>Развертка</span>
       </div>
       <div class="production-blueprint-frame">
-        <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTEwMCA2NTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSLQoNCw0LfQstC10YDRgtC60LAg0YPQv9Cw0LrQvtCy0LrQuCDRh9C40L/RgdC+0LIiPgo8ZGVmcz4KIDxsaW5lYXJHcmFkaWVudCBpZD0icGFwZXIiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIxIj48c3RvcCBzdG9wLWNvbG9yPSIjZmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZWRmM2ZmIi8+PC9saW5lYXJHcmFkaWVudD4KIDxsaW5lYXJHcmFkaWVudCBpZD0iYXJ0IiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agc3RvcC1jb2xvcj0iIzFhNDlmZiIvPjxzdG9wIG9mZnNldD0iLjUyIiBzdG9wLWNvbG9yPSIjNzYzYWZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmY3YjM4Ii8+PC9saW5lYXJHcmFkaWVudD4KIDxmaWx0ZXIgaWQ9InNoYWRvdyI+PGZlRHJvcFNoYWRvdyBkeD0iMCIgZHk9IjIyIiBzdGREZXZpYXRpb249IjIyIiBmbG9vZC1vcGFjaXR5PSIuMTgiLz48L2ZpbHRlcj4KPC9kZWZzPgo8ZyBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiA8cmVjdCB4PSI5MCIgeT0iNTUiIHdpZHRoPSI5MjAiIGhlaWdodD0iNTQwIiByeD0iMjQiIGZpbGw9InVybCgjcGFwZXIpIi8+CjwvZz4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTQ1LDEwMikiPgogPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjgxMCIgaGVpZ2h0PSI0NDUiIHJ4PSIxMCIgZmlsbD0iI2ZmZiIgc3Ryb2tlPSIjNGU1NjY4IiBzdHJva2Utd2lkdGg9IjIiLz4KIDxyZWN0IHg9IjU1IiB5PSI0MiIgd2lkdGg9IjMwNSIgaGVpZ2h0PSIzNjAiIHJ4PSI4IiBmaWxsPSJ1cmwoI2FydCkiLz4KIDxyZWN0IHg9IjQ1MCIgeT0iNDIiIHdpZHRoPSIzMDUiIGhlaWdodD0iMzYwIiByeD0iOCIgZmlsbD0iI2Y3ZjhmYyIvPgogPHJlY3QgeD0iMzYwIiB5PSI0MiIgd2lkdGg9IjkwIiBoZWlnaHQ9IjM2MCIgZmlsbD0iI2U2ZWJmNSIvPgogPHBhdGggZD0iTTAgNDJoODEwTTAgNDAyaDgxME01NSAwdjQ0NU0zNjAgMHY0NDVNNDUwIDB2NDQ1TTc1NSAwdjQ0NSIgc3Ryb2tlPSIjNjg3MDg1IiBzdHJva2UtZGFzaGFycmF5PSI5IDgiLz4KIDxwYXRoIGQ9Ik0zMiAwdjQ0NU03NzggMHY0NDUiIHN0cm9rZT0iI2ZmNGM0YyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI2IDYiLz4KIDxjaXJjbGUgY3g9IjIwNSIgY3k9IjIxMCIgcj0iOTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsLjE0KSIvPgogPHRleHQgeD0iMjA1IiB5PSIxNTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSI3MDAiPkZPUk1BPC90ZXh0PgogPHRleHQgeD0iMjA1IiB5PSIyMTUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtc2l6ZT0iNTAiIGZvbnQtd2VpZ2h0PSI5MDAiPkNISVBTPC90ZXh0PgogPHRleHQgeD0iMjA1IiB5PSIyNTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiNmZmYiIGZvbnQtc2l6ZT0iMTgiPlNFQSBTQUxUPC90ZXh0PgogPGcgZmlsbD0iI2ZmZDg2YiI+CiAgIDxlbGxpcHNlIGN4PSIxNzAiIGN5PSIzMDQiIHJ4PSI0NiIgcnk9IjIwIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTggMTcwIDMwNCkiLz4KICAgPGVsbGlwc2UgY3g9IjIzMCIgY3k9IjMwNiIgcng9IjQ2IiByeT0iMjAiIHRyYW5zZm9ybT0icm90YXRlKDE4IDIzMCAzMDYpIi8+CiAgIDxlbGxpcHNlIGN4PSIyMDQiIGN5PSIzMzIiIHJ4PSI0MyIgcnk9IjE4Ii8+CiA8L2c+CiA8dGV4dCB4PSI0NzUiIHk9IjkwIiBmaWxsPSIjMTAxMzFhIiBmb250LXNpemU9IjIzIiBmb250LXdlaWdodD0iNzAwIj7QodCe0KHQotCQ0JI8L3RleHQ+CiA8cmVjdCB4PSI0NzUiIHk9IjExMiIgd2lkdGg9IjI0NSIgaGVpZ2h0PSIxMCIgcng9IjUiIGZpbGw9IiNjOGNlZGEiLz4KIDxyZWN0IHg9IjQ3NSIgeT0iMTM0IiB3aWR0aD0iMjIwIiBoZWlnaHQ9IjEwIiByeD0iNSIgZmlsbD0iI2Q0ZDllMiIvPgogPHJlY3QgeD0iNDc1IiB5PSIxNTYiIHdpZHRoPSIyMzUiIGhlaWdodD0iMTAiIHJ4PSI1IiBmaWxsPSIjZDRkOWUyIi8+CiA8dGV4dCB4PSI0NzUiIHk9IjIyMCIgZmlsbD0iIzEwMTMxYSIgZm9udC1zaXplPSIyMyIgZm9udC13ZWlnaHQ9IjcwMCI+0J/QmNCp0JXQktCQ0K8g0KbQldCd0J3QntCh0KLQrDwvdGV4dD4KIDxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2FkYjRjMyI+CiAgPHJlY3QgeD0iNDc1IiB5PSIyNDIiIHdpZHRoPSIyNDUiIGhlaWdodD0iOTIiIHJ4PSI4Ii8+CiAgPHBhdGggZD0iTTQ3NSAyNzNoMjQ1TTUzNSAyNDJ2OTJNNTk1IDI0MnY5Mk02NTUgMjQydjkyIi8+CiA8L2c+CiA8cmVjdCB4PSI0NzUiIHk9IjM1NiIgd2lkdGg9IjgyIiBoZWlnaHQ9IjMwIiBmaWxsPSIjMTAxMzFhIi8+CiA8ZyBmaWxsPSIjMTAxMzFhIj48cmVjdCB4PSI1NzUiIHk9IjM1MCIgd2lkdGg9IjYiIGhlaWdodD0iNDMiLz48cmVjdCB4PSI1ODgiIHk9IjM1MCIgd2lkdGg9IjMiIGhlaWdodD0iNDMiLz48cmVjdCB4PSI1OTgiIHk9IjM1MCIgd2lkdGg9IjgiIGhlaWdodD0iNDMiLz48cmVjdCB4PSI2MTMiIHk9IjM1MCIgd2lkdGg9IjQiIGhlaWdodD0iNDMiLz48cmVjdCB4PSI2MjUiIHk9IjM1MCIgd2lkdGg9IjciIGhlaWdodD0iNDMiLz48cmVjdCB4PSI2NDAiIHk9IjM1MCIgd2lkdGg9IjMiIGhlaWdodD0iNDMiLz48cmVjdCB4PSI2NTAiIHk9IjM1MCIgd2lkdGg9IjgiIGhlaWdodD0iNDMiLz48L2c+CjwvZz4KPGcgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2IiBmaWxsPSIjNGU1NjY4Ij4KIDx0ZXh0IHg9IjExMCIgeT0iNjI4Ij7QstGL0LvQtdGC0YsgMyDQvNC8PC90ZXh0PgogPHRleHQgeD0iNDk0IiB5PSI2MjgiPtC70LjQvdC40Lgg0YHQs9C40LHQsDwvdGV4dD4KIDx0ZXh0IHg9Ijg1MiIgeT0iNjI4Ij7Qt9C+0L3QsCDRgdC60LvQtdC50LrQuDwvdGV4dD4KPC9nPgo8L3N2Zz4=" alt="Развертка упаковки чипсов, готовая к печати">
+       <img
+  class="production-dieline-image"
+  src="assets/images/tea-dieline.jpg"
+  alt="Развертка упаковки чая FORMA"
+  loading="lazy"
+  decoding="async"
+>
         <div class="blueprint-scan" aria-hidden="true"></div>
       </div>
       <div class="production-card-copy">

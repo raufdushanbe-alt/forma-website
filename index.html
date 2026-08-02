@@ -1707,6 +1707,262 @@ body.portfolio-modal-open{overflow:hidden}
   }
 }
 
+
+
+/* ===== FORMA: three-layer cinematic Hero ===== */
+.hero-product-visual{
+  height:760px;
+  overflow:visible;
+}
+
+.hero-scene{
+  position:relative;
+  width:min(940px,118%);
+  aspect-ratio:1600 / 1199;
+  flex:0 0 auto;
+  transform-style:preserve-3d;
+  perspective:1400px;
+  will-change:transform;
+}
+
+.hero-layer{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  pointer-events:none;
+  user-select:none;
+  -webkit-user-drag:none;
+  will-change:transform,opacity,filter;
+}
+
+.hero-layer-package{
+  z-index:4;
+  transform-origin:43% 78%;
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 74px),
+      calc(var(--hero-progress) * -180px),
+      90px
+    )
+    rotateZ(calc(-1deg + var(--hero-progress) * 8deg))
+    rotateY(calc(var(--hero-progress) * -5deg))
+    scale(calc(1.12 + var(--hero-progress) * .12));
+  filter:
+    drop-shadow(
+      calc(var(--hero-progress) * -5px)
+      calc(14px + var(--hero-progress) * 18px)
+      calc(13px + var(--hero-progress) * 12px)
+      rgba(45,25,12,calc(.15 - var(--hero-progress) * .06))
+    );
+}
+
+.hero-layer-flying{
+  z-index:6;
+  transform-origin:58% 22%;
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 125px),
+      calc(var(--hero-progress) * -250px),
+      160px
+    )
+    rotateZ(calc(var(--hero-progress) * 18deg))
+    rotateY(calc(var(--hero-progress) * 8deg))
+    scale(calc(1 + var(--hero-progress) * .18));
+  filter:
+    drop-shadow(
+      calc(var(--hero-progress) * -9px)
+      calc(10px + var(--hero-progress) * 22px)
+      calc(8px + var(--hero-progress) * 16px)
+      rgba(55,30,8,calc(.18 - var(--hero-progress) * .07))
+    );
+}
+
+.hero-layer-ground{
+  z-index:5;
+  transform-origin:68% 86%;
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 42px),
+      calc(var(--hero-progress) * -20px),
+      65px
+    )
+    rotateZ(calc(var(--hero-progress) * 4deg))
+    scale(calc(1 + var(--hero-progress) * .035));
+  filter:
+    drop-shadow(
+      calc(var(--hero-progress) * -3px)
+      calc(8px + var(--hero-progress) * 8px)
+      calc(7px + var(--hero-progress) * 9px)
+      rgba(30,15,8,calc(.15 - var(--hero-progress) * .05))
+    );
+}
+
+.hero-shadow{
+  position:absolute;
+  z-index:2;
+  pointer-events:none;
+  border-radius:50%;
+  will-change:transform,opacity,filter;
+}
+
+.hero-shadow-soft{
+  left:17%;
+  bottom:9.2%;
+  width:55%;
+  height:11%;
+  background:rgba(20,18,16,.30);
+  opacity:calc(.40 - var(--hero-progress) * .29);
+  filter:blur(calc(24px + var(--hero-progress) * 25px));
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 36px),
+      calc(var(--hero-progress) * 20px),
+      0
+    )
+    scaleX(calc(1 - var(--hero-progress) * .46))
+    scaleY(calc(1 - var(--hero-progress) * .30));
+  transform-origin:center;
+}
+
+.hero-shadow-contact{
+  left:23%;
+  bottom:10.1%;
+  width:42%;
+  height:3.4%;
+  background:rgba(10,10,10,.50);
+  opacity:calc(.48 - var(--hero-progress) * .44);
+  filter:blur(calc(8px + var(--hero-progress) * 16px));
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 35px),
+      calc(var(--hero-progress) * 17px),
+      0
+    )
+    scaleX(calc(1 - var(--hero-progress) * .66))
+    scaleY(calc(1 - var(--hero-progress) * .40));
+  transform-origin:center;
+}
+
+.hero-scene::after{
+  content:"";
+  position:absolute;
+  z-index:7;
+  inset:7% 13% 11% 12%;
+  pointer-events:none;
+  border-radius:44px;
+  background:linear-gradient(
+    108deg,
+    transparent 18%,
+    rgba(255,255,255,.10) 36%,
+    rgba(255,255,255,.38) 48%,
+    transparent 63%
+  );
+  mix-blend-mode:screen;
+  opacity:.68;
+  transform:translateX(calc(-135% + var(--hero-progress) * 215%));
+}
+
+@media(max-width:1200px){
+  .hero-product-visual{
+    height:660px;
+  }
+
+  .hero-scene{
+    width:min(850px,120%);
+  }
+}
+
+@media(max-width:820px){
+  .hero-product-visual{
+    min-height:560px;
+    height:560px;
+    overflow:hidden;
+  }
+
+  .hero-scene{
+    width:min(760px,128%);
+  }
+
+  .hero-layer-package{
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 24px),
+        calc(var(--hero-progress) * -72px),
+        45px
+      )
+      rotateZ(calc(-1deg + var(--hero-progress) * 4deg))
+      scale(calc(1.13 + var(--hero-progress) * .055));
+  }
+
+  .hero-layer-flying{
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 34px),
+        calc(var(--hero-progress) * -105px),
+        75px
+      )
+      rotateZ(calc(var(--hero-progress) * 8deg))
+      scale(calc(1 + var(--hero-progress) * .08));
+  }
+
+  .hero-layer-ground{
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 15px),
+        calc(var(--hero-progress) * -8px),
+        35px
+      )
+      rotateZ(calc(var(--hero-progress) * 2deg));
+  }
+}
+
+@media(max-width:520px){
+  .hero-product-visual{
+    min-height:430px;
+    height:430px;
+    margin-top:8px;
+  }
+
+  .hero-scene{
+    width:146%;
+    max-width:none;
+  }
+
+  .hero-layer-package{
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 12px),
+        calc(var(--hero-progress) * -44px),
+        30px
+      )
+      rotateZ(calc(-1deg + var(--hero-progress) * 3deg))
+      scale(calc(1.10 + var(--hero-progress) * .035));
+  }
+
+  .hero-layer-flying{
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 18px),
+        calc(var(--hero-progress) * -62px),
+        48px
+      )
+      rotateZ(calc(var(--hero-progress) * 5deg))
+      scale(calc(1 + var(--hero-progress) * .045));
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-layer,
+  .hero-shadow,
+  .hero-scene::after{
+    transform:none!important;
+    animation:none!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1829,13 +2085,30 @@ body.portfolio-modal-open{overflow:hidden}
       </div>
     </div>
 
-    <div class="hero-product-visual" aria-label="Пример яркой упаковки чипсов">
-      <div class="hero-product-image-wrap">
+    <div class="hero-product-visual" aria-label="Анимированная упаковка чипсов">
+      <div class="hero-scene" aria-hidden="true">
+        <div class="hero-shadow hero-shadow-soft"></div>
+        <div class="hero-shadow hero-shadow-contact"></div>
+
         <img
-          class="hero-product-image"
-          src="assets/images/hero/hero-kars-kars.webp"
-          alt="Яркая упаковка чипсов Карс Карс"
+          class="hero-layer hero-layer-ground"
+          src="assets/images/hero/hero-ground.webp"
+          alt=""
+          decoding="async"
+        >
+
+        <img
+          class="hero-layer hero-layer-package"
+          src="assets/images/hero/hero-package.webp"
+          alt="Упаковка чипсов"
           fetchpriority="high"
+          decoding="async"
+        >
+
+        <img
+          class="hero-layer hero-layer-flying"
+          src="assets/images/hero/hero-flying.webp"
+          alt=""
           decoding="async"
         >
       </div>

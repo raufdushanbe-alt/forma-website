@@ -214,7 +214,7 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   position:absolute;
   inset:0;
   z-index:-2;
-  background-image:var(--service-bg);
+  background-image:var(--service-bg-desktop);
   background-position:center;
   background-repeat:no-repeat;
   background-size:cover;
@@ -1238,52 +1238,57 @@ body.portfolio-modal-open{overflow:hidden}
 }
 
 
-/* ===== FORMA: исправление 4 блоков услуг на телефоне ===== */
+/* ===== FORMA: отдельные вертикальные изображения для мобильных блоков ===== */
 @media(max-width:950px){
+
   #services .service-bg-panel{
-    min-height:720px;
-    aspect-ratio:auto;
-    padding:34px 18px 18px;
+    width:100%;
+    min-height:760px;
+    aspect-ratio:9 / 16;
+    padding:42px 20px 24px;
     justify-content:flex-start;
+    background:none;
   }
 
   #services .service-bg-panel::before{
-    inset:245px 0 0 0;
-    background-size:contain;
-    background-position:center bottom;
+    inset:0;
+    background-image:var(--service-bg-mobile);
+    background-size:cover;
+    background-position:center center;
     background-repeat:no-repeat;
   }
 
   #services .service-bg-panel h2{
-    max-width:100%;
-    font-size:clamp(36px,8vw,50px);
+    max-width:680px;
+    font-size:clamp(38px,8vw,52px);
     line-height:.98;
   }
 
   #services .service-bg-panel p{
-    max-width:680px;
-    font-size:clamp(16px,3.7vw,19px);
-    line-height:1.32;
-    margin-top:12px;
+    max-width:650px;
+    font-size:clamp(17px,3.6vw,20px);
+    line-height:1.34;
+    margin-top:14px;
   }
 
   #services .service-bg-panel .actions{
-    margin-top:18px;
+    margin-top:20px;
     gap:10px;
   }
 
   #services .service-bg-panel .btn{
-    padding:10px 16px;
+    padding:11px 17px;
     font-size:14px;
   }
 
+  /* Лёгкий верхний слой только для читаемости текста */
   #services .service-bg-light .service-bg-overlay{
     background:linear-gradient(
       180deg,
-      rgba(255,255,255,.98) 0,
-      rgba(255,255,255,.95) 225px,
-      rgba(255,255,255,.38) 330px,
-      rgba(255,255,255,0) 470px
+      rgba(255,255,255,.88) 0%,
+      rgba(255,255,255,.64) 24%,
+      rgba(255,255,255,.10) 43%,
+      rgba(255,255,255,0) 58%
     );
   }
 
@@ -1291,22 +1296,19 @@ body.portfolio-modal-open{overflow:hidden}
   #services .panel.cream.service-bg-panel .service-bg-overlay{
     background:linear-gradient(
       180deg,
-      rgba(0,0,0,.97) 0,
-      rgba(0,0,0,.90) 225px,
-      rgba(0,0,0,.42) 340px,
-      rgba(0,0,0,0) 485px
+      rgba(0,0,0,.82) 0%,
+      rgba(0,0,0,.60) 24%,
+      rgba(0,0,0,.10) 44%,
+      rgba(0,0,0,0) 59%
     );
   }
 }
 
 @media(max-width:600px){
-  #services .service-bg-panel{
-    min-height:690px;
-    padding:30px 14px 14px;
-  }
 
-  #services .service-bg-panel::before{
-    inset:235px 0 0 0;
+  #services .service-bg-panel{
+    min-height:700px;
+    padding:34px 16px 20px;
   }
 
   #services .service-bg-panel h2{
@@ -1316,11 +1318,11 @@ body.portfolio-modal-open{overflow:hidden}
   #services .service-bg-panel p{
     font-size:16px;
     line-height:1.3;
-    margin-top:10px;
+    margin-top:11px;
   }
 
   #services .service-bg-panel .actions{
-    margin-top:16px;
+    margin-top:17px;
     gap:8px;
   }
 
@@ -1331,17 +1333,14 @@ body.portfolio-modal-open{overflow:hidden}
 }
 
 @media(max-width:420px){
-  #services .service-bg-panel{
-    min-height:650px;
-    padding-top:26px;
-  }
 
-  #services .service-bg-panel::before{
-    inset:225px 0 0 0;
+  #services .service-bg-panel{
+    min-height:660px;
+    padding-top:28px;
   }
 
   #services .service-bg-panel h2{
-    font-size:34px;
+    font-size:33px;
   }
 
   #services .service-bg-panel p{
@@ -1501,7 +1500,7 @@ body.portfolio-modal-open{overflow:hidden}
 <div class="grid" id="services">
   <section
     class="panel blue service-bg-panel service-bg-light reveal"
-    style="--service-bg:url('assets/images/hero/Design-snulya.png')"
+    style="--service-bg-desktop:url('assets/images/hero/Design-snulya.png'); --service-bg-mobile:url('assets/images/hero/mobile/design-from-zero-mobile.webp')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1515,7 +1514,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel black service-bg-panel service-bg-dark reveal"
-    style="--service-bg:url('assets/images/hero/service-ai-to-print.png')"
+    style="--service-bg-desktop:url('assets/images/hero/service-ai-to-print.png'); --service-bg-mobile:url('assets/images/hero/mobile/ai-to-print-mobile.webp')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1529,7 +1528,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel cream service-bg-panel service-bg-light reveal"
-    style="--service-bg:url('assets/images/hero/service-product-line.png')"
+    style="--service-bg-desktop:url('assets/images/hero/service-product-line.png'); --service-bg-mobile:url('assets/images/hero/mobile/product-line-mobile.webp')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1543,7 +1542,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel violet service-bg-panel service-bg-dark reveal"
-    style="--service-bg:url('assets/images/hero/service-redesign.png')"
+    style="--service-bg-desktop:url('assets/images/hero/service-redesign.png'); --service-bg-mobile:url('assets/images/hero/mobile/redesign-mobile.webp')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 

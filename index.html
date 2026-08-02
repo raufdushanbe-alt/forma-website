@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="FORMA — премиальная студия дизайна упаковки. Дизайн с нуля, редизайн, продуктовые линейки и AI to Print.">
-<title>FORMA — премиальный дизайн упаковки</title>
+<meta name="description" content="FORMA помогает хорошим продуктам не проигрывать из-за слабой упаковки. Дизайн с нуля, редизайн, продуктовые линейки и превращение AI-концепций в готовые к печати файлы.">
+<title>FORMA — дизайн упаковки, готовый к рынку и производству</title>
 <style>
 :root {
  --blue:#0071e3; --blue2:#2997ff; --ink:#1d1d1f; --muted:#6e6e73;
@@ -1237,6 +1237,51 @@ body.portfolio-modal-open{overflow:hidden}
   }
 }
 
+
+/* FORMA positioning: value before services */
+.value-section{
+  padding:108px 24px;
+  background:#fff;
+  text-align:center;
+}
+.value-inner{max-width:1160px;margin:0 auto}
+.value-inner h2{max-width:980px;margin:0 auto}
+.value-inner .lead{max-width:850px;margin-left:auto;margin-right:auto}
+.value-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+  margin-top:46px;
+  text-align:left;
+}
+.value-card{
+  min-height:250px;
+  padding:30px;
+  border:1px solid rgba(0,0,0,.07);
+  border-radius:26px;
+  background:linear-gradient(145deg,#fff,#f5f7fb);
+  box-shadow:0 22px 55px rgba(40,55,100,.07);
+}
+.value-card>span{
+  display:inline-grid;
+  place-items:center;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#111;
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+}
+.value-card h3{margin-top:44px;font-size:25px;letter-spacing:-.035em}
+.value-card p{margin-top:10px;color:#666;font-size:16px;line-height:1.5}
+@media(max-width:820px){
+  .value-section{padding:78px 18px}
+  .value-grid{grid-template-columns:1fr}
+  .value-card{min-height:0}
+  .value-card h3{margin-top:28px}
+}
+
 </style>
 </head>
 <body>
@@ -1333,11 +1378,11 @@ body.portfolio-modal-open{overflow:hidden}
 
 <section class="hero reveal">
 
-  <h1>От AI-концепции до упаковки, готовой к печати.</h1>
-  <p class="lead">Вы присылаете красивую идею, созданную ИИ. Мы превращаем её в профессиональный дизайн, строим развертку, восстанавливаем типографику и готовим файл для типографии.</p>
+  <h1>Хороший продукт не должен проигрывать из-за слабой упаковки.</h1>
+  <p class="lead">FORMA создаёт и дорабатывает упаковку так, чтобы продукт выглядел убедительно, сохранял ценность бренда и без лишних переделок дошёл до печати.</p>
   <div class="actions">
-    <a class="btn primary" href="#contact">Отправить концепцию</a>
-    <a class="btn outline" href="#process">Подробнее</a>
+    <a class="btn primary" href="#contact">Обсудить продукт</a>
+    <a class="btn outline" href="#services">Выбрать задачу</a>
   </div>
 
   <div class="monitor-stage" aria-label="Процесс от AI-концепции до готовой развертки">
@@ -1361,6 +1406,31 @@ body.portfolio-modal-open{overflow:hidden}
 
 
 
+<section class="value-section" aria-label="Почему FORMA">
+  <div class="value-inner reveal">
+    <div class="eyebrow">ЗАЧЕМ НУЖНА FORMA</div>
+    <h2>Упаковка должна решить три задачи до первого тиража.</h2>
+    <p class="lead">Покупатель должен быстро понять продукт, поверить в его ценность и отличить его от конкурентов. Производство — получить корректный файл без дорогих переделок.</p>
+    <div class="value-grid">
+      <article class="value-card">
+        <span>01</span>
+        <h3>Быть понятной</h3>
+        <p>За несколько секунд показать, что это за продукт, для кого он и почему заслуживает внимания.</p>
+      </article>
+      <article class="value-card">
+        <span>02</span>
+        <h3>Выглядеть на свою цену</h3>
+        <p>Передать качество и позиционирование так, чтобы упаковка не обесценивала сам продукт.</p>
+      </article>
+      <article class="value-card">
+        <span>03</span>
+        <h3>Быть производимой</h3>
+        <p>Учитывать конструкцию, печатные ограничения и технические требования ещё до запуска тиража.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
 <div class="grid" id="services">
   <section
     class="panel blue service-bg-panel service-bg-light reveal"
@@ -1368,11 +1438,11 @@ body.portfolio-modal-open{overflow:hidden}
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
-    <h2>Дизайн упаковки с нуля</h2>
-    <p>Исследуем продукт, аудиторию и конкурентов. Создаём концепцию, визуальный язык и систему, которая работает для всей линейки.</p>
+    <h2>Запускаете новый продукт?</h2>
+    <p>Создадим упаковку с нуля: определим, как продукт должен восприниматься, выделим главное для покупателя и построим визуальную систему, готовую к развитию.</p>
 
     <div class="actions">
-      <a class="btn primary" href="#contact">Начать проект</a><a class="btn outline" href="#portfolio">Смотреть работы</a>
+      <a class="btn primary" href="#contact">Подготовить запуск</a><a class="btn outline" href="#portfolio">Смотреть работы</a>
     </div>
   </section>
 
@@ -1382,8 +1452,8 @@ body.portfolio-modal-open{overflow:hidden}
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
-    <h2>AI → Print</h2>
-    <p>Не просто перерисовываем картинку. Восстанавливаем композицию, шрифты, графику и создаём полностью редактируемый print-ready файл.</p>
+    <h2>Есть AI-концепция, но её нельзя печатать?</h2>
+    <p>Восстановим композицию, типографику и графику, перенесём дизайн на реальную развертку и подготовим полностью редактируемый файл для типографии.</p>
 
     <div class="actions">
       <a class="btn primary" href="#contact">Отправить AI-концепцию</a><a class="btn outline" href="#prices">От $490</a>
@@ -1396,11 +1466,11 @@ body.portfolio-modal-open{overflow:hidden}
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
-    <h2>Развитие продуктовой линейки</h2>
-    <p>Адаптируем мастер-дизайн под вкусы, объёмы и новые SKU, сохраняя узнаваемость бренда и порядок на полке.</p>
+    <h2>Добавляете новые вкусы и SKU?</h2>
+    <p>Расширим линейку без визуального хаоса: сохраним узнаваемость бренда, разделим варианты и построим систему, которую легко масштабировать дальше.</p>
 
     <div class="actions">
-      <a class="btn primary" href="#contact">Обсудить линейку</a><a class="btn outline" href="#portfolio">Примеры</a>
+      <a class="btn primary" href="#contact">Расширить линейку</a><a class="btn outline" href="#portfolio">Примеры</a>
     </div>
   </section>
 
@@ -1410,11 +1480,11 @@ body.portfolio-modal-open{overflow:hidden}
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
-    <h2>Редизайн упаковки</h2>
-    <p>Обновляем устаревший дизайн без потери узнаваемости. Улучшаем иерархию, читаемость, цветовую систему и восприятие ценности.</p>
+    <h2>Продукт хороший, но упаковка выглядит слабее?</h2>
+    <p>Обновим дизайн без потери узнаваемости: усилим первое впечатление, иерархию, читаемость и восприятие ценности продукта.</p>
 
     <div class="actions">
-      <a class="btn primary" href="#contact">Заказать редизайн</a><a class="btn outline" href="#process">Наш подход</a>
+      <a class="btn primary" href="#contact">Усилить упаковку</a><a class="btn outline" href="#process">Наш подход</a>
     </div>
   </section>
 </div>
@@ -1424,9 +1494,9 @@ body.portfolio-modal-open{overflow:hidden}
   <div class="production-glow production-glow-two" aria-hidden="true"></div>
 
   <div class="production-head production-animate">
-    <div class="production-kicker"><span></span> ПРОИЗВОДСТВЕННЫЙ ФАЙЛ</div>
-    <h2>Красивый мокап — это только начало.<br><em>Развертка превращает идею в продукт.</em></h2>
-    <p>Мы переносим дизайн на реальную конструкцию упаковки, проверяем технические зоны и готовим файл, который можно отправлять в типографию.</p>
+    <div class="production-kicker"><span></span> ОТ ИДЕИ ДО ТИРАЖА</div>
+    <h2>Красивое изображение ещё нельзя печатать.<br><em>Мы превращаем концепцию в производственный файл.</em></h2>
+    <p>До запуска тиража устраняем техническую неопределённость: переносим дизайн на реальную конструкцию, проверяем обязательные зоны и подготавливаем файл по требованиям типографии.</p>
   </div>
 
   <div class="production-stage">
@@ -1445,8 +1515,8 @@ body.portfolio-modal-open{overflow:hidden}
   >
 </div>
       <div class="production-card-copy">
-        <h3>Красиво выглядит</h3>
-        <p>Показывает будущий продукт, но ещё не содержит производственной конструкции.</p>
+        <h3>Концепция показывает идею</h3>
+        <p>Она помогает увидеть будущий продукт, но не учитывает конструкцию, печатные зоны и технические ограничения.</p>
       </div>
     </article>
 
@@ -1473,8 +1543,8 @@ body.portfolio-modal-open{overflow:hidden}
         <div class="blueprint-scan" aria-hidden="true"></div>
       </div>
       <div class="production-card-copy">
-        <h3>Готово к производству</h3>
-        <p>Точный файл с техническими зонами, цветовой моделью и требованиями типографии.</p>
+        <h3>Развертка позволяет произвести</h3>
+        <p>Типография получает редактируемый файл с конструкцией, техническими зонами, корректным цветом и финальной проверкой.</p>
       </div>
     </article>
   </div>
@@ -1489,12 +1559,12 @@ body.portfolio-modal-open{overflow:hidden}
 </section>
 
 <section class="process" id="process">
-<div class="process-inner reveal"><div class="eyebrow">КАК МЫ РАБОТАЕМ</div><h2>Понятный процесс без хаоса.</h2><p class="lead" style="margin-left:auto;margin-right:auto">От первого сообщения до готового производственного файла — по понятным этапам и с конкретным результатом на каждом шаге.</p>
+<div class="process-inner reveal"><div class="eyebrow">КАК МЫ СНИЖАЕМ РИСК ОШИБКИ</div><h2>Сначала понимаем продукт. Потом создаём дизайн.</h2><p class="lead" style="margin-left:auto;margin-right:auto">На каждом этапе вы понимаете, что уже решено, что будет дальше и какой результат получите до запуска производства.</p>
 <div class="steps">
-<div class="step"><div class="step-num">1</div><h3>Бриф и материалы</h3><p>Изучаем продукт, рынок, аудиторию, конкурентов и технические требования к упаковке.</p></div>
-<div class="step"><div class="step-num">2</div><h3>Концепция</h3><p>Формируем визуальное направление, композицию, цвет, типографику и характер бренда.</p></div>
-<div class="step"><div class="step-num">3</div><h3>Дизайн и адаптация</h3><p>Дорабатываем выбранное направление и переносим его на реальную конструкцию упаковки.</p></div>
-<div class="step"><div class="step-num">4</div><h3>Print-ready</h3><p>Готовим CMYK, вылеты, шрифты, изображения и финальные файлы для производства.</p></div>
+<div class="step"><div class="step-num">1</div><h3>Понимаем задачу</h3><p>Разбираем продукт, покупателя, конкурентов, ценовой сегмент и условия продажи. Результат — понятное направление, а не дизайн вслепую.</p></div>
+<div class="step"><div class="step-num">2</div><h3>Выбираем направление</h3><p>Формируем визуальную концепцию и проверяем, передаёт ли она нужное восприятие продукта до глубокой проработки.</p></div>
+<div class="step"><div class="step-num">3</div><h3>Строим систему</h3><p>Дорабатываем выбранный дизайн, переносим его на конструкцию и закладываем правила для будущих вкусов, форматов и SKU.</p></div>
+<div class="step"><div class="step-num">4</div><h3>Передаём в производство</h3><p>Проверяем CMYK, вылеты, шрифты, изображения и технические зоны. Результат — файл, готовый к передаче в типографию.</p></div>
 </div></div>
 </section>
 
@@ -1593,15 +1663,15 @@ body.portfolio-modal-open{overflow:hidden}
 </div>
 
 <section class="price-section" id="prices">
-<div class="reveal"><div class="eyebrow">СТОИМОСТЬ</div><h2>Два основных формата работы.</h2><div class="price-grid">
-<div class="price-card"><h3>Дизайн упаковки с нуля</h3><div class="price">от $1,000</div><ul><li>анализ и визуальная стратегия;</li><li>концепция дизайна упаковки;</li><li>разработка мастер-макета;</li><li>подготовка файлов к печати.</li></ul><a class="btn primary" href="#contact">Получить оценку</a></div>
-<div class="price-card dark"><h3>AI → Print</h3><div class="price">от $490</div><ul><li>разбор AI-концепции;</li><li>восстановление дизайна и типографики;</li><li>адаптация на реальную развертку;</li><li>print-ready файл для типографии.</li></ul><a class="btn primary" href="#contact">Отправить концепцию</a></div>
+<div class="reveal"><div class="eyebrow">ФОРМАТЫ РАБОТЫ</div><h2>Выберите задачу, которая ближе к вашей ситуации.</h2><p class="lead" style="margin-left:auto;margin-right:auto">Точная стоимость зависит от конструкции, количества SKU и готовности материалов. До начала работы фиксируем объём, этапы и результат.</p><div class="price-grid">
+<div class="price-card"><h3>Новый продукт или полный редизайн</h3><div class="price">от $1,000</div><ul><li>анализ продукта, аудитории и конкурентов;</li><li>позиционирование и визуальная концепция;</li><li>мастер-дизайн упаковки;</li><li>производственная подготовка файла.</li></ul><a class="btn primary" href="#contact">Оценить задачу</a></div>
+<div class="price-card dark"><h3>AI-концепция → готовая упаковка</h3><div class="price">от $490</div><ul><li>оценка реализуемости концепции;</li><li>восстановление графики и типографики;</li><li>адаптация на реальную развертку;</li><li>редактируемый print-ready файл.</li></ul><a class="btn primary" href="#contact">Проверить концепцию</a></div>
 </div></div>
 </section>
 
 <section class="contact" id="contact">
 <div class="contact-wrap">
-<div class="contact-copy reveal"><div class="eyebrow">ОЦЕНКА ПРОЕКТА</div><h2>Расскажите о вашем продукте.</h2><p>Заполните короткий бриф. После отправки откроется ваше почтовое приложение с готовым письмом для FORMA.</p><div class="trust"><span>✓ Ответ в течение одного рабочего дня</span><span>✓ Работаем с клиентами по всему миру</span><span>✓ Adobe Illustrator, CMYK, print-ready</span><span>✓ Дизайн с нуля, редизайн и AI to Print</span></div></div>
+<div class="contact-copy reveal"><div class="eyebrow">ПЕРВЫЙ ШАГ</div><h2>Покажите продукт — мы поможем определить следующую задачу.</h2><p>Опишите, что вы запускаете, что уже готово и где сейчас есть неопределённость. Мы ответим, какой формат работы подходит, что понадобится и с чего разумно начать.</p><div class="trust"><span>✓ Ответ в течение одного рабочего дня</span><span>✓ До старта фиксируем объём, этапы и результат</span><span>✓ Работаем с концепцией, конструкцией и print-ready</span><span>✓ Можно обратиться даже без готового технического задания</span></div></div>
 <form class="form reveal" id="briefForm">
 <div class="fields">
 <div class="field"><label>Имя *</label><input id="name" required placeholder="Ваше имя"></div>
@@ -1609,9 +1679,9 @@ body.portfolio-modal-open{overflow:hidden}
 <div class="field"><label>Телефон</label><input id="phone" placeholder="+992 ..."></div>
 <div class="field"><label>Email *</label><input id="email" type="email" required placeholder="name@company.com"></div>
 <div class="field full"><label>Услуга</label><select id="service"><option>Дизайн упаковки с нуля</option><option>AI to Print</option><option>Редизайн</option><option>Развитие продуктовой линейки</option><option>Пока не уверен</option></select></div>
-<div class="field full"><label>Продукт и задача *</label><textarea id="message" required placeholder="Расскажите о продукте, количестве SKU, сроках и задаче"></textarea></div>
+<div class="field full"><label>Продукт и задача *</label><textarea id="message" required placeholder="Что вы запускаете? Что уже готово? Где нужна помощь: концепция, редизайн, линейка или подготовка к печати?"></textarea></div>
 </div>
-<button class="submit" type="submit">Отправить проект на оценку</button>
+<button class="submit" type="submit">Получить разбор задачи</button>
 </form>
 </div>
 </section>

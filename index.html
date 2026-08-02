@@ -2138,6 +2138,90 @@ body.portfolio-modal-open{overflow:hidden}
   }
 }
 
+
+
+/* ===== FORMA: final Hero background + image shadow ===== */
+
+/* Удаляем красную и синюю декоративные линии */
+.hero.hero-product::before,
+.hero.hero-product::after{
+  display:none !important;
+}
+
+/* Более холодный сероватый фон Hero */
+.hero.hero-product{
+  background:
+    radial-gradient(
+      circle at 18% 62%,
+      rgba(184,196,214,.32),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 84% 48%,
+      rgba(154,171,199,.28),
+      transparent 42%
+    ),
+    linear-gradient(
+      125deg,
+      #f3f5f7 0%,
+      #e9edf2 48%,
+      #dce3ec 100%
+    ) !important;
+}
+
+/* Старые CSS-тени отключаем */
+.hero-shadow{
+  display:none !important;
+}
+
+/* Тень-картинка: совпадает с холстом остальных слоёв */
+.hero-layer-shadow{
+  z-index:2;
+  opacity:calc(.92 - var(--hero-progress) * .86);
+
+  transform:
+    translate3d(
+      calc(var(--hero-progress) * 28px),
+      calc(var(--hero-progress) * 18px),
+      0
+    )
+    scaleX(calc(1 - var(--hero-progress) * .48))
+    scaleY(calc(1 - var(--hero-progress) * .28));
+
+  filter:blur(calc(var(--hero-progress) * 17px));
+  transform-origin:45% 84%;
+}
+
+/* Порядок слоёв */
+.hero-layer-ground{z-index:4}
+.hero-layer-package{z-index:5}
+.hero-layer-flying{z-index:6}
+
+@media(max-width:820px){
+  .hero-layer-shadow{
+    opacity:calc(.82 - var(--hero-progress) * .72);
+
+    transform:
+      translate3d(
+        calc(var(--hero-progress) * 12px),
+        calc(var(--hero-progress) * 8px),
+        0
+      )
+      scaleX(calc(1 - var(--hero-progress) * .34))
+      scaleY(calc(1 - var(--hero-progress) * .20));
+
+    filter:blur(calc(var(--hero-progress) * 10px));
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-layer-shadow{
+    opacity:.82 !important;
+    transform:none !important;
+    filter:none !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2262,19 +2346,24 @@ body.portfolio-modal-open{overflow:hidden}
 
     <div class="hero-product-visual" aria-label="Анимированная упаковка чипсов">
       <div class="hero-scene" aria-hidden="true">
-        <div class="hero-shadow hero-shadow-soft"></div>
-        <div class="hero-shadow hero-shadow-contact"></div>
+        <img
+          class="hero-layer hero-layer-shadow"
+          src="assets/images/hero/hero-shadow.webp"
+          alt=""
+          aria-hidden="true"
+          decoding="async"
+        >
 
         <img
           class="hero-layer hero-layer-ground"
-          src="assets/images/hero/hero-ground.png"
+          src="assets/images/hero/hero-ground.webp"
           alt=""
           decoding="async"
         >
 
         <img
           class="hero-layer hero-layer-package"
-          src="assets/images/hero/hero-package.png"
+          src="assets/images/hero/hero-package.webp"
           alt="Упаковка чипсов"
           fetchpriority="high"
           decoding="async"
@@ -2282,7 +2371,7 @@ body.portfolio-modal-open{overflow:hidden}
 
         <img
           class="hero-layer hero-layer-flying"
-          src="assets/images/hero/hero-flying.png"
+          src="assets/images/hero/hero-flying.webp"
           alt=""
           decoding="async"
         >

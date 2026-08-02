@@ -1283,25 +1283,12 @@ body.portfolio-modal-open{overflow:hidden}
 
   /* Лёгкий верхний слой только для читаемости текста */
   #services .service-bg-light .service-bg-overlay{
-    background:linear-gradient(
-      180deg,
-      rgba(255,255,255,.88) 0%,
-      rgba(255,255,255,.64) 24%,
-      rgba(255,255,255,.10) 43%,
-      rgba(255,255,255,0) 58%
-    );
-  }
+  background:none;
+}
 
-  #services .service-bg-dark .service-bg-overlay,
-  #services .panel.cream.service-bg-panel .service-bg-overlay{
-    background:linear-gradient(
-      180deg,
-      rgba(0,0,0,.82) 0%,
-      rgba(0,0,0,.60) 24%,
-      rgba(0,0,0,.10) 44%,
-      rgba(0,0,0,0) 59%
-    );
-  }
+#services .service-bg-dark .service-bg-overlay,
+#services .panel.cream.service-bg-panel .service-bg-overlay{
+  background:none;
 }
 
 @media(max-width:600px){

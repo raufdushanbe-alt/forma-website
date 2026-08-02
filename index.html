@@ -1488,12 +1488,12 @@ body.portfolio-modal-open{overflow:hidden}
   transform-origin:50% 76%;
   transform:
     translate3d(
-      calc(var(--hero-progress) * 18px),
-      calc(var(--hero-progress) * -72px),
+      calc(var(--hero-progress) * 40px),
+      calc(var(--hero-progress) * -160px),
       0
     )
-    rotate(calc(-1.5deg + var(--hero-progress) * 2.5deg))
-    scale(calc(1 + var(--hero-progress) * .055));
+    rotate(calc(-4deg + var(--hero-progress) * 9deg))
+    scale(calc(1 + var(--hero-progress) * .14));
   filter:drop-shadow(0 36px 34px rgba(45,25,12,.18));
   will-change:transform;
 }
@@ -1624,8 +1624,9 @@ body.portfolio-modal-open{overflow:hidden}
   .hero-product-image-wrap{
     width:min(680px,100%);
     transform:
-      translate3d(0,calc(var(--hero-progress) * -26px),0)
-      scale(calc(1 + var(--hero-progress) * .025));
+      translate3d(0,calc(var(--hero-progress) * -70px),0)
+      rotate(calc(-2deg + var(--hero-progress) * 4deg))
+      scale(calc(1 + var(--hero-progress) * .06));
   }
 
   .hero-product::before,

@@ -31,7 +31,7 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
 .hero-visual{width:min(1120px,94vw);height:430px;margin-top:30px;position:relative;display:flex;align-items:center;justify-content:center}
 .hero-visual img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 28px 28px rgba(0,0,0,.18))}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);padding:0 var(--gap) var(--gap)}
-.panel{min-height:660px;position:relative;overflow:hidden;text-align:center;padding:58px 28px 0;display:flex;flex-direction:column;align-items:center}
+.panel{min-height:auto;aspect-ratio:1100 / 900;position:relative;overflow:hidden;text-align:center;padding:58px 28px 0;display:flex;flex-direction:column;align-items:center}
 .panel p{font-size:clamp(18px,1.6vw,23px);line-height:1.33;opacity:.77;max-width:660px;margin-top:12px}
 .visual{width:min(88%,780px);height:395px;margin-top:28px;display:flex;align-items:center;justify-content:center;position:relative}
 .visual img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 28px 26px rgba(0,0,0,.17))}
@@ -1307,7 +1307,7 @@ body.portfolio-modal-open{overflow:hidden}
 @media(max-width:600px){
 
   #services .service-bg-panel{
-    min-height:700px;
+    min-height:auto;
     padding:34px 16px 20px;
   }
 
@@ -1500,7 +1500,7 @@ body.portfolio-modal-open{overflow:hidden}
 <div class="grid" id="services">
   <section
     class="panel blue service-bg-panel service-bg-light reveal"
-    style="--service-bg-desktop:url('assets/images/hero/Design-snulya.png'); --service-bg-mobile:url('assets/images/49.jpg')"
+    style="--service-bg-desktop:url('assets/images/hero/Design-snulya.jpg'); --service-bg-mobile:url('assets/images/49.jpg')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1514,7 +1514,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel black service-bg-panel service-bg-dark reveal"
-    style="--service-bg-desktop:url('assets/images/hero/service-ai-to-print.png'); --service-bg-mobile:url('assets/images/48.jpg')"
+    style="--service-bg-desktop:url('assets/images/hero/service-ai-to-print.jpg'); --service-bg-mobile:url('assets/images/48.jpg')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1528,7 +1528,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel cream service-bg-panel service-bg-light reveal"
-    style="--service-bg-desktop:url('assets/images/hero/service-product-line.png'); --service-bg-mobile:url('assets/images/47.jpg')"
+    style="--service-bg-desktop:url('assets/images/hero/service-product-line.jpg'); --service-bg-mobile:url('assets/images/47.jpg')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 
@@ -1542,7 +1542,7 @@ body.portfolio-modal-open{overflow:hidden}
 
   <section
     class="panel violet service-bg-panel service-bg-dark reveal"
-    style="--service-bg-desktop:url('assets/images/hero/service-redesign.png'); --service-bg-mobile:url('assets/images/50.jpg')"
+    style="--service-bg-desktop:url('assets/images/hero/service-redesign.jpg'); --service-bg-mobile:url('assets/images/50.jpg')"
   >
     <div class="service-bg-overlay" aria-hidden="true"></div>
 

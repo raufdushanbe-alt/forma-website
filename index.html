@@ -2229,6 +2229,248 @@ body.portfolio-modal-open{overflow:hidden}
   }
 }
 
+
+
+/* ===== FORMA: 3D Hero — blank package to finished design ===== */
+.hero-3d-visual{
+  height:760px;
+  overflow:visible;
+}
+
+.hero-3d-stage{
+  --reveal:0%;
+  position:relative;
+  width:min(760px,100%);
+  aspect-ratio:1 / 1;
+  isolation:isolate;
+  overflow:visible;
+  transform:translateZ(0);
+}
+
+.hero-3d-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  pointer-events:none;
+}
+
+.hero-3d-gray{z-index:2}
+
+.hero-3d-design{
+  z-index:3;
+  clip-path:circle(var(--reveal) at 50% 56%);
+  -webkit-clip-path:circle(var(--reveal) at 50% 56%);
+  will-change:clip-path;
+}
+
+.hero-3d-glow{
+  position:absolute;
+  z-index:4;
+  left:50%;
+  top:56%;
+  width:16%;
+  aspect-ratio:1;
+  border-radius:50%;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.2);
+  background:radial-gradient(
+    circle,
+    rgba(255,239,176,.92) 0%,
+    rgba(255,192,65,.44) 30%,
+    rgba(255,153,23,.14) 58%,
+    transparent 74%
+  );
+  filter:blur(7px);
+  mix-blend-mode:screen;
+}
+
+.hero-3d-ring{
+  position:absolute;
+  z-index:5;
+  left:50%;
+  top:56%;
+  width:70px;
+  height:70px;
+  border:2px solid rgba(255,196,69,.96);
+  border-radius:50%;
+  pointer-events:none;
+  opacity:0;
+  transform:translate(-50%,-50%) scale(.15);
+  box-shadow:
+    0 0 14px rgba(255,217,116,.95),
+    0 0 34px rgba(255,177,31,.60),
+    inset 0 0 16px rgba(255,230,151,.42);
+}
+
+.hero-3d-particles{
+  position:absolute;
+  inset:0;
+  z-index:6;
+  overflow:visible;
+  pointer-events:none;
+}
+
+.hero-gold-particle{
+  --x:0px;
+  --y:0px;
+  --s:1;
+  --delay:0ms;
+  position:absolute;
+  left:50%;
+  top:56%;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  opacity:0;
+  background:#ffd36a;
+  box-shadow:
+    0 0 7px rgba(255,232,166,.95),
+    0 0 15px rgba(255,167,30,.72);
+  transform:translate(-50%,-50%) scale(.2);
+}
+
+.hero-3d-stage.is-revealing .hero-3d-glow{
+  animation:hero3dGlow 5.4s ease-in-out infinite;
+}
+
+.hero-3d-stage.is-revealing .hero-3d-ring{
+  animation:hero3dRing 5.4s cubic-bezier(.2,.72,.2,1) infinite;
+}
+
+.hero-3d-stage.is-revealing .hero-gold-particle{
+  animation:heroGoldParticle 1.25s cubic-bezier(.15,.65,.25,1) var(--delay) forwards;
+}
+
+.hero-3d-loading{
+  position:absolute;
+  z-index:8;
+  left:50%;
+  bottom:8%;
+  transform:translateX(-50%);
+  padding:8px 13px;
+  border-radius:999px;
+  background:rgba(255,255,255,.72);
+  color:#5b6068;
+  font-size:12px;
+  backdrop-filter:blur(12px);
+  transition:opacity .35s ease;
+}
+
+.hero-3d-stage.is-ready .hero-3d-loading{
+  opacity:0;
+  pointer-events:none;
+}
+
+.hero-3d-fallback{
+  position:absolute;
+  inset:0;
+  z-index:1;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  opacity:0;
+}
+
+.hero-3d-stage.is-fallback .hero-3d-fallback{
+  opacity:1;
+}
+
+@keyframes hero3dRing{
+  0%,10%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.15);
+  }
+  17%{opacity:1}
+  42%{
+    opacity:.82;
+    transform:translate(-50%,-50%) scale(8.8);
+  }
+  53%,70%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(9.25);
+  }
+  78%{opacity:.7}
+  96%,100%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.15);
+  }
+}
+
+@keyframes hero3dGlow{
+  0%,9%,72%,100%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.2);
+  }
+  18%{opacity:.92}
+  42%{
+    opacity:.42;
+    transform:translate(-50%,-50%) scale(5.4);
+  }
+  60%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(5.9);
+  }
+}
+
+@keyframes heroGoldParticle{
+  0%{
+    opacity:0;
+    transform:translate(-50%,-50%) scale(.15);
+  }
+  12%{opacity:1}
+  72%{opacity:.84}
+  100%{
+    opacity:0;
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(var(--s));
+  }
+}
+
+@media(max-width:1100px){
+  .hero-3d-visual{height:650px}
+  .hero-3d-stage{width:min(680px,108%)}
+}
+
+@media(max-width:820px){
+  .hero-3d-visual{
+    width:100%;
+    height:auto;
+    min-height:520px;
+    overflow:hidden;
+  }
+
+  .hero-3d-stage{
+    width:min(650px,116%);
+    margin:0 auto;
+  }
+}
+
+@media(max-width:520px){
+  .hero-3d-visual{min-height:420px}
+  .hero-3d-stage{width:128%}
+  .hero-3d-ring{width:54px;height:54px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-3d-stage.is-revealing .hero-3d-glow,
+  .hero-3d-stage.is-revealing .hero-3d-ring,
+  .hero-3d-stage.is-revealing .hero-gold-particle{
+    animation:none!important;
+  }
+
+  .hero-3d-design{
+    clip-path:circle(100% at 50% 56%)!important;
+    -webkit-clip-path:circle(100% at 50% 56%)!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2351,36 +2593,20 @@ body.portfolio-modal-open{overflow:hidden}
       </div>
     </div>
 
-    <div class="hero-product-visual" aria-label="Анимированная упаковка чипсов">
-      <div class="hero-scene" aria-hidden="true">
-        <img
-          class="hero-layer hero-layer-shadow"
-          src="assets/images/hero/hero-shadow.png"
-          alt=""
-          aria-hidden="true"
-          decoding="async"
-        >
+    <div class="hero-product-visual hero-3d-visual" aria-label="3D-анимация появления дизайна упаковки">
+      <div class="hero-3d-stage" id="hero3dStage">
+        <canvas class="hero-3d-canvas hero-3d-gray" id="hero3dGray" aria-hidden="true"></canvas>
+        <canvas class="hero-3d-canvas hero-3d-design" id="hero3dDesign" aria-hidden="true"></canvas>
 
-        <img
-          class="hero-layer hero-layer-ground"
-          src="assets/images/hero/hero-ground.png"
-          alt=""
-          decoding="async"
-        >
+        <div class="hero-3d-glow" aria-hidden="true"></div>
+        <div class="hero-3d-ring" aria-hidden="true"></div>
+        <div class="hero-3d-particles" id="hero3dParticles" aria-hidden="true"></div>
 
+        <div class="hero-3d-loading" id="hero3dLoading">Загрузка 3D…</div>
         <img
-          class="hero-layer hero-layer-package"
-          src="assets/images/hero/hero-package.png"
-          alt="Упаковка чипсов"
-          fetchpriority="high"
-          decoding="async"
-        >
-
-        <img
-          class="hero-layer hero-layer-flying"
-          src="assets/images/hero/hero-flying.png"
-          alt=""
-          decoding="async"
+          class="hero-3d-fallback"
+          src="assets/models/package-gray.jpg"
+          alt="Упаковка без дизайна"
         >
       </div>
     </div>
@@ -3118,6 +3344,260 @@ window.addEventListener('resize', function(){
   window.addEventListener('resize', scheduleHeroUpdate);
   updateHero();
 })();
+</script>
+
+
+
+<script type="importmap">
+{
+  "imports":{
+    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
+    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const stage = document.getElementById('hero3dStage');
+const grayCanvas = document.getElementById('hero3dGray');
+const designCanvas = document.getElementById('hero3dDesign');
+const particleHost = document.getElementById('hero3dParticles');
+const loading = document.getElementById('hero3dLoading');
+
+if(stage && grayCanvas && designCanvas){
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let visible = true;
+  let running = true;
+  let revealRAF = 0;
+  let cycleStart = performance.now();
+
+  const MODEL_URL = 'assets/models/hero-package.glb';
+  const GRAY_URL = 'assets/models/package-gray.jpg';
+  const DESIGN_URL = 'assets/models/package-design.jpg';
+
+  function makeRenderer(canvas){
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha:true,
+      antialias:true,
+      powerPreference:'high-performance'
+    });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.08;
+    renderer.setClearColor(0x000000,0);
+    return renderer;
+  }
+
+  const grayRenderer = makeRenderer(grayCanvas);
+  const designRenderer = makeRenderer(designCanvas);
+
+  const grayScene = new THREE.Scene();
+  const designScene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(31,1,.01,100);
+  camera.position.set(0,.15,4.6);
+
+  function addLights(scene){
+    const hemi = new THREE.HemisphereLight(0xffffff,0x7b8190,2.25);
+    scene.add(hemi);
+
+    const key = new THREE.DirectionalLight(0xffffff,4.2);
+    key.position.set(3.2,4.8,4.4);
+    scene.add(key);
+
+    const fill = new THREE.DirectionalLight(0xb9c8e7,2.1);
+    fill.position.set(-4,1.3,2.2);
+    scene.add(fill);
+
+    const rim = new THREE.DirectionalLight(0xffd38a,1.25);
+    rim.position.set(1.5,2.4,-3);
+    scene.add(rim);
+  }
+
+  addLights(grayScene);
+  addLights(designScene);
+
+  const textureLoader = new THREE.TextureLoader();
+  const gltfLoader = new GLTFLoader();
+
+  Promise.all([
+    gltfLoader.loadAsync(MODEL_URL),
+    textureLoader.loadAsync(GRAY_URL),
+    textureLoader.loadAsync(DESIGN_URL)
+  ]).then(([gltf,grayTexture,designTexture])=>{
+    [grayTexture,designTexture].forEach(texture=>{
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.flipY = false;
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.needsUpdate = true;
+    });
+
+    const grayModel = gltf.scene;
+    const designModel = grayModel.clone(true);
+
+    function prepareModel(model,texture,isGray){
+      model.traverse(object=>{
+        if(!object.isMesh) return;
+        const source = Array.isArray(object.material) ? object.material[0] : object.material;
+        const material = source ? source.clone() : new THREE.MeshStandardMaterial();
+        material.map = texture;
+        material.color.setHex(isGray ? 0xd7d9dd : 0xffffff);
+        material.roughness = isGray ? .72 : .58;
+        material.metalness = 0;
+        material.transparent = false;
+        material.side = THREE.DoubleSide;
+        material.needsUpdate = true;
+        object.material = material;
+        object.castShadow = false;
+        object.receiveShadow = false;
+      });
+
+      const box = new THREE.Box3().setFromObject(model);
+      const center = box.getCenter(new THREE.Vector3());
+      const size = box.getSize(new THREE.Vector3());
+      const maxDim = Math.max(size.x,size.y,size.z) || 1;
+      const scale = 2.55 / maxDim;
+      model.scale.setScalar(scale);
+      model.position.sub(center.multiplyScalar(scale));
+      model.position.y -= .04;
+      model.rotation.set(-.03,-.12,-.025);
+    }
+
+    prepareModel(grayModel,grayTexture,true);
+    prepareModel(designModel,designTexture,false);
+
+    grayScene.add(grayModel);
+    designScene.add(designModel);
+
+    stage.classList.add('is-ready','is-revealing');
+    createParticles();
+    startRevealLoop();
+    resize();
+    render();
+
+    function render(time=0){
+      if(!running) return;
+
+      const t = time * .001;
+      const floatY = prefersReducedMotion ? 0 : Math.sin(t * .85) * .035;
+      const idleRot = prefersReducedMotion ? 0 : Math.sin(t * .42) * .055;
+
+      grayModel.position.y = -.04 + floatY;
+      designModel.position.y = -.04 + floatY;
+      grayModel.rotation.y = -.12 + idleRot;
+      designModel.rotation.y = -.12 + idleRot;
+
+      if(visible){
+        grayRenderer.render(grayScene,camera);
+        designRenderer.render(designScene,camera);
+      }
+      requestAnimationFrame(render);
+    }
+  }).catch(error=>{
+    console.error('Hero 3D load failed:',error);
+    stage.classList.add('is-fallback');
+    loading.textContent = '3D не загрузилось';
+  });
+
+  function resize(){
+    const rect = stage.getBoundingClientRect();
+    const width = Math.max(1,Math.round(rect.width));
+    const height = Math.max(1,Math.round(rect.height));
+    [grayRenderer,designRenderer].forEach(renderer=>renderer.setSize(width,height,false));
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+  }
+
+  window.addEventListener('resize',resize);
+
+  if('IntersectionObserver' in window){
+    const observer = new IntersectionObserver(entries=>{
+      visible = entries[0].isIntersecting;
+    },{threshold:.04});
+    observer.observe(stage);
+  }
+
+  function createParticles(){
+    particleHost.replaceChildren();
+    const count = window.innerWidth < 600 ? 34 : 62;
+    for(let i=0;i<count;i++){
+      const particle = document.createElement('span');
+      particle.className = 'hero-gold-particle';
+      particleHost.appendChild(particle);
+    }
+  }
+
+  function randomizeParticles(){
+    const particles = particleHost.querySelectorAll('.hero-gold-particle');
+    particles.forEach((particle,index)=>{
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 90 + Math.random() * (window.innerWidth < 600 ? 150 : 250);
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance * .72;
+      const size = 2 + Math.random() * 5;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.setProperty('--x',x.toFixed(1) + 'px');
+      particle.style.setProperty('--y',y.toFixed(1) + 'px');
+      particle.style.setProperty('--s',(0.45 + Math.random() * 1.15).toFixed(2));
+      particle.style.setProperty('--delay',(650 + Math.random() * 1150).toFixed(0) + 'ms');
+      particle.style.left = (46 + Math.random() * 8).toFixed(2) + '%';
+      particle.style.top = (52 + Math.random() * 10).toFixed(2) + '%';
+    });
+
+    stage.classList.remove('is-revealing');
+    void stage.offsetWidth;
+    stage.classList.add('is-revealing');
+  }
+
+  function startRevealLoop(){
+    if(prefersReducedMotion){
+      stage.style.setProperty('--reveal','100%');
+      return;
+    }
+
+    const duration = 5400;
+    const animate = now=>{
+      const elapsed = (now - cycleStart) % duration;
+      const p = elapsed / duration;
+
+      let radius;
+      if(p < .12){
+        radius = 0;
+      }else if(p < .43){
+        const q = (p - .12) / .31;
+        radius = 92 * (1 - Math.pow(1 - q,3));
+      }else if(p < .70){
+        radius = 92;
+      }else if(p < .94){
+        const q = (p - .70) / .24;
+        radius = 92 * (1 - (q*q*(3 - 2*q)));
+      }else{
+        radius = 0;
+      }
+
+      stage.style.setProperty('--reveal',radius.toFixed(2) + '%');
+
+      if(elapsed < 28){
+        randomizeParticles();
+      }
+
+      revealRAF = requestAnimationFrame(animate);
+    };
+
+    revealRAF = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener('pagehide',()=>{
+    running = false;
+    if(revealRAF) cancelAnimationFrame(revealRAF);
+  });
+}
 </script>
 
 </body>

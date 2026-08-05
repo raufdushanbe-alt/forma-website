@@ -2473,309 +2473,391 @@ body.portfolio-modal-open{overflow:hidden}
 
 
 
-/* ===== FORMA: AI Printer Hero ===== */
-.ai-printer-hero{
+/* ===== FORMA: final text-only Hero ===== */
+.text-story-hero{
   position:relative;
-  min-height:920px;
+  min-height:calc(100svh - 52px);
+  padding:0 !important;
+  margin-bottom:var(--gap);
+  display:grid !important;
+  place-items:center;
   overflow:hidden;
-  background:
-    radial-gradient(circle at 20% 70%,rgba(185,198,216,.34),transparent 38%),
-    radial-gradient(circle at 82% 36%,rgba(160,178,206,.30),transparent 42%),
-    linear-gradient(125deg,#f6f8fa 0%,#e9edf2 48%,#dce4ed 100%) !important;
+  isolation:isolate;
+  text-align:center !important;
+  background:#fff !important;
 }
 
-.ai-printer-hero::before,
-.ai-printer-hero::after{
+.text-story-hero::before,
+.text-story-hero::after{
   display:none !important;
 }
 
-.ai-network-canvas{
+.story-network-canvas{
   position:absolute;
   inset:0;
+  z-index:0;
   width:100%;
   height:100%;
-  z-index:0;
   pointer-events:none;
-  opacity:.62;
 }
 
-.ai-printer-hero .hero-product-inner{
+.story-hero-inner{
   position:relative;
   z-index:2;
-}
-
-.ai-printer-visual{
-  height:720px;
-  overflow:visible;
-}
-
-.ai-printer-stage{
-  position:relative;
-  width:min(780px,104%);
-  aspect-ratio:1 / .82;
-  transform-style:preserve-3d;
-  transition:transform .25s ease-out;
-}
-
-.ai-printer-frame{
-  position:absolute;
-  inset:3%;
-  overflow:hidden;
-  border:1px solid rgba(68,82,100,.14);
-  border-radius:30px;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.86),rgba(236,241,247,.72));
-  box-shadow:
-    0 32px 80px rgba(56,70,90,.14),
-    inset 0 1px 0 rgba(255,255,255,.9);
-  backdrop-filter:blur(20px);
-}
-
-.ai-printer-topbar{
-  height:58px;
-  padding:0 22px;
+  width:min(1500px,calc(100% - 56px));
+  min-height:760px;
   display:flex;
+  flex-direction:column;
   align-items:center;
-  gap:11px;
-  border-bottom:1px solid rgba(40,55,75,.08);
-  color:#667080;
-  font-size:11px;
+  justify-content:center;
+  padding:80px 0 72px;
+}
+
+.story-kicker{
+  margin-bottom:34px;
+  color:#77808c;
+  font-size:12px;
   font-weight:800;
-  letter-spacing:.13em;
-}
-
-.ai-dot{
-  width:8px;
-  height:8px;
-  border-radius:50%;
-  background:#42d89c;
-  box-shadow:0 0 18px rgba(66,216,156,.75);
-}
-
-.ai-printer-status{
-  margin-left:auto;
-  color:#0f72ff;
-}
-
-.ai-printer-svg{
-  width:100%;
-  height:calc(100% - 120px);
-  display:block;
-}
-
-.ai-grid-lines path{
-  stroke:#8ea0b4;
-  stroke-width:1;
-  vector-effect:non-scaling-stroke;
-}
-
-.ai-cut-line{
-  fill:none;
-  stroke:#59697c;
-  stroke-width:2;
-  vector-effect:non-scaling-stroke;
-}
-
-.ai-fold-line{
-  fill:none;
-  stroke:#8ea0b4;
-  stroke-width:1.5;
-  stroke-dasharray:8 8;
-  vector-effect:non-scaling-stroke;
-}
-
-.ai-dimensions path{
-  stroke:#7e8fa1;
-  stroke-width:1.2;
-  fill:none;
-}
-
-.ai-dimensions text{
-  fill:#657589;
-  font-size:14px;
-  font-weight:700;
-  letter-spacing:.08em;
-}
-
-.ai-print-brand{
-  fill:#111820;
-  font-size:24px;
-  font-weight:900;
   letter-spacing:.18em;
+  text-transform:uppercase;
 }
 
-.ai-print-title{
-  fill:#111820;
-  font-size:28px;
-  font-weight:900;
-}
-
-.ai-print-sub{
-  fill:#4d5968;
-  font-size:11px;
-  font-weight:800;
-  letter-spacing:.1em;
-}
-
-.ai-barcode rect{fill:#111820}
-
-.ai-printer-head{
-  animation:aiPrinterSweep 7.6s cubic-bezier(.45,.02,.2,1) infinite;
-}
-
-.ai-laser{
-  opacity:0;
-  animation:aiLaserPulse 7.6s ease-in-out infinite;
-}
-
-.ai-print-layer{
-  opacity:1;
-}
-
-#printRevealRect{
-  animation:aiPrintReveal 7.6s cubic-bezier(.45,.02,.2,1) infinite;
-}
-
-.ai-registration-marks path{
-  stroke:#5d6f82;
-  stroke-width:1.5;
-  fill:none;
-}
-
-.ai-ready-badge{
-  opacity:0;
-  transform-origin:center;
-  animation:aiReadyBadge 7.6s ease-in-out infinite;
-}
-
-.ai-ready-badge rect{
-  fill:#111820;
-}
-
-.ai-ready-badge circle{
-  fill:#50e3a4;
-  filter:drop-shadow(0 0 8px rgba(80,227,164,.7));
-}
-
-.ai-ready-badge text{
-  fill:#fff;
-  font-size:14px;
-  font-weight:900;
-  letter-spacing:.12em;
-}
-
-.ai-printer-progress{
-  position:absolute;
-  left:22px;
-  right:22px;
-  bottom:42px;
-  height:4px;
-  overflow:hidden;
-  border-radius:999px;
-  background:rgba(30,45,65,.08);
-}
-
-.ai-printer-progress span{
-  display:block;
+.story-text-stage{
+  position:relative;
   width:100%;
-  height:100%;
-  transform-origin:left;
-  background:linear-gradient(90deg,#0f72ff,#7254ff,#ff7a3d);
-  animation:aiProgress 7.6s linear infinite;
+  min-height:260px;
+  display:grid;
+  place-items:center;
 }
 
-.ai-printer-meta{
+.story-line{
   position:absolute;
-  left:22px;
-  right:22px;
-  bottom:14px;
+  inset:auto 0;
+  margin:auto;
+  width:100%;
   display:flex;
-  justify-content:space-between;
-  color:#6c7786;
-  font-size:10px;
+  flex-direction:column;
+  align-items:center;
+  gap:.04em;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(26px) scale(.985);
+  filter:blur(9px);
+  pointer-events:none;
+}
+
+.story-line.is-active{
+  visibility:visible;
+  animation:storyTextIn 3s cubic-bezier(.2,.75,.2,1) both;
+}
+
+.story-line span{
+  display:block;
+  color:#15171a;
+  font-size:clamp(56px,7.2vw,112px);
+  font-weight:790;
+  line-height:.9;
+  letter-spacing:-.072em;
+  text-wrap:balance;
+}
+
+.story-line-one span:first-child{
+  font-weight:620;
+}
+
+.story-line-two span:first-child{
+  font-weight:590;
+}
+
+.story-line-three span:first-child{
+  font-weight:600;
+}
+
+.story-gradient{
+  background:
+    linear-gradient(
+      100deg,
+      #0a6cff 0%,
+      #7255ff 38%,
+      #ff4f87 70%,
+      #ff8a3d 100%
+    );
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent !important;
+  background-size:220% 100%;
+  animation:storyGradientFlow 4.5s ease-in-out infinite alternate;
+}
+
+.story-line-two .story-gradient{
+  background-image:linear-gradient(100deg,#8a48ff 0%,#e447ff 42%,#ff5c5c 74%,#ff9c37 100%);
+}
+
+.story-line-three .story-gradient{
+  background-image:linear-gradient(100deg,#0e9ca8 0%,#1677ff 38%,#6752ff 70%,#b04cff 100%);
+}
+
+.story-arrow{
+  position:relative;
+  width:24px;
+  height:46px;
+  margin-top:18px;
+  opacity:.42;
+}
+
+.story-arrow::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:2px;
+  width:1px;
+  height:30px;
+  background:linear-gradient(180deg,transparent,#6e7885);
+  transform:translateX(-50%);
+}
+
+.story-arrow span{
+  position:absolute;
+  left:50%;
+  bottom:3px;
+  width:10px;
+  height:10px;
+  border-right:1.5px solid #6e7885;
+  border-bottom:1.5px solid #6e7885;
+  transform:translateX(-50%) rotate(45deg);
+  animation:storyArrowPulse 1.7s ease-in-out infinite;
+}
+
+.story-conclusion{
+  max-width:900px;
+  margin-top:22px;
+  opacity:0;
+  transform:translateY(18px);
+  transition:
+    opacity .8s ease,
+    transform .9s cubic-bezier(.2,.75,.2,1);
+}
+
+.story-conclusion.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+.story-conclusion p{
+  color:#727982;
+  font-size:clamp(18px,1.7vw,25px);
+  line-height:1.45;
+  letter-spacing:-.025em;
+}
+
+.story-conclusion strong{
+  position:relative;
+  display:inline-block;
+  margin-left:.15em;
+  color:#15171a;
   font-weight:800;
-  letter-spacing:.11em;
 }
 
-@keyframes aiPrinterSweep{
-  0%,8%{transform:translateX(0)}
-  22%{transform:translateX(145px)}
-  38%{transform:translateX(295px)}
-  54%{transform:translateX(445px)}
-  64%,78%{transform:translateX(485px)}
-  92%,100%{transform:translateX(0)}
+.story-conclusion strong::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-5px;
+  height:5px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#0f72ff,#7254ff,#ff5c68,#ff9238);
+  transform:scaleX(0);
+  transform-origin:left;
+  animation:storyUnderline 1s 9.25s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-@keyframes aiLaserPulse{
-  0%,7%,79%,100%{opacity:0}
-  10%,64%{opacity:1}
-  70%{opacity:.2}
+.story-actions{
+  justify-content:center;
+  margin-top:28px;
+  gap:12px;
 }
 
-@keyframes aiPrintReveal{
-  0%,8%{width:0}
-  22%{width:145px}
-  38%{width:295px}
-  54%{width:445px}
-  64%,78%{width:520px}
-  92%,100%{width:0}
+.story-actions .btn{
+  min-height:54px;
+  padding:0 25px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
 }
 
-@keyframes aiReadyBadge{
-  0%,60%{opacity:0;transform:translateY(10px) scale(.94)}
-  68%,79%{opacity:1;transform:none}
-  90%,100%{opacity:0;transform:translateY(-8px) scale(.97)}
+.story-cycle-dots{
+  position:absolute;
+  z-index:3;
+  left:50%;
+  bottom:26px;
+  display:flex;
+  gap:8px;
+  transform:translateX(-50%);
 }
 
-@keyframes aiProgress{
-  0%{transform:scaleX(.02)}
-  64%,79%{transform:scaleX(1)}
-  100%{transform:scaleX(.02)}
+.story-cycle-dots span{
+  width:7px;
+  height:7px;
+  border-radius:999px;
+  background:#c7ccd3;
+  transition:
+    width .35s ease,
+    background .35s ease;
 }
 
-@media(max-width:1100px){
-  .ai-printer-visual{height:640px}
-  .ai-printer-stage{width:min(700px,108%)}
+.story-cycle-dots span.is-active{
+  width:28px;
+  background:#1b1d21;
 }
 
-@media(max-width:820px){
-  .ai-printer-hero{min-height:auto}
-  .ai-printer-visual{
+@keyframes storyTextIn{
+  0%{
+    opacity:0;
+    filter:blur(10px);
+    transform:translateY(28px) scale(.985);
+    clip-path:inset(0 100% 0 0);
+  }
+  15%{
+    opacity:1;
+    filter:blur(0);
+  }
+  35%,76%{
+    opacity:1;
+    filter:blur(0);
+    transform:none;
+    clip-path:inset(0 0 0 0);
+  }
+  90%,100%{
+    opacity:0;
+    filter:blur(8px);
+    transform:translateY(-20px) scale(.99);
+    clip-path:inset(0 0 0 0);
+  }
+}
+
+@keyframes storyGradientFlow{
+  from{background-position:0% 50%}
+  to{background-position:100% 50%}
+}
+
+@keyframes storyArrowPulse{
+  0%,100%{opacity:.25;transform:translate(-50%,-4px) rotate(45deg)}
+  50%{opacity:1;transform:translate(-50%,3px) rotate(45deg)}
+}
+
+@keyframes storyUnderline{
+  to{transform:scaleX(1)}
+}
+
+@media(max-width:900px){
+  .text-story-hero{
+    min-height:calc(100svh - 60px);
+  }
+
+  .story-hero-inner{
+    width:calc(100% - 34px);
+    min-height:760px;
+    padding:62px 0 74px;
+  }
+
+  .story-text-stage{
+    min-height:240px;
+  }
+
+  .story-line span{
+    font-size:clamp(48px,10vw,76px);
+    line-height:.94;
+  }
+}
+
+@media(max-width:600px){
+  .story-hero-inner{
+    width:calc(100% - 24px);
+    min-height:720px;
+    padding:48px 0 72px;
+  }
+
+  .story-kicker{
+    margin-bottom:25px;
+    font-size:10px;
+  }
+
+  .story-text-stage{
+    min-height:230px;
+  }
+
+  .story-line{
+    gap:.09em;
+  }
+
+  .story-line span{
+    font-size:clamp(39px,11.4vw,56px);
+    line-height:.96;
+    letter-spacing:-.06em;
+  }
+
+  .story-conclusion{
+    max-width:520px;
+    margin-top:16px;
+  }
+
+  .story-conclusion p{
+    font-size:17px;
+    line-height:1.42;
+  }
+
+  .story-conclusion strong{
+    display:block;
+    width:max-content;
+    max-width:100%;
+    margin:4px auto 0;
+  }
+
+  .story-actions{
     width:100%;
-    height:auto;
-    min-height:520px;
-    overflow:hidden;
+    margin-top:24px;
   }
 
-  .ai-printer-stage{
-    width:min(700px,118%);
-    margin:0 auto;
-  }
-
-  .ai-printer-frame{
-    inset:2%;
-    border-radius:24px;
+  .story-actions .btn{
+    min-height:50px;
+    padding:0 18px;
+    font-size:14px;
   }
 }
 
-@media(max-width:520px){
-  .ai-printer-visual{min-height:410px}
-  .ai-printer-stage{width:135%}
-  .ai-printer-meta{font-size:8px}
-  .ai-printer-topbar{font-size:9px;padding:0 15px}
+@media(max-width:390px){
+  .story-actions{
+    flex-direction:column;
+  }
+
+  .story-actions .btn{
+    width:100%;
+  }
 }
 
 @media(prefers-reduced-motion:reduce){
-  .ai-printer-head,
-  .ai-laser,
-  #printRevealRect,
-  .ai-ready-badge,
-  .ai-printer-progress span{
+  .story-line{
+    animation:none!important;
+    filter:none!important;
+    clip-path:none!important;
+  }
+
+  .story-line.is-active{
+    opacity:1;
+    transform:none;
+  }
+
+  .story-gradient,
+  .story-arrow span,
+  .story-conclusion strong::after{
     animation:none!important;
   }
 
-  #printRevealRect{width:520px!important}
-  .ai-ready-badge{opacity:1!important;transform:none!important}
+  .story-conclusion strong::after{
+    transform:scaleX(1);
+  }
 }
 
 </style>
@@ -2873,160 +2955,51 @@ body.portfolio-modal-open{overflow:hidden}
 
 
 
-<section class="hero hero-product ai-printer-hero reveal" id="hero">
-  <canvas class="ai-network-canvas" id="aiNetworkCanvas" aria-hidden="true"></canvas>
+<section class="hero text-story-hero reveal" id="hero">
+  <canvas class="story-network-canvas" id="storyNetworkCanvas" aria-hidden="true"></canvas>
 
-  <div class="hero-product-inner">
-    <div class="hero-product-copy">
-      <div class="hero-product-kicker">
-        <span aria-hidden="true">✦</span>
-        Стратегия · Дизайн · Производство
+  <div class="story-hero-inner">
+    <div class="story-kicker">FORMA · PACKAGING DESIGN</div>
+
+    <div class="story-text-stage" id="storyTextStage" aria-live="polite">
+      <div class="story-line story-line-one is-active">
+        <span class="story-gradient">Покупатель сначала</span>
+        <span>видит упаковку.</span>
       </div>
 
-      <h1>
-        Хороший продукт<br>
-        не должен проигрывать<br>
-        из&#8209;за слабой упаковки.
-      </h1>
+      <div class="story-line story-line-two">
+        <span>Потом принимает решение</span>
+        <span class="story-gradient">взять продукт.</span>
+      </div>
 
-      <p class="lead">
-        FORMA создаёт и дорабатывает упаковку так, чтобы продукт выглядел
-        убедительно, сохранял ценность бренда и без лишних переделок дошёл до печати.
-      </p>
-
-      <div class="actions hero-product-actions">
-        <a class="btn primary" href="#contact">Обсудить продукт <span aria-hidden="true">→</span></a>
-        <a class="btn outline" href="#portfolio">Смотреть работы</a>
+      <div class="story-line story-line-three">
+        <span>А уже потом оценивает</span>
+        <span class="story-gradient">его качество.</span>
       </div>
     </div>
 
-    <div class="hero-product-visual ai-printer-visual" aria-label="Анимация подготовки упаковки к печати">
-      <div class="ai-printer-stage" id="aiPrinterStage">
-        <div class="ai-printer-frame">
-          <div class="ai-printer-topbar">
-            <span class="ai-dot"></span>
-            <span class="ai-printer-label">AI PACKAGING ENGINE</span>
-            <span class="ai-printer-status" id="aiPrinterStatus">ANALYSIS</span>
-          </div>
+    <div class="story-arrow" aria-hidden="true">
+      <span></span>
+    </div>
 
-          <svg class="ai-printer-svg" viewBox="0 0 760 590" role="img" aria-label="Техническая развёртка упаковки">
-            <defs>
-              <linearGradient id="sheetGradient" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#f8fbff"/>
-                <stop offset="100%" stop-color="#e9eef5"/>
-              </linearGradient>
+    <div class="story-conclusion" id="storyConclusion">
+      <p>
+        Мы создаём упаковку, которая помогает
+        <strong>выиграть эти первые секунды.</strong>
+      </p>
 
-              <linearGradient id="printGradientA" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#0f72ff"/>
-                <stop offset="50%" stop-color="#6b4bff"/>
-                <stop offset="100%" stop-color="#ff6b35"/>
-              </linearGradient>
-
-              <linearGradient id="printGradientB" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#20232a"/>
-                <stop offset="100%" stop-color="#4b5563"/>
-              </linearGradient>
-
-              <clipPath id="printReveal">
-                <rect id="printRevealRect" x="120" y="110" width="0" height="350" rx="10"/>
-              </clipPath>
-
-              <filter id="laserGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" result="blur"/>
-                <feMerge>
-                  <feMergeNode in="blur"/>
-                  <feMergeNode in="SourceGraphic"/>
-                </feMerge>
-              </filter>
-            </defs>
-
-            <g class="ai-grid-lines" opacity=".28">
-              <path d="M80 90H680M80 150H680M80 210H680M80 270H680M80 330H680M80 390H680M80 450H680M80 510H680"/>
-              <path d="M120 65V525M200 65V525M280 65V525M360 65V525M440 65V525M520 65V525M600 65V525"/>
-            </g>
-
-            <g class="ai-sheet">
-              <rect x="120" y="110" width="520" height="350" rx="12" fill="url(#sheetGradient)" stroke="#bbc5d1" stroke-width="2"/>
-              <path class="ai-cut-line" d="M190 110V460M300 110V460M460 110V460M570 110V460"/>
-              <path class="ai-fold-line" d="M120 185H640M120 385H640"/>
-              <path class="ai-cut-line" d="M120 185L82 155V415L120 385M640 185L678 155V415L640 385"/>
-              <path class="ai-fold-line" d="M190 110L170 77H320L300 110M460 110L440 77H590L570 110"/>
-              <path class="ai-cut-line" d="M190 460L170 493H320L300 460M460 460L440 493H590L570 460"/>
-
-              <g class="ai-dimensions">
-                <path d="M120 530H640"/>
-                <path d="M120 520V540M640 520V540"/>
-                <text x="354" y="552">520 mm</text>
-                <path d="M70 110V460"/>
-                <path d="M60 110H80M60 460H80"/>
-                <text x="45" y="305" transform="rotate(-90 45 305)">350 mm</text>
-              </g>
-
-              <g clip-path="url(#printReveal)" class="ai-print-layer">
-                <rect x="120" y="110" width="520" height="350" rx="12" fill="url(#printGradientA)"/>
-                <rect x="190" y="185" width="110" height="200" fill="#0b1324" opacity=".96"/>
-                <rect x="300" y="185" width="160" height="200" fill="#fff" opacity=".94"/>
-                <rect x="460" y="185" width="110" height="200" fill="#ffdf52" opacity=".96"/>
-                <rect x="570" y="185" width="70" height="200" fill="#1b1d22" opacity=".96"/>
-
-                <text x="335" y="258" class="ai-print-brand">FORMA</text>
-                <text x="335" y="300" class="ai-print-title">PRINT READY</text>
-                <text x="335" y="331" class="ai-print-sub">AI CONCEPT → PRODUCTION FILE</text>
-
-                <g class="ai-barcode">
-                  <rect x="488" y="302" width="4" height="54"/>
-                  <rect x="496" y="302" width="2" height="54"/>
-                  <rect x="502" y="302" width="6" height="54"/>
-                  <rect x="512" y="302" width="3" height="54"/>
-                  <rect x="520" y="302" width="5" height="54"/>
-                  <rect x="529" y="302" width="2" height="54"/>
-                  <rect x="535" y="302" width="7" height="54"/>
-                </g>
-
-                <g class="ai-cmyk">
-                  <circle cx="220" cy="420" r="10" fill="#00a5ff"/>
-                  <circle cx="247" cy="420" r="10" fill="#ff2ca6"/>
-                  <circle cx="274" cy="420" r="10" fill="#ffd400"/>
-                  <circle cx="301" cy="420" r="10" fill="#111"/>
-                </g>
-              </g>
-            </g>
-
-            <g class="ai-printer-head" id="aiPrinterHead">
-              <rect x="96" y="82" width="82" height="54" rx="12" fill="#111820"/>
-              <rect x="108" y="94" width="58" height="20" rx="6" fill="#273241"/>
-              <circle cx="152" cy="104" r="4" fill="#5bf3b1"/>
-              <path d="M134 136L134 166M146 136L146 166" stroke="#111820" stroke-width="8"/>
-              <path class="ai-laser" d="M140 166V470" stroke="#ffb02e" stroke-width="3" filter="url(#laserGlow)"/>
-            </g>
-
-            <g class="ai-registration-marks">
-              <path d="M101 94h18M110 85v18M641 94h18M650 85v18M101 476h18M110 467v18M641 476h18M650 467v18"/>
-            </g>
-
-            <g class="ai-ready-badge">
-              <rect x="252" y="505" width="256" height="48" rx="24"/>
-              <circle cx="281" cy="529" r="8"/>
-              <text x="303" y="535">PRINT READY</text>
-            </g>
-          </svg>
-
-          <div class="ai-printer-progress">
-            <span></span>
-          </div>
-
-          <div class="ai-printer-meta">
-            <span>CMYK</span>
-            <span>300 DPI</span>
-            <span>BLEED 3 MM</span>
-            <span>PDF/X-4</span>
-          </div>
-        </div>
+      <div class="actions story-actions">
+        <a class="btn primary" href="#contact">Обсудить проект <span aria-hidden="true">→</span></a>
+        <a class="btn outline" href="#portfolio">Смотреть работы</a>
       </div>
     </div>
   </div>
 
-  <div class="hero-scroll-hint" aria-hidden="true"><span></span></div>
+  <div class="story-cycle-dots" aria-hidden="true">
+    <span class="is-active"></span>
+    <span></span>
+    <span></span>
+  </div>
 </section>
 
 
@@ -3762,80 +3735,144 @@ window.addEventListener('resize', function(){
 
 <script>
 (function(){
-  const canvas = document.getElementById('aiNetworkCanvas');
-  const hero = document.querySelector('.ai-printer-hero');
-  const stage = document.getElementById('aiPrinterStage');
-  const status = document.getElementById('aiPrinterStatus');
+  const hero = document.querySelector('.text-story-hero');
+  const canvas = document.getElementById('storyNetworkCanvas');
+  const lines = Array.from(document.querySelectorAll('.story-line'));
+  const dots = Array.from(document.querySelectorAll('.story-cycle-dots span'));
+  const conclusion = document.getElementById('storyConclusion');
 
-  if(!canvas || !hero || !stage) return;
+  if(!hero || !canvas || !lines.length) return;
 
   const ctx = canvas.getContext('2d');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let current = 0;
+  let cycleCount = 0;
   let width = 0;
   let height = 0;
-  let raf = 0;
-  let mouse = {x:-1000,y:-1000,active:false};
-  let nodes = [];
   let dpr = 1;
+  let nodes = [];
+  let raf = 0;
+  let mouse = {x:0,y:0,active:false};
+
+  function setStory(index){
+    lines.forEach((line,i)=>line.classList.toggle('is-active',i===index));
+    dots.forEach((dot,i)=>dot.classList.toggle('is-active',i===index));
+
+    current = index;
+
+    if(index === 2 && !conclusion.classList.contains('is-visible')){
+      setTimeout(()=>conclusion.classList.add('is-visible'),1250);
+    }
+  }
+
+  if(!reduced){
+    setInterval(()=>{
+      cycleCount++;
+      setStory((current+1)%lines.length);
+    },3000);
+  }else{
+    conclusion.classList.add('is-visible');
+  }
 
   function resize(){
     const rect = hero.getBoundingClientRect();
-    width = Math.max(1, Math.round(rect.width));
-    height = Math.max(1, Math.round(rect.height));
-    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
-    canvas.style.width = width + 'px';
-    canvas.style.height = height + 'px';
+    width = Math.max(1,Math.round(rect.width));
+    height = Math.max(1,Math.round(rect.height));
+    dpr = Math.min(window.devicePixelRatio || 1,1.5);
+
+    canvas.width = Math.round(width*dpr);
+    canvas.height = Math.round(height*dpr);
+    canvas.style.width = width+'px';
+    canvas.style.height = height+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
 
-    const count = width < 600 ? 34 : width < 1000 ? 56 : 78;
-    nodes = Array.from({length:count},()=>({
-      x:Math.random()*width,
-      y:Math.random()*height,
-      vx:(Math.random()-.5)*.24,
-      vy:(Math.random()-.5)*.24,
-      r:1.2+Math.random()*1.8
-    }));
+    const count = width < 600 ? 42 : width < 1000 ? 68 : 96;
+    nodes = Array.from({length:count},(_,i)=>{
+      const side = i%2===0 ? -1 : 1;
+      const margin = width < 700 ? width*.16 : width*.25;
+      const center = width/2;
+      let x;
+
+      if(side < 0){
+        x = Math.random()*(center-margin);
+      }else{
+        x = center+margin+Math.random()*(center-margin);
+      }
+
+      return{
+        x,
+        y:Math.random()*height,
+        vx:(Math.random()-.5)*.65,
+        vy:(Math.random()-.5)*.65,
+        r:1.1+Math.random()*2.1,
+        phase:Math.random()*Math.PI*2
+      };
+    });
   }
 
-  function draw(){
+  function enforceTextSafeZone(node){
+    const centerX = width/2;
+    const centerY = height*.47;
+    const safeW = width < 700 ? width*.80 : width*.58;
+    const safeH = width < 700 ? 330 : 360;
+
+    const dx = node.x-centerX;
+    const dy = node.y-centerY;
+
+    if(Math.abs(dx)<safeW/2 && Math.abs(dy)<safeH/2){
+      const pushX = (safeW/2-Math.abs(dx)+12)*Math.sign(dx || (Math.random()-.5));
+      node.x += pushX;
+      node.vx += Math.sign(pushX)*.08;
+    }
+  }
+
+  function draw(time){
     ctx.clearRect(0,0,width,height);
 
-    for(const n of nodes){
+    for(const node of nodes){
       if(!reduced){
-        n.x += n.vx;
-        n.y += n.vy;
+        node.phase += .025;
+        node.x += node.vx + Math.sin(node.phase)*.10;
+        node.y += node.vy + Math.cos(node.phase*.8)*.08;
 
-        if(n.x < -20 || n.x > width+20) n.vx *= -1;
-        if(n.y < -20 || n.y > height+20) n.vy *= -1;
+        if(node.x < -35) node.x = width+35;
+        if(node.x > width+35) node.x = -35;
+        if(node.y < -35) node.y = height+35;
+        if(node.y > height+35) node.y = -35;
+
+        enforceTextSafeZone(node);
 
         if(mouse.active){
-          const dx = mouse.x - n.x;
-          const dy = mouse.y - n.y;
+          const dx = mouse.x-node.x;
+          const dy = mouse.y-node.y;
           const dist = Math.hypot(dx,dy);
-          if(dist < 180 && dist > 0){
-            const force = (1 - dist/180) * .018;
-            n.vx += dx * force / dist;
-            n.vy += dy * force / dist;
+
+          if(dist<210 && dist>0){
+            const pull = (1-dist/210)*.018;
+            node.vx += dx/dist*pull;
+            node.vy += dy/dist*pull;
           }
         }
 
-        n.vx *= .995;
-        n.vy *= .995;
+        node.vx *= .994;
+        node.vy *= .994;
       }
     }
 
     for(let i=0;i<nodes.length;i++){
       const a = nodes[i];
+
       for(let j=i+1;j<nodes.length;j++){
         const b = nodes[j];
         const dx = a.x-b.x;
         const dy = a.y-b.y;
         const dist = Math.hypot(dx,dy);
-        if(dist < 118){
-          ctx.strokeStyle = `rgba(116,139,168,${(1-dist/118)*.22})`;
-          ctx.lineWidth = 1;
+
+        if(dist<165){
+          const opacity = (1-dist/165)*.26;
+          ctx.strokeStyle = `rgba(112,130,153,${opacity})`;
+          ctx.lineWidth = dist<80 ? 1.2 : .8;
           ctx.beginPath();
           ctx.moveTo(a.x,a.y);
           ctx.lineTo(b.x,b.y);
@@ -3844,58 +3881,36 @@ window.addEventListener('resize', function(){
       }
     }
 
-    for(const n of nodes){
-      ctx.fillStyle = 'rgba(85,112,148,.52)';
+    for(const node of nodes){
+      ctx.fillStyle = 'rgba(89,108,133,.54)';
       ctx.beginPath();
-      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.arc(node.x,node.y,node.r,0,Math.PI*2);
       ctx.fill();
+
+      if(node.r>2.1){
+        ctx.fillStyle = 'rgba(130,157,193,.10)';
+        ctx.beginPath();
+        ctx.arc(node.x,node.y,node.r*4,0,Math.PI*2);
+        ctx.fill();
+      }
     }
 
     raf = requestAnimationFrame(draw);
   }
 
-  hero.addEventListener('pointermove',e=>{
+  hero.addEventListener('pointermove',event=>{
     const rect = hero.getBoundingClientRect();
-    mouse.x = e.clientX-rect.left;
-    mouse.y = e.clientY-rect.top;
+    mouse.x = event.clientX-rect.left;
+    mouse.y = event.clientY-rect.top;
     mouse.active = true;
-
-    if(window.innerWidth > 820){
-      const px = (mouse.x/rect.width-.5);
-      const py = (mouse.y/rect.height-.5);
-      stage.style.transform =
-        `perspective(1200px) rotateY(${px*4}deg) rotateX(${-py*3}deg) translate3d(${px*8}px,${py*6}px,0)`;
-    }
   });
 
   hero.addEventListener('pointerleave',()=>{
     mouse.active = false;
-    stage.style.transform = '';
   });
 
-  const states = [
-    ['ANALYSIS',0],
-    ['STRUCTURE',900],
-    ['COLOR LAYERS',2200],
-    ['TYPOGRAPHY',3600],
-    ['PREPRESS',5000],
-    ['PRINT READY',6200]
-  ];
-
-  function updateStatus(){
-    const cycle = 7600;
-    const t = performance.now()%cycle;
-    let value = states[0][0];
-    for(const [label,time] of states){
-      if(t >= time) value = label;
-    }
-    if(status) status.textContent = value;
-    requestAnimationFrame(updateStatus);
-  }
-
   resize();
-  draw();
-  updateStatus();
+  raf = requestAnimationFrame(draw);
   window.addEventListener('resize',resize);
   window.addEventListener('pagehide',()=>cancelAnimationFrame(raf));
 })();

@@ -2471,6 +2471,313 @@ body.portfolio-modal-open{overflow:hidden}
   }
 }
 
+
+
+/* ===== FORMA: AI Printer Hero ===== */
+.ai-printer-hero{
+  position:relative;
+  min-height:920px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 20% 70%,rgba(185,198,216,.34),transparent 38%),
+    radial-gradient(circle at 82% 36%,rgba(160,178,206,.30),transparent 42%),
+    linear-gradient(125deg,#f6f8fa 0%,#e9edf2 48%,#dce4ed 100%) !important;
+}
+
+.ai-printer-hero::before,
+.ai-printer-hero::after{
+  display:none !important;
+}
+
+.ai-network-canvas{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  opacity:.62;
+}
+
+.ai-printer-hero .hero-product-inner{
+  position:relative;
+  z-index:2;
+}
+
+.ai-printer-visual{
+  height:720px;
+  overflow:visible;
+}
+
+.ai-printer-stage{
+  position:relative;
+  width:min(780px,104%);
+  aspect-ratio:1 / .82;
+  transform-style:preserve-3d;
+  transition:transform .25s ease-out;
+}
+
+.ai-printer-frame{
+  position:absolute;
+  inset:3%;
+  overflow:hidden;
+  border:1px solid rgba(68,82,100,.14);
+  border-radius:30px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.86),rgba(236,241,247,.72));
+  box-shadow:
+    0 32px 80px rgba(56,70,90,.14),
+    inset 0 1px 0 rgba(255,255,255,.9);
+  backdrop-filter:blur(20px);
+}
+
+.ai-printer-topbar{
+  height:58px;
+  padding:0 22px;
+  display:flex;
+  align-items:center;
+  gap:11px;
+  border-bottom:1px solid rgba(40,55,75,.08);
+  color:#667080;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.13em;
+}
+
+.ai-dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#42d89c;
+  box-shadow:0 0 18px rgba(66,216,156,.75);
+}
+
+.ai-printer-status{
+  margin-left:auto;
+  color:#0f72ff;
+}
+
+.ai-printer-svg{
+  width:100%;
+  height:calc(100% - 120px);
+  display:block;
+}
+
+.ai-grid-lines path{
+  stroke:#8ea0b4;
+  stroke-width:1;
+  vector-effect:non-scaling-stroke;
+}
+
+.ai-cut-line{
+  fill:none;
+  stroke:#59697c;
+  stroke-width:2;
+  vector-effect:non-scaling-stroke;
+}
+
+.ai-fold-line{
+  fill:none;
+  stroke:#8ea0b4;
+  stroke-width:1.5;
+  stroke-dasharray:8 8;
+  vector-effect:non-scaling-stroke;
+}
+
+.ai-dimensions path{
+  stroke:#7e8fa1;
+  stroke-width:1.2;
+  fill:none;
+}
+
+.ai-dimensions text{
+  fill:#657589;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:.08em;
+}
+
+.ai-print-brand{
+  fill:#111820;
+  font-size:24px;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+
+.ai-print-title{
+  fill:#111820;
+  font-size:28px;
+  font-weight:900;
+}
+
+.ai-print-sub{
+  fill:#4d5968;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.1em;
+}
+
+.ai-barcode rect{fill:#111820}
+
+.ai-printer-head{
+  animation:aiPrinterSweep 7.6s cubic-bezier(.45,.02,.2,1) infinite;
+}
+
+.ai-laser{
+  opacity:0;
+  animation:aiLaserPulse 7.6s ease-in-out infinite;
+}
+
+.ai-print-layer{
+  opacity:1;
+}
+
+#printRevealRect{
+  animation:aiPrintReveal 7.6s cubic-bezier(.45,.02,.2,1) infinite;
+}
+
+.ai-registration-marks path{
+  stroke:#5d6f82;
+  stroke-width:1.5;
+  fill:none;
+}
+
+.ai-ready-badge{
+  opacity:0;
+  transform-origin:center;
+  animation:aiReadyBadge 7.6s ease-in-out infinite;
+}
+
+.ai-ready-badge rect{
+  fill:#111820;
+}
+
+.ai-ready-badge circle{
+  fill:#50e3a4;
+  filter:drop-shadow(0 0 8px rgba(80,227,164,.7));
+}
+
+.ai-ready-badge text{
+  fill:#fff;
+  font-size:14px;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+
+.ai-printer-progress{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:42px;
+  height:4px;
+  overflow:hidden;
+  border-radius:999px;
+  background:rgba(30,45,65,.08);
+}
+
+.ai-printer-progress span{
+  display:block;
+  width:100%;
+  height:100%;
+  transform-origin:left;
+  background:linear-gradient(90deg,#0f72ff,#7254ff,#ff7a3d);
+  animation:aiProgress 7.6s linear infinite;
+}
+
+.ai-printer-meta{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:14px;
+  display:flex;
+  justify-content:space-between;
+  color:#6c7786;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.11em;
+}
+
+@keyframes aiPrinterSweep{
+  0%,8%{transform:translateX(0)}
+  22%{transform:translateX(145px)}
+  38%{transform:translateX(295px)}
+  54%{transform:translateX(445px)}
+  64%,78%{transform:translateX(485px)}
+  92%,100%{transform:translateX(0)}
+}
+
+@keyframes aiLaserPulse{
+  0%,7%,79%,100%{opacity:0}
+  10%,64%{opacity:1}
+  70%{opacity:.2}
+}
+
+@keyframes aiPrintReveal{
+  0%,8%{width:0}
+  22%{width:145px}
+  38%{width:295px}
+  54%{width:445px}
+  64%,78%{width:520px}
+  92%,100%{width:0}
+}
+
+@keyframes aiReadyBadge{
+  0%,60%{opacity:0;transform:translateY(10px) scale(.94)}
+  68%,79%{opacity:1;transform:none}
+  90%,100%{opacity:0;transform:translateY(-8px) scale(.97)}
+}
+
+@keyframes aiProgress{
+  0%{transform:scaleX(.02)}
+  64%,79%{transform:scaleX(1)}
+  100%{transform:scaleX(.02)}
+}
+
+@media(max-width:1100px){
+  .ai-printer-visual{height:640px}
+  .ai-printer-stage{width:min(700px,108%)}
+}
+
+@media(max-width:820px){
+  .ai-printer-hero{min-height:auto}
+  .ai-printer-visual{
+    width:100%;
+    height:auto;
+    min-height:520px;
+    overflow:hidden;
+  }
+
+  .ai-printer-stage{
+    width:min(700px,118%);
+    margin:0 auto;
+  }
+
+  .ai-printer-frame{
+    inset:2%;
+    border-radius:24px;
+  }
+}
+
+@media(max-width:520px){
+  .ai-printer-visual{min-height:410px}
+  .ai-printer-stage{width:135%}
+  .ai-printer-meta{font-size:8px}
+  .ai-printer-topbar{font-size:9px;padding:0 15px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .ai-printer-head,
+  .ai-laser,
+  #printRevealRect,
+  .ai-ready-badge,
+  .ai-printer-progress span{
+    animation:none!important;
+  }
+
+  #printRevealRect{width:520px!important}
+  .ai-ready-badge{opacity:1!important;transform:none!important}
+}
+
 </style>
 </head>
 <body>
@@ -2565,9 +2872,9 @@ body.portfolio-modal-open{overflow:hidden}
 </header>
 
 
-<section class="hero hero-product reveal" id="hero">
-  <div class="hero-product-glow hero-product-glow-left" aria-hidden="true"></div>
-  <div class="hero-product-glow hero-product-glow-right" aria-hidden="true"></div>
+
+<section class="hero hero-product ai-printer-hero reveal" id="hero">
+  <canvas class="ai-network-canvas" id="aiNetworkCanvas" aria-hidden="true"></canvas>
 
   <div class="hero-product-inner">
     <div class="hero-product-copy">
@@ -2593,29 +2900,135 @@ body.portfolio-modal-open{overflow:hidden}
       </div>
     </div>
 
-    <div class="hero-product-visual hero-3d-visual" aria-label="3D-анимация появления дизайна упаковки">
-      <div class="hero-3d-stage" id="hero3dStage">
-        <canvas class="hero-3d-canvas hero-3d-gray" id="hero3dGray" aria-hidden="true"></canvas>
-        <canvas class="hero-3d-canvas hero-3d-design" id="hero3dDesign" aria-hidden="true"></canvas>
+    <div class="hero-product-visual ai-printer-visual" aria-label="Анимация подготовки упаковки к печати">
+      <div class="ai-printer-stage" id="aiPrinterStage">
+        <div class="ai-printer-frame">
+          <div class="ai-printer-topbar">
+            <span class="ai-dot"></span>
+            <span class="ai-printer-label">AI PACKAGING ENGINE</span>
+            <span class="ai-printer-status" id="aiPrinterStatus">ANALYSIS</span>
+          </div>
 
-        <div class="hero-3d-glow" aria-hidden="true"></div>
-        <div class="hero-3d-ring" aria-hidden="true"></div>
-        <div class="hero-3d-particles" id="hero3dParticles" aria-hidden="true"></div>
+          <svg class="ai-printer-svg" viewBox="0 0 760 590" role="img" aria-label="Техническая развёртка упаковки">
+            <defs>
+              <linearGradient id="sheetGradient" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#f8fbff"/>
+                <stop offset="100%" stop-color="#e9eef5"/>
+              </linearGradient>
 
-        <div class="hero-3d-loading" id="hero3dLoading">Загрузка 3D…</div>
-        <img
-          class="hero-3d-fallback"
-          src="assets/models/package-gray.jpg"
-          alt="Упаковка без дизайна"
-        >
+              <linearGradient id="printGradientA" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#0f72ff"/>
+                <stop offset="50%" stop-color="#6b4bff"/>
+                <stop offset="100%" stop-color="#ff6b35"/>
+              </linearGradient>
+
+              <linearGradient id="printGradientB" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#20232a"/>
+                <stop offset="100%" stop-color="#4b5563"/>
+              </linearGradient>
+
+              <clipPath id="printReveal">
+                <rect id="printRevealRect" x="120" y="110" width="0" height="350" rx="10"/>
+              </clipPath>
+
+              <filter id="laserGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="6" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+
+            <g class="ai-grid-lines" opacity=".28">
+              <path d="M80 90H680M80 150H680M80 210H680M80 270H680M80 330H680M80 390H680M80 450H680M80 510H680"/>
+              <path d="M120 65V525M200 65V525M280 65V525M360 65V525M440 65V525M520 65V525M600 65V525"/>
+            </g>
+
+            <g class="ai-sheet">
+              <rect x="120" y="110" width="520" height="350" rx="12" fill="url(#sheetGradient)" stroke="#bbc5d1" stroke-width="2"/>
+              <path class="ai-cut-line" d="M190 110V460M300 110V460M460 110V460M570 110V460"/>
+              <path class="ai-fold-line" d="M120 185H640M120 385H640"/>
+              <path class="ai-cut-line" d="M120 185L82 155V415L120 385M640 185L678 155V415L640 385"/>
+              <path class="ai-fold-line" d="M190 110L170 77H320L300 110M460 110L440 77H590L570 110"/>
+              <path class="ai-cut-line" d="M190 460L170 493H320L300 460M460 460L440 493H590L570 460"/>
+
+              <g class="ai-dimensions">
+                <path d="M120 530H640"/>
+                <path d="M120 520V540M640 520V540"/>
+                <text x="354" y="552">520 mm</text>
+                <path d="M70 110V460"/>
+                <path d="M60 110H80M60 460H80"/>
+                <text x="45" y="305" transform="rotate(-90 45 305)">350 mm</text>
+              </g>
+
+              <g clip-path="url(#printReveal)" class="ai-print-layer">
+                <rect x="120" y="110" width="520" height="350" rx="12" fill="url(#printGradientA)"/>
+                <rect x="190" y="185" width="110" height="200" fill="#0b1324" opacity=".96"/>
+                <rect x="300" y="185" width="160" height="200" fill="#fff" opacity=".94"/>
+                <rect x="460" y="185" width="110" height="200" fill="#ffdf52" opacity=".96"/>
+                <rect x="570" y="185" width="70" height="200" fill="#1b1d22" opacity=".96"/>
+
+                <text x="335" y="258" class="ai-print-brand">FORMA</text>
+                <text x="335" y="300" class="ai-print-title">PRINT READY</text>
+                <text x="335" y="331" class="ai-print-sub">AI CONCEPT → PRODUCTION FILE</text>
+
+                <g class="ai-barcode">
+                  <rect x="488" y="302" width="4" height="54"/>
+                  <rect x="496" y="302" width="2" height="54"/>
+                  <rect x="502" y="302" width="6" height="54"/>
+                  <rect x="512" y="302" width="3" height="54"/>
+                  <rect x="520" y="302" width="5" height="54"/>
+                  <rect x="529" y="302" width="2" height="54"/>
+                  <rect x="535" y="302" width="7" height="54"/>
+                </g>
+
+                <g class="ai-cmyk">
+                  <circle cx="220" cy="420" r="10" fill="#00a5ff"/>
+                  <circle cx="247" cy="420" r="10" fill="#ff2ca6"/>
+                  <circle cx="274" cy="420" r="10" fill="#ffd400"/>
+                  <circle cx="301" cy="420" r="10" fill="#111"/>
+                </g>
+              </g>
+            </g>
+
+            <g class="ai-printer-head" id="aiPrinterHead">
+              <rect x="96" y="82" width="82" height="54" rx="12" fill="#111820"/>
+              <rect x="108" y="94" width="58" height="20" rx="6" fill="#273241"/>
+              <circle cx="152" cy="104" r="4" fill="#5bf3b1"/>
+              <path d="M134 136L134 166M146 136L146 166" stroke="#111820" stroke-width="8"/>
+              <path class="ai-laser" d="M140 166V470" stroke="#ffb02e" stroke-width="3" filter="url(#laserGlow)"/>
+            </g>
+
+            <g class="ai-registration-marks">
+              <path d="M101 94h18M110 85v18M641 94h18M650 85v18M101 476h18M110 467v18M641 476h18M650 467v18"/>
+            </g>
+
+            <g class="ai-ready-badge">
+              <rect x="252" y="505" width="256" height="48" rx="24"/>
+              <circle cx="281" cy="529" r="8"/>
+              <text x="303" y="535">PRINT READY</text>
+            </g>
+          </svg>
+
+          <div class="ai-printer-progress">
+            <span></span>
+          </div>
+
+          <div class="ai-printer-meta">
+            <span>CMYK</span>
+            <span>300 DPI</span>
+            <span>BLEED 3 MM</span>
+            <span>PDF/X-4</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="hero-scroll-hint" aria-hidden="true">
-    <span></span>
-  </div>
+  <div class="hero-scroll-hint" aria-hidden="true"><span></span></div>
 </section>
+
 
 
 
@@ -3347,257 +3760,145 @@ window.addEventListener('resize', function(){
 </script>
 
 
+<script>
+(function(){
+  const canvas = document.getElementById('aiNetworkCanvas');
+  const hero = document.querySelector('.ai-printer-hero');
+  const stage = document.getElementById('aiPrinterStage');
+  const status = document.getElementById('aiPrinterStatus');
 
-<script type="importmap">
-{
-  "imports":{
-    "three":"https://unpkg.com/three@0.170.0/build/three.module.js",
-    "three/addons/":"https://unpkg.com/three@0.170.0/examples/jsm/"
-  }
-}
-</script>
+  if(!canvas || !hero || !stage) return;
 
-<script type="module">
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-
-const stage = document.getElementById('hero3dStage');
-const grayCanvas = document.getElementById('hero3dGray');
-const designCanvas = document.getElementById('hero3dDesign');
-const particleHost = document.getElementById('hero3dParticles');
-const loading = document.getElementById('hero3dLoading');
-
-if(stage && grayCanvas && designCanvas){
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let visible = true;
-  let running = true;
-  let revealRAF = 0;
-  let cycleStart = performance.now();
-
-  const MODEL_URL = 'assets/models/hero-package.glb';
-  const GRAY_URL = 'assets/models/package-gray.jpg';
-  const DESIGN_URL = 'assets/models/package-design.jpg';
-
-  function makeRenderer(canvas){
-    const renderer = new THREE.WebGLRenderer({
-      canvas,
-      alpha:true,
-      antialias:true,
-      powerPreference:'high-performance'
-    });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
-    renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.08;
-    renderer.setClearColor(0x000000,0);
-    return renderer;
-  }
-
-  const grayRenderer = makeRenderer(grayCanvas);
-  const designRenderer = makeRenderer(designCanvas);
-
-  const grayScene = new THREE.Scene();
-  const designScene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(31,1,.01,100);
-  camera.position.set(0,.15,4.6);
-
-  function addLights(scene){
-    const hemi = new THREE.HemisphereLight(0xffffff,0x7b8190,2.25);
-    scene.add(hemi);
-
-    const key = new THREE.DirectionalLight(0xffffff,4.2);
-    key.position.set(3.2,4.8,4.4);
-    scene.add(key);
-
-    const fill = new THREE.DirectionalLight(0xb9c8e7,2.1);
-    fill.position.set(-4,1.3,2.2);
-    scene.add(fill);
-
-    const rim = new THREE.DirectionalLight(0xffd38a,1.25);
-    rim.position.set(1.5,2.4,-3);
-    scene.add(rim);
-  }
-
-  addLights(grayScene);
-  addLights(designScene);
-
-  const textureLoader = new THREE.TextureLoader();
-  const gltfLoader = new GLTFLoader();
-
-  Promise.all([
-    gltfLoader.loadAsync(MODEL_URL),
-    textureLoader.loadAsync(GRAY_URL),
-    textureLoader.loadAsync(DESIGN_URL)
-  ]).then(([gltf,grayTexture,designTexture])=>{
-    [grayTexture,designTexture].forEach(texture=>{
-      texture.colorSpace = THREE.SRGBColorSpace;
-      texture.flipY = false;
-      texture.wrapS = THREE.RepeatWrapping;
-      texture.wrapT = THREE.RepeatWrapping;
-      texture.needsUpdate = true;
-    });
-
-    const grayModel = gltf.scene;
-    const designModel = grayModel.clone(true);
-
-    function prepareModel(model,texture,isGray){
-      model.traverse(object=>{
-        if(!object.isMesh) return;
-        const source = Array.isArray(object.material) ? object.material[0] : object.material;
-        const material = source ? source.clone() : new THREE.MeshStandardMaterial();
-        material.map = texture;
-        material.color.setHex(isGray ? 0xd7d9dd : 0xffffff);
-        material.roughness = isGray ? .72 : .58;
-        material.metalness = 0;
-        material.transparent = false;
-        material.side = THREE.DoubleSide;
-        material.needsUpdate = true;
-        object.material = material;
-        object.castShadow = false;
-        object.receiveShadow = false;
-      });
-
-      const box = new THREE.Box3().setFromObject(model);
-      const center = box.getCenter(new THREE.Vector3());
-      const size = box.getSize(new THREE.Vector3());
-      const maxDim = Math.max(size.x,size.y,size.z) || 1;
-      const scale = 2.55 / maxDim;
-      model.scale.setScalar(scale);
-      model.position.sub(center.multiplyScalar(scale));
-      model.position.y -= .04;
-      model.rotation.set(-.03,-.12,-.025);
-    }
-
-    prepareModel(grayModel,grayTexture,true);
-    prepareModel(designModel,designTexture,false);
-
-    grayScene.add(grayModel);
-    designScene.add(designModel);
-
-    stage.classList.add('is-ready','is-revealing');
-    createParticles();
-    startRevealLoop();
-    resize();
-    render();
-
-    function render(time=0){
-      if(!running) return;
-
-      const t = time * .001;
-      const floatY = prefersReducedMotion ? 0 : Math.sin(t * .85) * .035;
-      const idleRot = prefersReducedMotion ? 0 : Math.sin(t * .42) * .055;
-
-      grayModel.position.y = -.04 + floatY;
-      designModel.position.y = -.04 + floatY;
-      grayModel.rotation.y = -.12 + idleRot;
-      designModel.rotation.y = -.12 + idleRot;
-
-      if(visible){
-        grayRenderer.render(grayScene,camera);
-        designRenderer.render(designScene,camera);
-      }
-      requestAnimationFrame(render);
-    }
-  }).catch(error=>{
-    console.error('Hero 3D load failed:',error);
-    stage.classList.add('is-fallback');
-    loading.textContent = '3D не загрузилось';
-  });
+  const ctx = canvas.getContext('2d');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let width = 0;
+  let height = 0;
+  let raf = 0;
+  let mouse = {x:-1000,y:-1000,active:false};
+  let nodes = [];
+  let dpr = 1;
 
   function resize(){
-    const rect = stage.getBoundingClientRect();
-    const width = Math.max(1,Math.round(rect.width));
-    const height = Math.max(1,Math.round(rect.height));
-    [grayRenderer,designRenderer].forEach(renderer=>renderer.setSize(width,height,false));
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    const rect = hero.getBoundingClientRect();
+    width = Math.max(1, Math.round(rect.width));
+    height = Math.max(1, Math.round(rect.height));
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    const count = width < 600 ? 34 : width < 1000 ? 56 : 78;
+    nodes = Array.from({length:count},()=>({
+      x:Math.random()*width,
+      y:Math.random()*height,
+      vx:(Math.random()-.5)*.24,
+      vy:(Math.random()-.5)*.24,
+      r:1.2+Math.random()*1.8
+    }));
   }
 
-  window.addEventListener('resize',resize);
+  function draw(){
+    ctx.clearRect(0,0,width,height);
 
-  if('IntersectionObserver' in window){
-    const observer = new IntersectionObserver(entries=>{
-      visible = entries[0].isIntersecting;
-    },{threshold:.04});
-    observer.observe(stage);
-  }
+    for(const n of nodes){
+      if(!reduced){
+        n.x += n.vx;
+        n.y += n.vy;
 
-  function createParticles(){
-    particleHost.replaceChildren();
-    const count = window.innerWidth < 600 ? 34 : 62;
-    for(let i=0;i<count;i++){
-      const particle = document.createElement('span');
-      particle.className = 'hero-gold-particle';
-      particleHost.appendChild(particle);
-    }
-  }
+        if(n.x < -20 || n.x > width+20) n.vx *= -1;
+        if(n.y < -20 || n.y > height+20) n.vy *= -1;
 
-  function randomizeParticles(){
-    const particles = particleHost.querySelectorAll('.hero-gold-particle');
-    particles.forEach((particle,index)=>{
-      const angle = Math.random() * Math.PI * 2;
-      const distance = 90 + Math.random() * (window.innerWidth < 600 ? 150 : 250);
-      const x = Math.cos(angle) * distance;
-      const y = Math.sin(angle) * distance * .72;
-      const size = 2 + Math.random() * 5;
-      particle.style.width = size + 'px';
-      particle.style.height = size + 'px';
-      particle.style.setProperty('--x',x.toFixed(1) + 'px');
-      particle.style.setProperty('--y',y.toFixed(1) + 'px');
-      particle.style.setProperty('--s',(0.45 + Math.random() * 1.15).toFixed(2));
-      particle.style.setProperty('--delay',(650 + Math.random() * 1150).toFixed(0) + 'ms');
-      particle.style.left = (46 + Math.random() * 8).toFixed(2) + '%';
-      particle.style.top = (52 + Math.random() * 10).toFixed(2) + '%';
-    });
+        if(mouse.active){
+          const dx = mouse.x - n.x;
+          const dy = mouse.y - n.y;
+          const dist = Math.hypot(dx,dy);
+          if(dist < 180 && dist > 0){
+            const force = (1 - dist/180) * .018;
+            n.vx += dx * force / dist;
+            n.vy += dy * force / dist;
+          }
+        }
 
-    stage.classList.remove('is-revealing');
-    void stage.offsetWidth;
-    stage.classList.add('is-revealing');
-  }
-
-  function startRevealLoop(){
-    if(prefersReducedMotion){
-      stage.style.setProperty('--reveal','100%');
-      return;
+        n.vx *= .995;
+        n.vy *= .995;
+      }
     }
 
-    const duration = 5400;
-    const animate = now=>{
-      const elapsed = (now - cycleStart) % duration;
-      const p = elapsed / duration;
-
-      let radius;
-      if(p < .12){
-        radius = 0;
-      }else if(p < .43){
-        const q = (p - .12) / .31;
-        radius = 92 * (1 - Math.pow(1 - q,3));
-      }else if(p < .70){
-        radius = 92;
-      }else if(p < .94){
-        const q = (p - .70) / .24;
-        radius = 92 * (1 - (q*q*(3 - 2*q)));
-      }else{
-        radius = 0;
+    for(let i=0;i<nodes.length;i++){
+      const a = nodes[i];
+      for(let j=i+1;j<nodes.length;j++){
+        const b = nodes[j];
+        const dx = a.x-b.x;
+        const dy = a.y-b.y;
+        const dist = Math.hypot(dx,dy);
+        if(dist < 118){
+          ctx.strokeStyle = `rgba(116,139,168,${(1-dist/118)*.22})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
       }
+    }
 
-      stage.style.setProperty('--reveal',radius.toFixed(2) + '%');
+    for(const n of nodes){
+      ctx.fillStyle = 'rgba(85,112,148,.52)';
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fill();
+    }
 
-      if(elapsed < 28){
-        randomizeParticles();
-      }
-
-      revealRAF = requestAnimationFrame(animate);
-    };
-
-    revealRAF = requestAnimationFrame(animate);
+    raf = requestAnimationFrame(draw);
   }
 
-  window.addEventListener('pagehide',()=>{
-    running = false;
-    if(revealRAF) cancelAnimationFrame(revealRAF);
+  hero.addEventListener('pointermove',e=>{
+    const rect = hero.getBoundingClientRect();
+    mouse.x = e.clientX-rect.left;
+    mouse.y = e.clientY-rect.top;
+    mouse.active = true;
+
+    if(window.innerWidth > 820){
+      const px = (mouse.x/rect.width-.5);
+      const py = (mouse.y/rect.height-.5);
+      stage.style.transform =
+        `perspective(1200px) rotateY(${px*4}deg) rotateX(${-py*3}deg) translate3d(${px*8}px,${py*6}px,0)`;
+    }
   });
-}
+
+  hero.addEventListener('pointerleave',()=>{
+    mouse.active = false;
+    stage.style.transform = '';
+  });
+
+  const states = [
+    ['ANALYSIS',0],
+    ['STRUCTURE',900],
+    ['COLOR LAYERS',2200],
+    ['TYPOGRAPHY',3600],
+    ['PREPRESS',5000],
+    ['PRINT READY',6200]
+  ];
+
+  function updateStatus(){
+    const cycle = 7600;
+    const t = performance.now()%cycle;
+    let value = states[0][0];
+    for(const [label,time] of states){
+      if(t >= time) value = label;
+    }
+    if(status) status.textContent = value;
+    requestAnimationFrame(updateStatus);
+  }
+
+  resize();
+  draw();
+  updateStatus();
+  window.addEventListener('resize',resize);
+  window.addEventListener('pagehide',()=>cancelAnimationFrame(raf));
+})();
 </script>
 
 </body>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="FORMA помогает хорошим продуктам не проигрывать из-за слабой упаковки. Дизайн с нуля, редизайн, продуктовые линейки и превращение AI-концепций в готовые к печати файлы.">
 <title>FORMA — дизайн упаковки, готовый к рынку и производству</title>
@@ -2555,26 +2555,20 @@ body.portfolio-modal-open{overflow:hidden}
 }
 
 .story-line span{
-  font-family:'Sora',sans-serif;
+  font-family:'Manrope',sans-serif;
   display:block;
   color:#15171a;
   font-size:clamp(58px,7vw,118px);
-  font-weight:700;
+  font-weight:800;
   line-height:.92;
-  letter-spacing:-.045em;
+  letter-spacing:-.055em;
   text-wrap:balance;
 }
 
-.story-line-one span:first-child{
-  font-weight:620;
-}
-
-.story-line-two span:first-child{
-  font-weight:590;
-}
-
+ .story-line-one span:first-child,
+.story-line-two span:first-child,
 .story-line-three span:first-child{
-  font-weight:600;
+  font-weight:700;
 }
 
 .story-gradient{
@@ -2963,7 +2957,7 @@ body.portfolio-modal-open{overflow:hidden}
   <canvas class="story-network-canvas" id="storyNetworkCanvas" aria-hidden="true"></canvas>
 
   <div class="story-hero-inner">
-    <div class="story-kicker">FORMA · PACKAGING DESIGN</div>
+    <div class="story-kicker"></div>
 
     <div class="story-text-stage" id="storyTextStage" aria-live="polite">
       <div class="story-line story-line-one is-active">
@@ -3791,7 +3785,7 @@ window.addEventListener('resize', function(){
     canvas.style.height = height+'px';
     ctx.setTransform(dpr,0,0,dpr,0,0);
 
-    const count = width < 600 ? 42 : width < 1000 ? 68 : 96;
+    const count = width < 600 ? 50 : width < 1000 ? 80 : 120;
     nodes = Array.from({length:count},(_,i)=>{
       const side = i%2===0 ? -1 : 1;
       const margin = width < 700 ? width*.16 : width*.25;
@@ -3807,8 +3801,8 @@ window.addEventListener('resize', function(){
       return{
         x,
         y:Math.random()*height,
-        vx:(Math.random()-.5)*.65,
-        vy:(Math.random()-.5)*.65,
+        vx:(Math.random()-.5)*.1.4,
+        vy:(Math.random()-.5)*.1.4,
         r:1.1+Math.random()*2.1,
         phase:Math.random()*Math.PI*2
       };
@@ -3836,9 +3830,9 @@ window.addEventListener('resize', function(){
 
     for(const node of nodes){
       if(!reduced){
-        node.phase += .025;
-        node.x += node.vx + Math.sin(node.phase)*.10;
-        node.y += node.vy + Math.cos(node.phase*.8)*.08;
+        node.phase += .05;
+        node.x += node.vx + Math.sin(node.phase)*.20;
+        node.y += node.vy + Math.cos(node.phase*.8)*.14;
 
         if(node.x < -35) node.x = width+35;
         if(node.x > width+35) node.x = -35;
@@ -3873,7 +3867,7 @@ window.addEventListener('resize', function(){
         const dy = a.y-b.y;
         const dist = Math.hypot(dx,dy);
 
-        if(dist<165){
+        if(dist<220){
           const opacity = (1-dist/165)*.26;
           ctx.strokeStyle = `rgba(112,130,153,${opacity})`;
           ctx.lineWidth = dist<80 ? 1.2 : .8;

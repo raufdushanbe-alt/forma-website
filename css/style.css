@@ -3967,63 +3967,122 @@ section:not(#hero) .eyebrow{
   margin-top:8px;
 }
 
-/* Footer socials */
+/* ========================================
+   FORMA — FOOTER
+======================================== */
 
 .site-footer{
-  padding:30px 24px;
   background:#fff;
   border-top:1px solid rgba(0,0,0,.06);
+  padding:28px 24px;
 }
 
 .footer-inner{
+  width:100%;
   max-width:1180px;
   margin:0 auto;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:24px;
+  gap:30px;
 }
 
 .footer-copy{
   font-size:13px;
-  color:#77777c;
+  font-weight:400;
+  color:#7a7a7f;
 }
+
+
+/* SOCIAL LINKS */
 
 .footer-socials{
   display:flex;
   align-items:center;
-  gap:22px;
+  gap:26px;
 }
 
 .footer-socials a{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  color:#4b4b50;
   font-size:13px;
   font-weight:600;
-  color:#444;
+
+  text-decoration:none;
+
   transition:
-    color .2s ease,
-    transform .2s ease;
+    color .22s ease,
+    transform .22s ease;
 }
+
+
+/* SVG ICON */
+
+.footer-socials svg{
+  width:17px;
+  height:17px;
+
+  fill:currentColor;
+
+  opacity:.72;
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease;
+}
+
+
+/* ARROW */
+
+.footer-arrow{
+  font-size:11px;
+  font-weight:500;
+  opacity:.45;
+
+  transition:
+    opacity .22s ease,
+    transform .22s ease;
+}
+
+
+/* HOVER */
 
 .footer-socials a:hover{
   color:#0071e3;
   transform:translateY(-1px);
 }
 
+.footer-socials a:hover svg{
+  opacity:1;
+}
+
+.footer-socials a:hover .footer-arrow{
+  opacity:1;
+  transform:translate(2px,-2px);
+}
+
+
+/* MOBILE */
+
 @media(max-width:700px){
 
   .site-footer{
-    padding:26px 18px;
+    padding:25px 18px;
   }
 
   .footer-inner{
     flex-direction:column;
     justify-content:center;
+    gap:15px;
     text-align:center;
-    gap:14px;
   }
 
   .footer-socials{
-    gap:20px;
+    gap:22px;
   }
 
 }

@@ -41,7 +41,7 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px;text-align:left}
 .step{background:#f5f5f7;border-radius:24px;padding:26px;min-height:210px} .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;font-weight:800;margin-bottom:28px}
 .step h3{font-size:23px;letter-spacing:-.03em} .step p{font-size:15px;line-height:1.5;color:#666;margin-top:10px}
-.price-section{padding:105px 24px;background:#f5f5f7;text-align:center} .price-grid{max-width:1200px;margin:45px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:left}
+.price-section{padding:105px 24px;background:#f5f5f7;text-align:center} .price-grid{max-width:1400px;margin:45px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:left}
 .price-card{background:#fff;border-radius:28px;padding:34px} .price-card.dark{background:#111;color:#fff} .price-card h3{font-size:34px;letter-spacing:-.04em} .price{font-size:48px;font-weight:800;letter-spacing:-.05em;margin-top:20px}
 .price-card ul{padding-left:20px;color:#666;line-height:1.8} .price-card.dark ul{color:#aaa}
 .custom-project{
@@ -72,6 +72,20 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
     font-weight:600;
     line-height:1.45;
 }
+.price-card.custom-project{
+    position:relative;
+    overflow:hidden;
+}
+
+.price-card.custom-project::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:4px;
+    background:linear-gradient(90deg,#1677ff,#765cff,#ff6b57);
+}
 .contact{padding:105px 24px;background:radial-gradient(circle at 12% 10%,rgba(224,255,69,.52),transparent 28%),radial-gradient(circle at 88% 85%,rgba(83,134,255,.22),transparent 30%),linear-gradient(145deg,#fff,#eef2ff)}
 .contact-wrap{max-width:1120px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start} .contact-copy h2{font-size:clamp(48px,5vw,72px)} .contact-copy p{font-size:20px;color:#666;line-height:1.5;margin-top:18px}
 .trust{margin-top:30px;display:grid;gap:12px;color:#444} .form{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);padding:28px;border-radius:28px;box-shadow:0 32px 90px rgba(40,55,100,.13)}
@@ -80,9 +94,13 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
 .submit{width:100%;margin-top:15px;border:0;border-radius:14px;background:#111;color:#fff;padding:15px;font-weight:750;cursor:pointer}
 footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity:0;transform:translateY(38px);transition:.85s cubic-bezier(.2,.7,.2,1)} .reveal.on{opacity:1;transform:none}
 .float{animation:float 5s ease-in-out infinite} @keyframes float{50%{transform:translateY(-12px)}}
-@media(max-width:950px){.grid,.price-grid,.contact-wrap{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.nav{display:none}.visual,.hero-visual,.wide .visual{height:350px}}
+@media(max-width:950px){.grid,.contact-wrap{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.nav{display:none}.visual,.hero-visual,.wide .visual{height:350px}}
 @media(max-width:600px){.grid{padding-left:0;padding-right:0}.hero,.wide,.panel{padding-left:18px;padding-right:18px}.steps{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.visual,.hero-visual,.wide .visual{height:300px}}
-
+@media(max-width:700px){
+    .price-grid{
+        grid-template-columns:1fr;
+    }
+}
 
 
 

@@ -3909,3 +3909,34 @@ section:not(#hero) .eyebrow{
 #hero .ai-grid-story-line strong {
   padding-right: 0.08em;
 }
+
+/* Исправление обрезания больших слов Hero */
+
+#hero .ai-grid-story-line.is-active{
+  animation:heroWordIn 4.6s cubic-bezier(.2,.75,.2,1) both !important;
+}
+
+@keyframes heroWordIn{
+  0%{
+    opacity:0;
+    filter:blur(8px);
+    transform:translateY(24px) scale(.99);
+  }
+
+  16%{
+    opacity:1;
+    filter:blur(0);
+  }
+
+  34%,76%{
+    opacity:1;
+    filter:blur(0);
+    transform:translateY(0) scale(1);
+  }
+
+  92%,100%{
+    opacity:0;
+    filter:blur(7px);
+    transform:translateY(-18px) scale(.995);
+  }
+}

@@ -4116,3 +4116,55 @@ section:not(#hero) .eyebrow{
     gap:7px;
     font-size:13px;
 }
+
+
+/* =========================================
+   FORMA — language switcher
+   ========================================= */
+.footer-lang-switch{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  flex:0 0 auto;
+  padding:5px 7px;
+  border:1px solid rgba(0,0,0,.08);
+  border-radius:999px;
+  background:#f7f7f8;
+}
+
+.footer-lang-switch .lang-btn{
+  min-width:32px;
+  height:28px;
+  padding:0 8px;
+  border:0;
+  border-radius:999px;
+  background:transparent;
+  color:#8a8a8f;
+  font-size:11px;
+  font-weight:750;
+  letter-spacing:.04em;
+  cursor:pointer;
+  transition:background .2s ease,color .2s ease,box-shadow .2s ease;
+}
+
+.footer-lang-switch .lang-btn:hover{
+  color:#1d1d1f;
+}
+
+.footer-lang-switch .lang-btn.is-active{
+  background:#fff;
+  color:#111;
+  box-shadow:0 1px 5px rgba(0,0,0,.08);
+}
+
+.footer-lang-switch .lang-divider{
+  color:#c5c5ca;
+  font-size:10px;
+}
+
+@media(max-width:700px){
+  .footer-lang-switch{
+    margin-top:2px;
+  }
+}

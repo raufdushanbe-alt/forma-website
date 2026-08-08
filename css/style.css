@@ -3940,3 +3940,25 @@ section:not(#hero) .eyebrow{
     transform:translateY(-18px) scale(.995);
   }
 }
+
+/* Выравнивание карточек цен */
+
+.price-card{
+  display:flex;
+  flex-direction:column;
+}
+
+.price-card ul{
+  margin-bottom:18px;
+}
+
+.custom-price{
+  margin-top:14px;
+  margin-bottom:24px;
+  line-height:1.5;
+}
+
+.price-card .btn{
+  margin-top:auto;
+  align-self:flex-start;
+}

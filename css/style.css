@@ -4086,3 +4086,33 @@ section:not(#hero) .eyebrow{
   }
 
 }
+
+/* Размер иконок соцсетей в Footer */
+
+.site-footer .footer-socials a svg{
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    max-width:18px !important;
+    min-height:18px !important;
+    max-height:18px !important;
+    flex:0 0 18px !important;
+    display:block;
+}
+
+
+/* Расположение соцсетей */
+
+.site-footer .footer-socials{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.site-footer .footer-socials a{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    gap:7px;
+    font-size:13px;
+}

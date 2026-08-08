@@ -41,9 +41,37 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:45px;text-align:left}
 .step{background:#f5f5f7;border-radius:24px;padding:26px;min-height:210px} .step-num{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:#111;color:#fff;font-weight:800;margin-bottom:28px}
 .step h3{font-size:23px;letter-spacing:-.03em} .step p{font-size:15px;line-height:1.5;color:#666;margin-top:10px}
-.price-section{padding:105px 24px;background:#f5f5f7;text-align:center} .price-grid{max-width:1080px;margin:45px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:14px;text-align:left}
+.price-section{padding:105px 24px;background:#f5f5f7;text-align:center} .price-grid{max-width:1200px;margin:45px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;text-align:left}
 .price-card{background:#fff;border-radius:28px;padding:34px} .price-card.dark{background:#111;color:#fff} .price-card h3{font-size:34px;letter-spacing:-.04em} .price{font-size:48px;font-weight:800;letter-spacing:-.05em;margin-top:20px}
 .price-card ul{padding-left:20px;color:#666;line-height:1.8} .price-card.dark ul{color:#aaa}
+.custom-project{
+    background:linear-gradient(180deg,#fff 0%,#f7f8fb 100%);
+    border:1px solid #e6e8ee;
+    position:relative;
+    overflow:hidden;
+}
+
+.custom-project::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(90deg,#1677ff,#7c5cff,#ff6b57);
+}
+
+.price-subtitle{
+    margin:14px 0 22px;
+    color:#737373;
+    line-height:1.55;
+}
+
+.custom-price{
+    margin-top:20px;
+    font-weight:600;
+    line-height:1.45;
+}
 .contact{padding:105px 24px;background:radial-gradient(circle at 12% 10%,rgba(224,255,69,.52),transparent 28%),radial-gradient(circle at 88% 85%,rgba(83,134,255,.22),transparent 30%),linear-gradient(145deg,#fff,#eef2ff)}
 .contact-wrap{max-width:1120px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start} .contact-copy h2{font-size:clamp(48px,5vw,72px)} .contact-copy p{font-size:20px;color:#666;line-height:1.5;margin-top:18px}
 .trust{margin-top:30px;display:grid;gap:12px;color:#444} .form{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);padding:28px;border-radius:28px;box-shadow:0 32px 90px rgba(40,55,100,.13)}

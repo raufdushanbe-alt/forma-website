@@ -3079,3 +3079,35 @@ body.portfolio-modal-open{overflow:hidden}
         text-align:center;
     }
 }
+
+
+/* Contact form + messengers: keep social buttons directly under the form */
+.contact-form-side{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+}
+.contact-form-side .contact-socials{
+  width:100%;
+  max-width:none;
+  margin:18px 0 0;
+  grid-column:auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+}
+@media(max-width:950px){
+  .contact-form-side{width:100%;}
+}
+@media(max-width:700px){
+  .contact-form-side .contact-socials{
+    margin-top:18px;
+    flex-wrap:nowrap;
+  }
+  .contact-form-side .contact-social-label{
+    width:auto;
+    text-align:left;
+  }
+}

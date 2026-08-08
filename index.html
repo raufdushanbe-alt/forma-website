@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="FORMA помогает хорошим продуктам не проигрывать из-за слабой упаковки. Дизайн с нуля, редизайн, продуктовые линейки и превращение AI-концепций в готовые к печати файлы.">
 <title>FORMA — дизайн упаковки, готовый к рынку и производству</title>
-  <link rel="stylesheet" href="css/style.css?v=20260808-2">
+  <link rel="stylesheet" href="css/style.css?v=20260808-3">
 </head>
 <body>
 <header class="topbar">
@@ -619,7 +619,7 @@
 <div class="contact-wrap">
 <div class="contact-copy reveal"><div class="eyebrow">ЕСТЬ ПРОДУКТ. НЕТ ГОТОВОГО ДИЗАЙНА?</div><h2>Расскажите нам о своём продукте — остальное разберём вместе.</h2><p>Не обязательно иметь готовое техническое задание, референсы или чёткое представление о будущем дизайне. Расскажите, что вы запускаете, для кого предназначен продукт и что уже известно. Мы поможем определить направление, предложим подходящий формат работы и объясним, с чего начать.</p><div class="trust"><span>✓ Ответ в течение одного рабочего дня</span><span>✓ Определим задачу и объём работы до старта</span><span>✓ Согласуем этапы, сроки и результат</span><span>✓ Можно обратиться даже с идеей на начальном этапе</span></div></div>
 <div class="contact-form-side reveal">
-<form class="form" id="briefForm">
+<form class="form" id="briefForm" enctype="multipart/form-data">
 <input type="hidden" name="_subject" value="Новая заявка с forma-pack.com">
 <input type="hidden" name="_template" value="table">
 <input type="text" name="_honey" class="form-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -630,6 +630,25 @@
 <div class="field"><label>Email *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="name@company.com"></div>
 <div class="field full"><label>Услуга</label><select id="service" name="service"><option>Дизайн упаковки с нуля</option><option>AI to Print</option><option>Редизайн</option><option>Развитие продуктовой линейки</option><option>Пока не уверен</option></select></div>
 <div class="field full"><label>Продукт и задача *</label><textarea id="message" name="message" required placeholder="Что вы запускаете? Что уже готово? Где нужна помощь: концепция, редизайн, линейка или подготовка к печати?"></textarea></div>
+<div class="field full attachment-field">
+  <label for="attachments">Прикрепить файлы <span class="optional">(необязательно)</span></label>
+  <label class="file-picker" for="attachments">
+    <span class="file-picker-icon" aria-hidden="true">＋</span>
+    <span class="file-picker-copy">
+      <strong>Добавить файлы</strong>
+      <small>До 5 файлов · JPG, PNG, PDF, DOC/DOCX, PSD, AI, CDR, EPS, SVG, ZIP/RAR · до 10 МБ суммарно</small>
+    </span>
+  </label>
+  <input
+    id="attachments"
+    class="file-input"
+    type="file"
+    multiple
+    accept=".jpg,.jpeg,.png,.webp,.pdf,.doc,.docx,.psd,.ai,.cdr,.eps,.svg,.tif,.tiff,.zip,.rar"
+  >
+  <div class="file-list" id="fileList" aria-live="polite"></div>
+  <p class="file-error" id="fileError" role="alert"></p>
+</div>
 </div>
 <button class="submit" type="submit">Получить разбор задачи</button>
 <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
@@ -691,28 +710,90 @@
 
   const submitButton = form.querySelector('.submit');
   const status = document.getElementById('formStatus');
+  const fileInput = document.getElementById('attachments');
+  const fileList = document.getElementById('fileList');
+  const fileError = document.getElementById('fileError');
   const defaultButtonText = submitButton.textContent;
+  const MAX_FILES = 5;
+  const MAX_TOTAL_BYTES = 10 * 1024 * 1024;
+
+  function formatBytes(bytes) {
+    if (bytes < 1024 * 1024) return Math.max(1, Math.round(bytes / 1024)) + ' КБ';
+    return (bytes / (1024 * 1024)).toFixed(1).replace('.0', '') + ' МБ';
+  }
+
+  function getFiles() {
+    return fileInput ? Array.from(fileInput.files || []) : [];
+  }
+
+  function validateFiles(showMessage = true) {
+    const files = getFiles();
+    const total = files.reduce((sum, file) => sum + file.size, 0);
+    let message = '';
+
+    if (files.length > MAX_FILES) {
+      message = 'Можно прикрепить не более 5 файлов.';
+    } else if (total > MAX_TOTAL_BYTES) {
+      message = 'Общий размер файлов не должен превышать 10 МБ.';
+    }
+
+    if (showMessage && fileError) fileError.textContent = message;
+    return !message;
+  }
+
+  function renderFiles() {
+    if (!fileList) return;
+    const files = getFiles();
+    fileList.innerHTML = '';
+
+    files.slice(0, MAX_FILES).forEach((file) => {
+      const item = document.createElement('div');
+      item.className = 'file-list-item';
+
+      const name = document.createElement('span');
+      name.className = 'file-list-name';
+      name.textContent = file.name;
+
+      const size = document.createElement('span');
+      size.className = 'file-list-size';
+      size.textContent = formatBytes(file.size);
+
+      item.append(name, size);
+      fileList.appendChild(item);
+    });
+
+    validateFiles(true);
+  }
+
+  if (fileInput) {
+    fileInput.addEventListener('change', renderFiles);
+  }
 
   form.addEventListener('submit', async function (event) {
     event.preventDefault();
+    event.stopImmediatePropagation();
 
-    if (!form.reportValidity()) return;
+    if (!form.reportValidity() || !validateFiles(true)) return;
 
     submitButton.disabled = true;
     submitButton.textContent = 'Отправляем…';
     status.className = 'form-status';
     status.textContent = '';
 
-    const payload = Object.fromEntries(new FormData(form).entries());
+    const formData = new FormData(form);
+
+    // Add selected files with separate field names so all five arrive as attachments.
+    getFiles().forEach((file, index) => {
+      formData.append('attachment' + (index + 1), file, file.name);
+    });
 
     try {
       const response = await fetch('https://formsubmit.co/ajax/hello@forma-pack.com', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: formData
       });
 
       const data = await response.json();
@@ -722,16 +803,18 @@
       }
 
       form.reset();
+      if (fileList) fileList.innerHTML = '';
+      if (fileError) fileError.textContent = '';
       status.className = 'form-status success';
       status.textContent = 'Спасибо. Заявка отправлена — мы свяжемся с вами в течение одного рабочего дня.';
     } catch (error) {
       status.className = 'form-status error';
-      status.textContent = 'Не удалось отправить заявку. Попробуйте ещё раз или напишите нам в WhatsApp / Telegram.';
+      status.textContent = 'Не удалось отправить заявку. Проверьте размер файлов и попробуйте ещё раз или напишите нам в WhatsApp / Telegram.';
     } finally {
       submitButton.disabled = false;
       submitButton.textContent = defaultButtonText;
     }
-  });
+  }, true);
 })();
 </script>
 

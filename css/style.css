@@ -3007,75 +3007,75 @@ body.portfolio-modal-open{overflow:hidden}
   .ai-grid-story-line.is-active{opacity:1;filter:none;transform:none;clip-path:none}
 }
 .contact-socials{
+    grid-column:1 / -1;
+    width:100%;
     max-width:1120px;
     margin:28px auto 0;
-    display:grid;
-    grid-template-columns:1fr auto auto 1fr;
+    display:flex;
+    justify-content:center;
     align-items:center;
-    gap:18px;
-}
-
-.contact-social-line{
-    height:1px;
-    background:#d9dce3;
+    gap:16px;
 }
 
 .contact-social-label{
     font-size:13px;
+    font-weight:500;
     color:#777;
     white-space:nowrap;
 }
 
 .contact-social-buttons{
     display:flex;
+    align-items:center;
     gap:10px;
 }
 
 .contact-social-btn{
-    height:46px;
-    padding:0 16px;
+    width:48px;
+    height:48px;
+    min-width:48px;
+    min-height:48px;
+    padding:0;
     display:flex;
     align-items:center;
-    gap:9px;
-    border-radius:12px;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:600;
+    justify-content:center;
+    border-radius:13px;
     background:#fff;
-    color:#111;
-    border:1px solid #e1e3e8;
-    transition:.2s ease;
+    border:1px solid #e2e4e8;
+    text-decoration:none;
+    overflow:hidden;
+    box-sizing:border-box;
+    transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .contact-social-btn img{
-    width:24px;
-    height:24px;
+    display:block !important;
+    width:26px !important;
+    height:26px !important;
+    max-width:26px !important;
+    max-height:26px !important;
+    min-width:0 !important;
+    object-fit:contain !important;
+}
+
+.contact-social-btn span{
+    display:none;
 }
 
 .contact-social-btn:hover{
     transform:translateY(-2px);
-    border-color:#c8ccd5;
-    box-shadow:0 8px 22px rgba(0,0,0,.06);
+    box-shadow:0 8px 24px rgba(0,0,0,.08);
 }
+
 @media(max-width:700px){
-
     .contact-socials{
-        grid-template-columns:1fr;
+        margin-top:22px;
+        gap:12px;
+        flex-wrap:wrap;
+    }
+
+    .contact-social-label{
+        width:100%;
         text-align:center;
-        gap:14px;
-    }
-
-    .contact-social-line{
-        display:none;
-    }
-
-    .contact-social-buttons{
-        display:grid;
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .contact-social-btn{
-        justify-content:center;
     }
 }

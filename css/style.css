@@ -86,7 +86,7 @@ h2{font-size:clamp(40px,4.7vw,64px);line-height:.98;letter-spacing:-.055em}
     height:4px;
     background:linear-gradient(90deg,#1677ff,#765cff,#ff6b57);
 }
-.contact{padding:105px 24px;background:radial-gradient(circle at 12% 10%,rgba(224,255,69,.52),transparent 28%),radial-gradient(circle at 88% 85%,rgba(83,134,255,.22),transparent 30%),linear-gradient(145deg,#fff,#eef2ff)}
+.contact{padding:105px 24px;background:radial-gradient(circle at 12% 10%,rgba(92,169,255,.28),transparent 30%),radial-gradient(circle at 88% 85%,rgba(139,92,246,.22),transparent 32%),linear-gradient(145deg,#ffffff,#f4f5ff)}
 .contact-wrap{max-width:1120px;margin:auto;display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:start} .contact-copy h2{font-size:clamp(48px,5vw,72px)} .contact-copy p{font-size:20px;color:#666;line-height:1.5;margin-top:18px}
 .trust{margin-top:30px;display:grid;gap:12px;color:#444} .form{background:rgba(255,255,255,.82);backdrop-filter:blur(18px);padding:28px;border-radius:28px;box-shadow:0 32px 90px rgba(40,55,100,.13)}
 .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px} .field{display:flex;flex-direction:column;gap:7px;text-align:left} .field.full{grid-column:1/-1} .field label{font-size:13px;font-weight:700}

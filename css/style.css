@@ -3889,3 +3889,23 @@ section:not(#hero) .eyebrow{
     letter-spacing: -0.055em;
   }
 }
+
+/* Не обрезать большие слова Hero */
+
+#hero .ai-grid-story-stage {
+  width: 100%;
+  max-width: none;
+  overflow: visible;
+}
+
+#hero .ai-grid-story-line {
+  width: 100%;
+  overflow: visible;
+  padding-left: 30px;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+#hero .ai-grid-story-line strong {
+  padding-right: 0.08em;
+}

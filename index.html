@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="FORMA помогает хорошим продуктам не проигрывать из-за слабой упаковки. Дизайн с нуля, редизайн, продуктовые линейки и превращение AI-концепций в готовые к печати файлы.">
 <title>FORMA — дизайн упаковки, готовый к рынку и производству</title>
-  <link rel="stylesheet" href="css/style.css?v=20260808-5">
+  <link rel="stylesheet" href="css/style.css?v=20260808-6">
 </head>
 <body>
 <header class="topbar">
@@ -86,7 +86,7 @@
 <section class="hero ai-grid-hero reveal" id="hero">
   <canvas class="ai-grid-canvas" id="aiGridCanvas" aria-hidden="true"></canvas>
 
-  <div class="hero-lens" aria-hidden="true"></div>
+  <div class="hero-sphere-stage" id="heroSphereStage" aria-hidden="true"></div>
 
   <div class="ai-grid-hero-inner">
     <div class="ai-grid-story-stage" aria-live="polite">
@@ -813,40 +813,242 @@
 <script>
 (function () {
   const hero = document.getElementById('hero');
-  if (!hero) return;
+  const stage = document.getElementById('heroSphereStage');
+  if (!hero || !stage) return;
 
-  let targetX = 50;
-  let targetY = 50;
-  let currentX = 50;
-  let currentY = 50;
-  let rafId = null;
+  const isMobile = window.matchMedia('(max-width:820px)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function animateLens() {
-    currentX += (targetX - currentX) * 0.08;
-    currentY += (targetY - currentY) * 0.08;
+  const sphereCount = isMobile ? 6 : 8;
+  const spheres = [];
+  const pointer = { x: -9999, y: -9999, active: false };
 
-    hero.style.setProperty('--lens-x', currentX + '%');
-    hero.style.setProperty('--lens-y', currentY + '%');
+  function rand(min, max) {
+    return Math.random() * (max - min) + min;
+  }
 
-    rafId = requestAnimationFrame(animateLens);
+  function sizeFor(index) {
+    if (isMobile) {
+      const sizes = [190, 130, 88, 62, 48, 112];
+      return sizes[index % sizes.length];
+    }
+    const sizes = [320, 250, 178, 142, 106, 82, 62, 48];
+    return sizes[index % sizes.length];
+  }
+
+  function velocity() {
+    const angle = rand(0, Math.PI * 2);
+    const speed = isMobile ? rand(.14, .30) : rand(.16, .34);
+    return {
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed
+    };
+  }
+
+  function buildSphere(index) {
+    const el = document.createElement('span');
+    el.className = 'hero-sphere';
+    const size = sizeFor(index);
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+
+    const v = velocity();
+    const sphere = {
+      el,
+      size,
+      r: size / 2,
+      x: 0,
+      y: 0,
+      vx: v.vx,
+      vy: v.vy,
+      mass: Math.max(1, size * size),
+      initialized: false
+    };
+
+    stage.appendChild(el);
+    spheres.push(sphere);
+  }
+
+  for (let i = 0; i < sphereCount; i++) buildSphere(i);
+
+  function placeSpheres() {
+    const rect = stage.getBoundingClientRect();
+
+    spheres.forEach((s, index) => {
+      if (s.initialized) return;
+
+      let x = rand(s.r + 8, Math.max(s.r + 8, rect.width - s.r - 8));
+      let y = rand(s.r + 8, Math.max(s.r + 8, rect.height - s.r - 8));
+
+      // Keep the center text area calmer on desktop.
+      if (!isMobile && index < 4) {
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        if (Math.abs(x - centerX) < 240 && Math.abs(y - centerY) < 185) {
+          x = x < centerX ? rand(s.r + 8, rect.width * .28) : rand(rect.width * .72, rect.width - s.r - 8);
+        }
+      }
+
+      s.x = x;
+      s.y = y;
+      s.initialized = true;
+    });
+  }
+
+  function resolveWall(s, w, h) {
+    if (s.x - s.r < 0) {
+      s.x = s.r;
+      s.vx = Math.abs(s.vx);
+    }
+    if (s.x + s.r > w) {
+      s.x = w - s.r;
+      s.vx = -Math.abs(s.vx);
+    }
+    if (s.y - s.r < 0) {
+      s.y = s.r;
+      s.vy = Math.abs(s.vy);
+    }
+    if (s.y + s.r > h) {
+      s.y = h - s.r;
+      s.vy = -Math.abs(s.vy);
+    }
+  }
+
+  function resolveSphereCollision(a, b) {
+    let dx = b.x - a.x;
+    let dy = b.y - a.y;
+    let distSq = dx * dx + dy * dy;
+    const minDist = a.r + b.r;
+
+    if (distSq <= 0) {
+      dx = .01;
+      dy = .01;
+      distSq = dx * dx + dy * dy;
+    }
+
+    const dist = Math.sqrt(distSq);
+    if (dist >= minDist) return;
+
+    const nx = dx / dist;
+    const ny = dy / dist;
+    const overlap = minDist - dist;
+
+    // Gentle positional separation.
+    const totalMass = a.mass + b.mass;
+    a.x -= nx * overlap * (b.mass / totalMass);
+    a.y -= ny * overlap * (b.mass / totalMass);
+    b.x += nx * overlap * (a.mass / totalMass);
+    b.y += ny * overlap * (a.mass / totalMass);
+
+    // Very soft elastic response to avoid "billiard" feeling.
+    const rvx = b.vx - a.vx;
+    const rvy = b.vy - a.vy;
+    const velAlongNormal = rvx * nx + rvy * ny;
+    if (velAlongNormal > 0) return;
+
+    const restitution = .78;
+    const impulse = -(1 + restitution) * velAlongNormal / (1 / a.mass + 1 / b.mass);
+    const ix = impulse * nx;
+    const iy = impulse * ny;
+
+    a.vx -= ix / a.mass;
+    a.vy -= iy / a.mass;
+    b.vx += ix / b.mass;
+    b.vy += iy / b.mass;
+
+    // Small tangential drift keeps motion organic.
+    const tangent = rand(-.006, .006);
+    a.vx += -ny * tangent;
+    a.vy += nx * tangent;
+    b.vx -= -ny * tangent;
+    b.vy -= nx * tangent;
+  }
+
+  function reactToPointer(s) {
+    if (!pointer.active) return;
+
+    const dx = s.x - pointer.x;
+    const dy = s.y - pointer.y;
+    const distSq = dx * dx + dy * dy;
+    const influence = s.r + 170;
+
+    if (distSq <= 1 || distSq > influence * influence) return;
+
+    const dist = Math.sqrt(distSq);
+    const strength = (1 - dist / influence) * .045;
+    s.vx += (dx / dist) * strength;
+    s.vy += (dy / dist) * strength;
+  }
+
+  function capSpeed(s) {
+    const max = isMobile ? .42 : .52;
+    const speed = Math.hypot(s.vx, s.vy);
+    if (speed > max) {
+      s.vx = s.vx / speed * max;
+      s.vy = s.vy / speed * max;
+    }
+  }
+
+  function renderSphere(s) {
+    s.el.style.transform = `translate3d(${s.x - s.r}px, ${s.y - s.r}px, 0)`;
+  }
+
+  let last = performance.now();
+
+  function tick(now) {
+    const rect = stage.getBoundingClientRect();
+    const dt = Math.min(2, (now - last) / 16.6667);
+    last = now;
+
+    placeSpheres();
+
+    spheres.forEach((s) => {
+      reactToPointer(s);
+
+      // Light drag: keeps reactions graceful.
+      s.vx *= .9993;
+      s.vy *= .9993;
+
+      s.x += s.vx * dt;
+      s.y += s.vy * dt;
+
+      resolveWall(s, rect.width, rect.height);
+      capSpeed(s);
+    });
+
+    for (let i = 0; i < spheres.length; i++) {
+      for (let j = i + 1; j < spheres.length; j++) {
+        resolveSphereCollision(spheres[i], spheres[j]);
+      }
+    }
+
+    spheres.forEach(renderSphere);
+    requestAnimationFrame(tick);
   }
 
   hero.addEventListener('pointermove', function (event) {
     if (event.pointerType === 'touch') return;
-    const rect = hero.getBoundingClientRect();
-    targetX = ((event.clientX - rect.left) / rect.width) * 100;
-    targetY = ((event.clientY - rect.top) / rect.height) * 100;
+    const rect = stage.getBoundingClientRect();
+    pointer.x = event.clientX - rect.left;
+    pointer.y = event.clientY - rect.top;
+    pointer.active = true;
     hero.classList.add('is-pointer-active');
   });
 
   hero.addEventListener('pointerleave', function () {
-    targetX = 50;
-    targetY = 48;
+    pointer.active = false;
     hero.classList.remove('is-pointer-active');
   });
 
-  if (window.matchMedia('(pointer:fine)').matches) {
-    rafId = requestAnimationFrame(animateLens);
+  window.addEventListener('resize', function () {
+    spheres.forEach((s) => { s.initialized = false; });
+  });
+
+  if (reduceMotion) {
+    placeSpheres();
+    spheres.forEach(renderSphere);
+  } else {
+    requestAnimationFrame(tick);
   }
 })();
 </script>

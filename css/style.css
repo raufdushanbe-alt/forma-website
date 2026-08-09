@@ -4177,7 +4177,7 @@ section:not(#hero) .eyebrow{
   position:relative;
   overflow:hidden;
   padding:80px 24px;
-  background:#f8f4f1;
+  background:#F2F2F2;
 }
 
 .behind-forma-inner{
@@ -4447,7 +4447,6 @@ section:not(#hero) .eyebrow{
   height:auto;
   max-height:590px;
   object-fit:contain;
-  mix-blend-mode:multiply;
 }
 
 /* Old large portrait is no longer used */

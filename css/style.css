@@ -4176,7 +4176,7 @@ section:not(#hero) .eyebrow{
 .behind-forma{
   position:relative;
   overflow:hidden;
-  padding:96px 24px;
+  padding:80px 24px;
   background:#f8f4f1;
 }
 
@@ -4321,3 +4321,40 @@ section:not(#hero) .eyebrow{
   }
 }
 
+/* BEHIND FORMA — более спокойный портрет */
+
+.behind-forma-inner{
+  grid-template-columns:minmax(0,1.15fr) minmax(300px,.85fr);
+  gap:90px;
+}
+
+.behind-forma-portrait{
+  min-height:420px;
+  justify-content:center;
+}
+
+.behind-forma-portrait img{
+  width:min(100%,350px) !important;
+  max-height:470px !important;
+  opacity:.88;
+  filter:contrast(.95);
+}
+
+/* Телефон */
+@media(max-width:900px){
+
+  .behind-forma-inner{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+
+  .behind-forma-portrait{
+    min-height:0;
+    justify-content:flex-start;
+  }
+
+  .behind-forma-portrait img{
+    width:min(82%,340px) !important;
+    max-height:none !important;
+  }
+}

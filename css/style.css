@@ -4513,3 +4513,7 @@ section:not(#hero) .eyebrow{
   }
 }
 
+/* Временно скрываем блок Process */
+#process {
+    display: none !important;
+}

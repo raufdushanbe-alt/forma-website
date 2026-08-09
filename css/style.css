@@ -4358,3 +4358,159 @@ section:not(#hero) .eyebrow{
     max-height:none !important;
   }
 }
+
+
+/* =========================================================
+   BEHIND FORMA — final editorial composition
+   ========================================================= */
+
+.behind-forma{
+  padding:76px 24px;
+  background:#f8f4f1;
+}
+
+.behind-forma-inner{
+  width:min(1280px,100%);
+  grid-template-columns:minmax(0,.92fr) minmax(520px,1.18fr);
+  gap:56px;
+  align-items:center;
+}
+
+.behind-forma-copy{
+  position:relative;
+  z-index:2;
+}
+
+.behind-forma h2{
+  max-width:610px;
+  font-size:clamp(40px,4.15vw,60px);
+}
+
+.behind-forma-copy > p{
+  max-width:575px;
+}
+
+.behind-forma-person{
+  width:min(430px,100%);
+  margin-top:34px;
+  padding-top:26px;
+  border-top:1px solid rgba(0,0,0,.13);
+  display:grid;
+  grid-template-columns:96px minmax(0,1fr);
+  gap:20px;
+  align-items:center;
+}
+
+.behind-forma-avatar{
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center 34%;
+  display:block;
+  filter:grayscale(1) contrast(.96);
+  background:#ece8e5;
+}
+
+.behind-forma-person-copy{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.behind-forma-person-copy strong{
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.25;
+}
+
+.behind-forma-person-copy > span{
+  margin-top:4px;
+  color:#777;
+  font-size:14px;
+  line-height:1.4;
+}
+
+.behind-forma-workspace{
+  min-width:0;
+  min-height:500px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  overflow:visible;
+}
+
+.behind-forma-workspace img{
+  display:block;
+  width:min(100%,690px);
+  height:auto;
+  max-height:590px;
+  object-fit:contain;
+  mix-blend-mode:multiply;
+}
+
+/* Old large portrait is no longer used */
+.behind-forma-portrait{
+  display:none !important;
+}
+
+@media(max-width:1050px){
+  .behind-forma-inner{
+    grid-template-columns:minmax(0,1fr) minmax(420px,.95fr);
+    gap:38px;
+  }
+
+  .behind-forma-workspace img{
+    width:min(100%,610px);
+  }
+}
+
+@media(max-width:900px){
+  .behind-forma{
+    padding:68px 20px;
+  }
+
+  .behind-forma-inner{
+    grid-template-columns:1fr;
+    gap:34px;
+  }
+
+  .behind-forma-workspace{
+    min-height:0;
+    justify-content:center;
+  }
+
+  .behind-forma-workspace img{
+    width:min(100%,720px);
+    max-height:none;
+  }
+}
+
+@media(max-width:600px){
+  .behind-forma{
+    padding:58px 18px 66px;
+  }
+
+  .behind-forma h2{
+    font-size:clamp(34px,10.5vw,46px);
+  }
+
+  .behind-forma-person{
+    grid-template-columns:78px minmax(0,1fr);
+    gap:16px;
+    padding-top:22px;
+  }
+
+  .behind-forma-avatar{
+    width:78px;
+    height:78px;
+  }
+
+  .behind-forma-workspace img{
+    width:112%;
+    max-width:none;
+    margin-left:-6%;
+  }
+}
+

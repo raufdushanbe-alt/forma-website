@@ -711,6 +711,13 @@
 
       status.className = 'form-status success';
       status.textContent = formaT('Thank you. Your inquiry and attached files have been sent — we will contact you within one business day.','Спасибо. Заявка и прикреплённые файлы отправлены — мы свяжемся с вами в течение одного рабочего дня.');
+
+      // Google Analytics 4 — successful project inquiry
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          form_name: 'project_inquiry'
+        });
+      }
     });
   }
 })();

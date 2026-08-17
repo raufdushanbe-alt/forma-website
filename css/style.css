@@ -298,7 +298,12 @@ footer{padding:38px;text-align:center;color:#777;font-size:13px} .reveal{opacity
   border-color:var(--blue2);
   color:var(--blue2);
 }
-
+.logo img {
+    display: block;
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+}
 /* Portfolio */
 .portfolio-intro{
   padding:96px 24px 54px;

@@ -4567,7 +4567,7 @@ section:not(#hero) .eyebrow{
 }
 .logo img {
     display: block;
-    height: 44px;
+    height: 36px;
     width: auto;
     object-fit: contain;
 }

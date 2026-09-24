@@ -710,6 +710,32 @@
 </script>
 <script>
 (function () {
+  const contactEvents = [
+    {
+      selector: 'a[href*="wa.me"], a[href*="whatsapp.com"], a[href^="whatsapp:"]',
+      eventName: 'click_whatsapp',
+      contactMethod: 'whatsapp'
+    },
+    {
+      selector: 'a[href*="t.me"], a[href*="telegram.me"], a[href^="tg:"]',
+      eventName: 'click_telegram',
+      contactMethod: 'telegram'
+    }
+  ];
+
+  contactEvents.forEach(function ({ selector, eventName, contactMethod }) {
+    document.querySelectorAll(selector).forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, { contact_method: contactMethod });
+        }
+      });
+    });
+  });
+})();
+</script>
+<script>
+(function () {
   const hero = document.getElementById('hero');
   const stage = document.getElementById('heroSphereStage');
   if (!hero || !stage) return;
